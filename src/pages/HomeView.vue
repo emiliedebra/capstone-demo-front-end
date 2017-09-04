@@ -2,10 +2,11 @@
 
 <template>
   <v-card flat class="home">
+    
     <!-- Year Title: Dummy -->
-    <v-card v-for="year in reports" :key="year.year">
+    <v-card v-for="year in posts" :key="year.year">
       <v-card-title>
-        <h4 class="ma-0 pa-0">{{year.year}}</h4>
+        <h4 class="ma-0 pa-0">{{ year.year }}</h4>
       </v-card-title>
       <v-divider></v-divider>
 
@@ -28,9 +29,9 @@
         <v-card-text v-show="item.show">{{ item.abstract }}</v-card-text>
 
         <!-- Button Panel -->
-        <v-btn class="mr-0 pa-0" small flat @click.native="item.show = !item.show">Abstract</v-btn>
-        <v-btn class="mr-0 pa-0" small flat to="/report">View</v-btn>
-        <v-btn class="mr-0 pa-0" small flat to="/page">Generate Report</v-btn>
+        <v-btn class="mr-0 pa-0" small flat @click.native="item.show = !item.show"> Abstract </v-btn>
+        <v-btn class="mr-0 pa-0" small flat to="/report"> View </v-btn>
+        <v-btn class="mr-0 pa-0" small flat to="/page"> Generate Report </v-btn>
         <v-divider></v-divider>
       </v-card>
     </v-card> 
@@ -38,9 +39,15 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'home',
   data() {
+    // return {
+    //   posts: [],
+    //   errors: [],
+    // };
     return {
       // NB: temporary data for dev purposes
       reports: [
@@ -102,6 +109,12 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    axios.get('http://localhost:3000/')
+      .then((response) => {
+        this.posts = response.data;
+      });
   },
 };
 </script>

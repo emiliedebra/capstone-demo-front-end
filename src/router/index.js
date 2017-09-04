@@ -15,7 +15,7 @@ import Report from '@/pages/ReportView';
 import Login from '@/pages/LoginView';
 
 Vue.use(Router);
-Vue.use(Vuetify);
+
 
 // Add routes here
 export default new Router({
@@ -44,6 +44,6 @@ export default new Router({
       name: 'Report',
       component: Report,
     },
-
   ],
+  //mode: 'history',
 });
