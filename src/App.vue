@@ -65,7 +65,7 @@ export default {
       { icon: 'search', text: 'Advanced Search', link: '/page' },
     ],
     items2: [
-      { icon: 'settings', text: 'Settings', link: '/login' },
+      { icon: 'settings', text: 'Settings', link: '/page' },
       { icon: 'home', text: 'Log Out', link: '/login' },
     ],
   }),

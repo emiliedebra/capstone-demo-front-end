@@ -4,7 +4,7 @@
   <v-card flat class="home">
     
     <!-- Year Title: Dummy -->
-    <v-card v-for="year in posts" :key="year.year">
+    <v-card v-for="year in reports" :key="year.year">
       <v-card-title>
         <h4 class="ma-0 pa-0">{{ year.year }}</h4>
       </v-card-title>
