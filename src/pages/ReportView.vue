@@ -15,7 +15,7 @@ export default {
   name: 'page',
   data() {
     return {
-      msg: 'Report View under Construction',
+      msg: 'Report View Under Construction',
     };
   },
 };

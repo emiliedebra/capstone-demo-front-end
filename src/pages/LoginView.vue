@@ -16,8 +16,8 @@ export default {
   name: 'page',
   data() {
     return {
-      msg: 'You have been logged out',
-      submsg: 'You can now browse the sites as an Observer',
+      msg: 'Log In/Out Page Under Construction',
+      submsg: 'Check back soon for an updated version - we are working to bring you what you want!',
     };
   },
 };

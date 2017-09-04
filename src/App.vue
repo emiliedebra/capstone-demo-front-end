@@ -47,10 +47,17 @@
     <main>
       <v-container fluid>
         <router-view></router-view>
-        <v-btn slot="activator" class="pink" dark fixed bottom right fab to="/page">
-          <v-icon>add</v-icon>
-          <!-- <v-icon>close</v-icon> -->
-        </v-btn>
+        <v-dialog v-model="dialog" persistent>
+          
+          <v-btn slot="activator" class="pink" dark fixed bottom right fab>
+            <v-icon>add</v-icon>
+            <!-- <v-icon>close</v-icon> -->
+          </v-btn>
+          <!-- Make separate insert component here -->
+          <v-card class="text-xs-center">
+            <v-btn @click.native="dialog = false">Close</v-btn>
+          </v-card>
+        </v-dialog>
       </v-container>
     </main>
   </v-app>
@@ -72,6 +79,7 @@ export default {
       { icon: 'settings', text: 'Settings', link: '/page' },
       { icon: 'home', text: 'Log Out', link: '/login' },
     ],
+    dialog: false,
   }),
 
   computed: {
