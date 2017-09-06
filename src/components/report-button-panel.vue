@@ -1,3 +1,5 @@
+<!-- report-button-panel.vue -->
+
 <template id="report-button-panel">
   <v-card flat>
     <v-btn class="mr-0 pa-0" small flat> Abstract </v-btn>
@@ -14,6 +16,14 @@ Vue.component('report-button-panel', {
 
 export default {
   name: 'report-button-panel',
-  // props: ['researchOutput'],
+  props: ['show'],
+
+  methods: {
+    toggleShow: () => {
+      // TODO: Not working
+      show = !show;
+      this.$emit('toggleShow', show);
+    },
+  },
 };
 </script>

@@ -1,5 +1,6 @@
+<!-- report-header.vue -->
+
 <template id="report-header">
-  
   <v-card flat>
     <v-card-title class="pb-0 mb-0">
       <div>
@@ -13,10 +14,7 @@
       </div>
     </v-card-title>
   </v-card>
-
 </template>
-
-
 
 <script>
 import Vue from 'vue';

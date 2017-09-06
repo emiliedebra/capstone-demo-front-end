@@ -1,5 +1,7 @@
+<!-- report-body.vue -->
+
 <template id="report-body">
-  <v-card-text>{{ researchOutput.additional_info }}</v-card-text>
+  <v-card-text>{{ body }}</v-card-text>
 </template>
 
 <script>
@@ -11,6 +13,6 @@ Vue.component('report-body', {
 
 export default {
   name: 'report-body',
-  props: ['researchOutput'],
+  props: ['body'],
 };
 </script>
