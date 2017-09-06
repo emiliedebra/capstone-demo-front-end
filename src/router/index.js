@@ -45,5 +45,4 @@ export default new Router({
       component: Report,
     },
   ],
-  //mode: 'history',
 });

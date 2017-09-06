@@ -2,7 +2,14 @@
 
 <template>
   <v-card flat class="home">
-    
+    <v-card v-for="item in posts.outputs" :key="item.title">
+      <!-- <v-layout column> -->
+        <report-header :researchOutput="item"></report-header>
+        <report-body :researchOutput="item"></report-body>
+        <report-button-panel></report-button-panel>
+      <!-- </v-layout> -->
+    </v-card>
+
     <!-- Year Title: Dummy -->
     <!-- <v-card v-for="year in posts.outputs" :key="year.outputs"> -->
       <!-- <v-card-title>
@@ -11,7 +18,7 @@
       <v-divider></v-divider> -->
 
       <!-- Report Cards -->
-      <v-card v-for="item in posts" :key="item.title">
+      <!-- <v-card v-for="item in posts" :key="item.title">
         <v-card-title class="pb-0 mb-0">
           <div>
             <div class="headline">
@@ -23,18 +30,17 @@
 
             <p class="pa-0 ma-0 grey--text">{{ item.type }}</p>
           </div>
-        </v-card-title>
+        </v-card-title> -->
 
         <!-- Abstract Text - Dummy Function -->
-        <v-card-text v-if="item.show">{{ item.additional_info }}</v-card-text>
+        <!-- <v-card-text v-if="item.show">{{ item.additional_info }}</v-card-text> -->
 
         <!-- Button Panel -->
-        <v-btn class="mr-0 pa-0" small flat @click.native="item.show = !item.show"> Abstract </v-btn>
+        <!-- <v-btn class="mr-0 pa-0" small flat @click.native="item.show = !item.show"> Abstract </v-btn>
         <v-btn class="mr-0 pa-0" small flat to="/report"> View </v-btn>
         <v-btn class="mr-0 pa-0" small flat to="/page"> Generate Report </v-btn>
-        <v-divider></v-divider>
+        <v-divider></v-divider> -->
       </v-card>
-    </v-card> 
   <!-- </v-card> -->
 </template>
 
@@ -72,8 +78,13 @@ export default {
     axios
       .get('http://localhost:3000')
       .then((response) => {
-        this.posts = response.data.outputs.map(o => Object.assign(o, { show: false }));
+        this.posts = response.data;
       });
+  },
+  components: {
+    'report-header': () => import('../components/report-header.vue'),
+    'report-body': () => import('../components/report-body.vue'),
+    'report-button-panel': () => import('../components/report-button-panel.vue'),
   },
 };
 </script>
