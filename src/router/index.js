@@ -1,9 +1,6 @@
 /*
   Define all routing and routing logic in here
 */
-
-// import Vue from 'vue';
-// import Vuetify from 'vuetify';
 import VueRouter from 'vue-router';
 
 import '../../node_modules/vuetify/dist/vuetify.min.css';

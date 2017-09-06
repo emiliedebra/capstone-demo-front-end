@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import reportCard from './report-card.vue';
+
 export default {
   name: 'report-list',
   props: {
@@ -19,7 +21,7 @@ export default {
     show: false,
   }),
   components: {
-    'report-card': () => import('./report-card.vue'),
+    reportCard,
   },
 };
 </script>

@@ -16,14 +16,6 @@ Vue.use(Vuetify);
 Vue.use(Vuex);
 Vue.use(VueAxios, axios);
 
-// new Vue({
-//   el: '#app',
-//   router,
-//   store,
-//   template: '<App/>',
-//   components: { App },
-// });
-
 // eslint-disable-next-line no-new
 new Vue({
   router,

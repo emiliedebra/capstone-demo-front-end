@@ -10,7 +10,12 @@
 </template>
 
 <script>
+import reportHeader from './report-header.vue';
+import reportBody from './report-body.vue';
+import reportButtonPanel from './report-button-panel.vue';
+
 export default {
+
   name: 'report-card',
   props: ['item'],
   data() {
@@ -19,14 +24,14 @@ export default {
     };
   },
   components: {
-    'report-header': () => import('./report-header.vue'),
-    'report-body': () => import('./report-body.vue'),
-    'report-button-panel': () => import('./report-button-panel.vue'),
+    reportHeader,
+    reportBody,
+    reportButtonPanel,
   },
   methods: {
     toggleShowEvent() {
       this.show = !this.show;
     },
-  }
+  },
 };
 </script>

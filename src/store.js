@@ -5,19 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    showNav: true,
+    // showNav: true,
   },
   getters: {
-    showNav: state => state.showNav,
+    // showNav: state => state.showNav,
   },
   mutations: {
-    toggleShowNav: (state) => {
-      state.showNav = !state.showNav;
-    },
+    // toggleShowNav: (state) => {
+    //   state.showNav = !state.showNav;
+    // },
   },
   actions: {
-    toggleShowNav: (context) => {
-      context.commit('toggleShowNav');
-    },
+    // toggleShowNav: (context) => {
+    //   context.commit('toggleShowNav');
+    // },
   },
 });

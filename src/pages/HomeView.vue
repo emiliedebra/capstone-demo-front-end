@@ -2,8 +2,8 @@
 
 <template>
   <v-container fluid>
-      <v-card flat fluid class="text-xs-right">
-        <v-btn flat>Generate Report</v-btn>
+      <v-card style="background-color: transparent" flat fluid class="text-xs-right">
+        <v-btn class="ma-0" flat>Generate Report</v-btn>
       </v-card>
       <report-list :outputs="posts.outputs"></report-list>
   </v-container>
@@ -11,6 +11,7 @@
 
 <script>
 import axios from 'axios';
+import reportList from '../components/report-list.vue';
 
 export default {
   name: 'home',
@@ -29,17 +30,7 @@ export default {
   },
 
   components: {
-    'report-list': () => import('../components/report-list.vue'),
-  },
-  computed: {
-    showNav: () => {
-      return this.$store.getters.showNav;
-    }
-  },
-  methods: {
-    toggleShowNav: () => {
-      this.$store.dispatch('toggleShowNav');
-    },
+    reportList,
   },
 };
 </script>
