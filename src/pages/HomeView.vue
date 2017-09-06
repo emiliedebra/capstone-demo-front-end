@@ -2,8 +2,10 @@
 
 <template>
   <v-container fluid>
-      <v-btn flat right class="ma-1" @click.native="toggleShowNav">Generate Report</v-btn>
-      <report-list v-show="showNav" :outputs="posts.outputs"></report-list>
+      <v-card flat fluid class="text-xs-right">
+        <v-btn flat>Generate Report</v-btn>
+      </v-card>
+      <report-list :outputs="posts.outputs"></report-list>
   </v-container>
 </template>
 

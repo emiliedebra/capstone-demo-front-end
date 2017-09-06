@@ -1,29 +1,23 @@
 <!-- report-button-panel.vue -->
 
 <template id="report-button-panel">
-  <v-card flat>
-    <v-btn class="mr-0 pa-0" small flat> Abstract </v-btn>
-    <v-btn class="mr-0 pa-0" small flat to="/report"> View </v-btn>
+  <v-card flat class="text-xs-right">
+    <v-btn small flat @click.native="toggleShow"> Abstract </v-btn>
+    <v-btn primary small flat to="/report"> View </v-btn>
   </v-card>
 </template>
 
 <script>
-import Vue from 'vue';
-
-Vue.component('report-button-panel', {
-  template: '#report-button-panel',
-});
-
 export default {
   name: 'report-button-panel',
   props: ['show'],
 
   methods: {
-    toggleShow: () => {
+    toggleShow() {
       // TODO: Not working
-      show = !show;
-      this.$emit('toggleShow', show);
+      this.$emit('toggleShowEvent', !this.show);
     },
   },
 };
 </script>
+

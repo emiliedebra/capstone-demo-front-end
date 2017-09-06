@@ -8,9 +8,7 @@ export default new Vuex.Store({
     showNav: true,
   },
   getters: {
-    showNav: (state) => {
-      return state.showNav;
-    },
+    showNav: state => state.showNav,
   },
   mutations: {
     toggleShowNav: (state) => {

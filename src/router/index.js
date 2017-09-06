@@ -2,23 +2,20 @@
   Define all routing and routing logic in here
 */
 
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import Router from 'vue-router';
+// import Vue from 'vue';
+// import Vuetify from 'vuetify';
+import VueRouter from 'vue-router';
 
 import '../../node_modules/vuetify/dist/vuetify.min.css';
 
-// Import components here
+// Import pages here
 import Page from '@/pages/PageView';
 import Home from '@/pages/HomeView';
 import Report from '@/pages/ReportView';
 import Login from '@/pages/LoginView';
 
-Vue.use(Router);
-
-
 // Add routes here
-export default new Router({
+export default new VueRouter({
   routes: [
     {
       title: 'CAIR Home',

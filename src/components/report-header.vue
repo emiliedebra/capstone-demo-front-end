@@ -17,12 +17,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
-
-Vue.component('report-header', {
-  template: '#report-header',
-});
-
 export default {
   name: 'report-header',
   props: ['researchOutput'],

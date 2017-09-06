@@ -2,7 +2,7 @@
 
 <template id="app-toolbar">
   <v-toolbar dark class="primary">
-    <v-toolbar-side-icon @click.stop="toggleShowNav"></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click.native="toggleShowNav"></v-toolbar-side-icon>
     <v-toolbar-title class="white--text">{{ this.$route.name }}</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn icon @click.stop="search = !search">
@@ -26,12 +26,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
-
-Vue.component('app-toolbar', {
-  template: '#app-toolbar',
-});
-
 export default {
   name: 'app-toolbar',
   data: () => ({
@@ -45,12 +39,12 @@ export default {
     dialog: false,
   }),
   computed: {
-    showNav: () => {
+    showNav() {
       return this.$store.getters.showNav;
-    }
+    },
   },
   methods: {
-    toggleShowNav: () => {
+    toggleShowNav() {
       this.$store.dispatch('toggleShowNav');
     },
   },

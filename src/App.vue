@@ -1,7 +1,7 @@
 <!-- App.vue -->
 
 <template>
-  <v-app toolbar>
+  <v-app toolbar footer>
     
     <!-- Navigation Drawer -->
     <app-nav-drawer></app-nav-drawer>
