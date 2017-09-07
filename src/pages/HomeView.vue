@@ -1,9 +1,10 @@
+
 <!-- Home.vue -->
 
 <template>
   <v-container fluid>
       <v-card style="background-color: transparent" flat fluid class="text-xs-right">
-        <v-btn class="ma-0" flat>Generate Report</v-btn>
+        <v-btn class="ma-0" flat @click.native="print">Generate Report</v-btn>
       </v-card>
       <report-list :outputs="posts.outputs"></report-list>
   </v-container>
@@ -11,6 +12,8 @@
 
 <script>
 import axios from 'axios';
+import { printOutputs } from '../utils/print-services';
+
 import reportList from '../components/report-list.vue';
 
 export default {
@@ -31,6 +34,12 @@ export default {
 
   components: {
     reportList,
+  },
+
+  methods: {
+    print() {
+      printOutputs(this.posts.outputs);
+    },
   },
 };
 </script>

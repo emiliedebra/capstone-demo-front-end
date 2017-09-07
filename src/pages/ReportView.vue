@@ -1,22 +1,32 @@
 <!-- Report View -->
 
 <template>
-  <v-card flat class="report">
-    <v-card-text>
-      <h6 class="text-xs-center">{{ msg }}</h6>
-      <p class="text-xs-center">Check back soon for an updated version - we are working to bring you what you want!
-      </p>
-    </v-card-text>
-  </v-card>
+  <v-container class="report">
+    <v-card flat v-for="item in posts.outputs" :key="item.title">
+      <v-card-text>
+        {{ item.title }}
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: 'page',
+  name: 'report',
   data() {
     return {
-      msg: 'Report View Under Construction',
+      posts: [],
     };
+  },
+
+  created() {
+    axios
+      .get('http://localhost:3000')
+      .then((response) => {
+        this.posts = response.data;
+      });
   },
 };
 </script>

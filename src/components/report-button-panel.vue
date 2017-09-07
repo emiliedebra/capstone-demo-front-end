@@ -14,8 +14,7 @@ export default {
 
   methods: {
     toggleShow() {
-      // TODO: Not working
-      this.$emit('toggleShowEvent', !this.show);
+      this.$emit('toggleShowMsg', !this.show);
     },
   },
 };

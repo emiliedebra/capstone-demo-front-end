@@ -5,7 +5,7 @@
     <report-header :researchOutput="item"></report-header>
     <report-body v-show="show" :body="item.additional_info"></report-body>
     <!-- TODO: v-on not working -->
-    <report-button-panel @toggleShowEvent="toggleShowEvent"></report-button-panel>
+    <report-button-panel @toggleShowMsg="toggleShow"></report-button-panel>
   </v-card>
 </template>
 
@@ -29,7 +29,7 @@ export default {
     reportButtonPanel,
   },
   methods: {
-    toggleShowEvent() {
+    toggleShow() {
       this.show = !this.show;
     },
   },
