@@ -18,3 +18,9 @@ export function postResearchOutput(data) {
     .then(response => console.log(response.status))
     .catch(response => console.log(response));
 }
+
+export function getReport(id) {
+  return axios
+    .get(`http://localhost:3000/detailed_view/${id}`)
+    .then(response => response.data);
+}

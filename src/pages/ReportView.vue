@@ -2,31 +2,39 @@
 
 <template>
   <v-container class="report">
-    <v-card flat v-for="item in posts.outputs" :key="item.title">
-      <v-card-text>
-        {{ item.title }}
-      </v-card-text>
-    </v-card>
+    <report-header :researchOutput="output[0]"></report-header>
+    <report-body :body="output[0].additional_info"></report-body>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import reportHeader from '../components/report-header';
+import reportBody from '../components/report-body';
+import { getReport } from '../utils/data-access';
 
 export default {
   name: 'report',
   data() {
     return {
-      posts: [],
+      output: [{
+        author: '',
+      }],
     };
   },
 
   created() {
-    axios
-      .get('http://localhost:3000')
-      .then((response) => {
-        this.posts = response.data;
+    const id = this.$store.getters.viewID;
+    getReport(id)
+      .then((output) => {
+        this.output = output;
+        // hacky because of different table names
+        this.output[0].author = `${this.output[0].Author_First_Name} ${this.output[0].Author_Last_Name}`;
       });
+  },
+  components: {
+    reportHeader,
+    reportBody,
   },
 };
 </script>

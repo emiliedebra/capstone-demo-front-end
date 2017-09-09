@@ -5,7 +5,7 @@
     <report-header :researchOutput="item"></report-header>
     <report-body v-show="show" :body="item.additional_info"></report-body>
     <!-- TODO: v-on not working -->
-    <report-button-panel @toggleShowMsg="toggleShow"></report-button-panel>
+    <report-button-panel @changeViewID="changeViewID" @toggleShowMsg="toggleShow"></report-button-panel>
   </v-card>
 </template>
 
@@ -31,6 +31,9 @@ export default {
   methods: {
     toggleShow() {
       this.show = !this.show;
+    },
+    changeViewID() {
+      this.$store.dispatch('changeViewID', this.item.id);
     },
   },
 };

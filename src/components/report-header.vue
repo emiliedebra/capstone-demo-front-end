@@ -10,7 +10,11 @@
           </v-layout>
         </div>
         <p class="pa-0 ma-0">{{ researchOutput.author }}</p>
-        <p class="pa-0 ma-0 grey--text">{{ researchOutput.type }}</p>
+        <v-layout row>
+          <p class="pa-0 ma-0 grey--text">{{ researchOutput.type }}</p>
+          <p class="pa-0 ma-0 ml-2 grey--text">|</p>
+          <p class="pa-0 ma-0 ml-2 grey--text">{{ researchOutput.publication_year }}</p>
+        </v-layout>
       </div>
     </v-card-title>
   </v-card>
