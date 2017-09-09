@@ -46,16 +46,12 @@
     <main>
       <v-container fluid>
         <router-view></router-view>
-        <v-dialog v-model="dialog" persistent>
+        <v-dialog v-model="dialog" persistent width="800">
             <v-btn slot="activator" class="pink" dark fixed bottom right fab>
               <v-icon>add</v-icon>
               <!-- <v-icon>close</v-icon> -->
             </v-btn>
-          <!-- Make separate insert component here -->
-          <v-card class="text-xs-center">
-            <h6 class="pa-3">Coming Soon</h6>
-            <v-btn @click.native="dialog = false">Close</v-btn>
-          </v-card>
+            <report-create-form @toggleDialog="toggleDialog"></report-create-form>
         </v-dialog>
       </v-container>
     </main>
@@ -63,6 +59,7 @@
 </template>
 
 <script>
+import reportCreateForm from './components/report-create-form';
 
 export default {
   name: 'app',
@@ -81,5 +78,13 @@ export default {
     ],
     dialog: false,
   }),
+  components: {
+    reportCreateForm,
+  },
+  methods: {
+    toggleDialog() {
+      this.dialog = !this.dialog;
+    },
+  },
 };
 </script>

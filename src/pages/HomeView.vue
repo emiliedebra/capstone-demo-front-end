@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import axios from 'axios';
 import { printOutputs } from '../utils/print-services';
+import { getResearchOutputs } from '../utils/data-access';
 
 import reportList from '../components/report-list.vue';
 
@@ -25,10 +25,9 @@ export default {
   },
 
   created() {
-    axios
-      .get('http://localhost:3000')
-      .then((response) => {
-        this.posts = response.data;
+    getResearchOutputs()
+      .then((posts) => {
+        this.posts = posts;
       });
   },
 

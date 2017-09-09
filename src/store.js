@@ -5,19 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // showNav: true,
+    // clearReport: true,
   },
   getters: {
-    // showNav: state => state.showNav,
+    // clearReport: state => state.clearReport,
   },
   mutations: {
-    // toggleShowNav: (state) => {
-    //   state.showNav = !state.showNav;
+    // toggleClearReport: (state) => {
+    //   state.clearReport = !state.clearReport;
     // },
   },
   actions: {
-    // toggleShowNav: (context) => {
-    //   context.commit('toggleShowNav');
+    // toggleClearReport: (context) => {
+    //   context.commit('toggleClearReport');
     // },
   },
 });
