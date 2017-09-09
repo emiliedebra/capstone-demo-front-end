@@ -18,6 +18,13 @@
         <v-text-field label="Year" v-model="year"></v-text-field>
         <v-text-field
           label="Enter Abstract"
+          v-model="abstract"
+          full-width
+          height="200"
+          multi-line
+          single-line></v-text-field>
+        <v-text-field
+          label="Enter Research Text"
           v-model="text"
           full-width
           multi-line
@@ -47,6 +54,7 @@ export default {
       author: '',
       coauthor: '',
       year: '',
+      abstract: '',
       text: '',
       dialog: false,
       pubType: null,

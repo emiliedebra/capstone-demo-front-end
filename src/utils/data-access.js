@@ -12,8 +12,9 @@ export function postResearchOutput(data) {
       title: data.title,
       type: data.pubType,
       publication_year: data.year,
-      additional_info: data.text,
+      additional_info: data.abstract,
       author: data.author,
+      text: data.text,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response));
