@@ -6,6 +6,7 @@ import VueRouter from 'vue-router';
 import '../../node_modules/vuetify/dist/vuetify.min.css';
 
 // Import pages here
+import User from '@/pages/UserView';
 import Page from '@/pages/PageView';
 import Home from '@/pages/HomeView';
 import Report from '@/pages/ReportView';
@@ -25,6 +26,12 @@ export default new VueRouter({
       path: '/login',
       name: 'Login',
       component: Login,
+    },
+    {
+      title: 'CAIR Add User',
+      path: '/user',
+      name: 'Add User',
+      component: User,
     },
     {
       title: 'CAIR Page',

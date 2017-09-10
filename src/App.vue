@@ -74,6 +74,7 @@ export default {
     ],
     items2: [
       { icon: 'settings', text: 'Settings', link: '/page' },
+      { icon: 'add', text: 'Add User', link: '/user' },
       { icon: 'home', text: 'Log Out', link: '/login' },
     ],
     dialog: false,

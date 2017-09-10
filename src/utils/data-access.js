@@ -21,6 +21,17 @@ export function postResearchOutput(data) {
     .catch(response => console.log(response));
 }
 
+export function postUser(data) {
+  return axios
+    .post('http://localhost:3000/create-account', {
+      first_name: data.first,
+      last_name: data.last,
+      email: data.email,
+    })
+    .then(response => console.log(response.status))
+    .catch(response => console.log(response));
+}
+
 export function getReport(id) {
   return axios
     .get(`http://localhost:3000/detailed_view/${id}`)
