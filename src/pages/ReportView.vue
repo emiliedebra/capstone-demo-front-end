@@ -2,8 +2,8 @@
 
 <template>
   <v-container class="report">
-    <report-header :researchOutput="output[0]"></report-header>
-    <report-body :body="output[0].additional_info"></report-body>
+    <report-header :researchOutput="output"></report-header>
+    <report-body :body="output.additional_info"></report-body>
   </v-container>
 </template>
 
@@ -27,9 +27,9 @@ export default {
     const id = this.$store.getters.viewID;
     getReport(id)
       .then((output) => {
-        this.output = output;
+        this.output = output[0];
         // hacky because of different table names
-        this.output[0].author = `${this.output[0].Author_First_Name} ${this.output[0].Author_Last_Name}`;
+        this.output.author = `${this.output.Author_First_Name} ${this.output.Author_Last_Name}`;
       });
   },
   components: {

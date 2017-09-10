@@ -10,7 +10,9 @@
       <form ref="createform" @clearReport="clear">
         <v-text-field label="Title" v-model="title">
         </v-text-field>
-        <v-text-field label="Author" v-model="author">
+        <v-text-field label="Author First Name" v-model="authorFirst">
+        </v-text-field>
+        <v-text-field label="Author Last Name" v-model="authorLast">
         </v-text-field>
         <v-text-field label="Co-Author" v-model="coauthor">
         </v-text-field>
@@ -51,7 +53,8 @@ export default {
   data() {
     return {
       title: '',
-      author: '',
+      authorFirst: '',
+      authorLast: '',
       coauthor: '',
       year: '',
       abstract: '',
@@ -72,7 +75,8 @@ export default {
     clear() {
       this.$refs.createform.reset();
       this.title = '';
-      this.author = '';
+      this.authorFirst = '';
+      this.authorLast = '';
       this.coauthor = '';
       this.year = '';
       this.text = '';

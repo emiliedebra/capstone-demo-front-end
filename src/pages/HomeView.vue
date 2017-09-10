@@ -20,7 +20,7 @@ export default {
   name: 'home',
   data() {
     return {
-      posts: [],
+      posts: {},
     };
   },
 

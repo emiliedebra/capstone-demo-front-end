@@ -24,8 +24,8 @@ export default new Vuex.Store({
     // toggleClearReport: (context) => {
     //   context.commit('toggleClearReport');
     // },
-    changeViewID: (state, newValue) => {
-      state.commit('changeViewID', newValue);
+    changeViewID: (context, newValue) => {
+      context.commit('changeViewID', newValue);
     },
   },
 });
