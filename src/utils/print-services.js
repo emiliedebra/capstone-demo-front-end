@@ -14,7 +14,7 @@ export function printJSON(json, ...props) {
 function printBasic(data) {
   printJS({
     printable: data,
-    properties: ['title', 'author', 'publication_year'],
+    properties: ['title', 'author', 'publication_year', 'type'],
     type: 'json',
   });
 }

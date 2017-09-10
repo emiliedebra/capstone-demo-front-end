@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getResearchOutputs() {
   return axios
-    .get('http://localhost:3000/')
+    .get('http://localhost:3000/basic-research-outputs')
     .then(response => response.data);
 }
 
@@ -13,7 +13,8 @@ export function postResearchOutput(data) {
       type: data.pubType,
       publication_year: data.year,
       additional_info: data.abstract,
-      author: data.author,
+      Author_First_Name: data.authorFirst,
+      Author_Last_Name: data.authorLast,
       text: data.text,
     })
     .then(response => console.log(response.status))
