@@ -9,7 +9,7 @@
             <h6 class="pa-0 ma-0">{{ researchOutput.title }}</h6>
           </v-layout>
         </div>
-        <p class="pa-0 ma-0">{{ researchOutput.author }}</p>
+        <p class="pa-0 ma-0">{{researchOutput.Author_First_Name}} {{researchOutput.Author_Last_Name}}</p>
         <v-layout row>
           <p class="pa-0 ma-0 grey--text">{{ researchOutput.type }}</p>
           <p class="pa-0 ma-0 ml-2 grey--text">|</p>

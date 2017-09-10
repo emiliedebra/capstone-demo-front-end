@@ -14,7 +14,7 @@ export function printJSON(json, ...props) {
 function printBasic(data) {
   printJS({
     printable: data,
-    properties: ['title', 'author', 'publication_year', 'type'],
+    properties: ['title', 'Author_First_Name', 'Author_Last_Name', 'publication_year', 'type'],
     type: 'json',
   });
 }
@@ -22,7 +22,7 @@ function printBasic(data) {
 function printDetailed(data) {
   printJS({
     printable: data,
-    properties: ['title', 'author', 'publication_year', 'peerReview'],
+    properties: ['title', 'Author_First_Name', 'Author_Last_Name', 'publication_year', 'peerReview'],
     type: 'json',
   });
 }
