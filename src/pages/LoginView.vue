@@ -3,22 +3,23 @@
 <!-- For construction purposes -->
 <template>
   <v-card flat class="page">
-    <v-card-text>
-      <h6 class="text-xs-center">{{ msg }}</h6>
-      <p class="text-xs-center">{{ submsg }}
-      </p>
-    </v-card-text>
+    <login-card></login-card>
   </v-card>
 </template>
 
 <script>
+import loginCard from '../components/login-card';
+
 export default {
-  name: 'page',
+  name: 'login',
   data() {
     return {
       msg: 'Log In/Out Page Under Construction',
       submsg: 'Check back soon for an updated version - we are working to bring you what you want!',
     };
+  },
+  components: {
+    loginCard,
   },
 };
 </script>

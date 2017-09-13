@@ -10,8 +10,8 @@ export function postResearchOutput(data) {
   return axios
     .post('http://localhost:3000/outputs', {
       title: data.title,
-      type: data.pubType,
-      publication_year: data.year,
+      type: data.pubType, // needs to be an id
+      publication_year: data.year, // needs to be an int
       additional_info: data.abstract,
       Author_First_Name: data.authorFirst,
       Author_Last_Name: data.authorLast,

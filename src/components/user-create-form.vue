@@ -1,11 +1,11 @@
-<!-- report-body.vue -->
+<!-- user-create-form.vue -->
 
 <template id="user-create-form">
   <v-card flat class="text-xs-center">
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
       <!-- <v-card-text> -->
-      <h6 class="text-xs-left">New User</h6>
+      <h6 class="text-xs-left">Add New User</h6>
       <form ref="createform" @clearReport="clear">
         <v-text-field label="First Name" v-model="first">
         </v-text-field>
@@ -26,7 +26,6 @@
 
 <script>
 import reportCreateFormToolbar from './report-create-form-toolbar';
-// import reportCreateFormHeader from './report-create-form-header';
 import { postUser } from '../utils/data-access';
 
 export default {

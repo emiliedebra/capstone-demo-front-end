@@ -5,6 +5,7 @@
     
     <!-- Navigation Drawer -->
     <v-navigation-drawer class="pb-0" persistent absolute height="100%" clipped enable-resize-watcher fluid v-model="show">
+      <!-- TODO: Put app-nav-drawer-list here -->
       <v-list dense class="pt-0">
         <v-list-tile ripple v-for="item in items" :key="item.text" :to="item.link">
           <v-list-tile-action>
@@ -31,6 +32,7 @@
         <v-btn icon slot="activator" dark>
           <v-icon>more_vert</v-icon>
         </v-btn>
+        <!-- TODO: put app-side-menu-list here -->
         <v-list dense>
           <v-list-tile v-for="item in items2" :key="item.text" :to="item.link">
             <v-list-tile-action>
@@ -46,20 +48,17 @@
     <main>
       <v-container fluid>
         <router-view></router-view>
-        <v-dialog v-model="dialog" persistent width="800">
-            <v-btn slot="activator" class="pink" dark fixed bottom right fab>
-              <v-icon>add</v-icon>
-              <!-- <v-icon>close</v-icon> -->
-            </v-btn>
-            <report-create-form @toggleDialog="toggleDialog"></report-create-form>
-        </v-dialog>
+        <report-create-dialog></report-create-dialog> 
+        <v-btn class="pink" dark fixed bottom right fab @click.native="changeAddReportDialog">
+          <v-icon>add</v-icon>
+        </v-btn>
       </v-container>
     </main>
   </v-app>
 </template>
 
 <script>
-import reportCreateForm from './components/report-create-form';
+import reportCreateDialog from './components/report-create-dialog';
 
 export default {
   name: 'app',
@@ -74,18 +73,19 @@ export default {
     ],
     items2: [
       { icon: 'settings', text: 'Settings', link: '/page' },
-      { icon: 'add', text: 'Add User', link: '/user' },
       { icon: 'home', text: 'Log Out', link: '/login' },
     ],
-    dialog: false,
   }),
   components: {
-    reportCreateForm,
+    reportCreateDialog,
   },
   methods: {
-    toggleDialog() {
-      this.dialog = !this.dialog;
+    changeAddReportDialog() {
+      this.$store.dispatch('changeAddReportDialog');
     },
+  },
+  created() {
+    // TODO: apply calcs based on access level and login to pass correct item info to lists
   },
 };
 </script>
