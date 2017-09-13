@@ -1,11 +1,28 @@
 <template>
   <v-list dense class="pt-0">
-    <v-list-tile ripple v-for="item in items" :key="item.text" :to="item.link">
+    <v-list-tile ripple :to="home.link">
       <v-list-tile-action>
-        <v-icon>{{ item.icon }}</v-icon>
+        <v-icon>{{ home.icon }}</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+        <v-list-tile-title>{{ home.text }}</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+    <v-list-tile ripple :to="search.link">
+      <v-list-tile-action>
+        <v-icon>{{ search.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>{{ search.text }}</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+    <!-- ADD ACCESS LEVEL STUFF -->
+    <v-list-tile ripple :to="create.link">
+      <v-list-tile-action>
+        <v-icon>{{ create.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>{{ create.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
@@ -16,10 +33,9 @@ export default {
   name: 'app-nav-drawer-list',
   data() {
     return {
-      items: [
-        { icon: 'home', text: 'Home', link: '/' },
-        { icon: 'search', text: 'Advanced Search', link: '/page' },
-      ],
+      home: { icon: 'home', text: 'Home', link: '/' },
+      search: { icon: 'search', text: 'Advanced Search', link: '/page' },
+      create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
     };
   },
 };

@@ -9,6 +9,7 @@ import '../../node_modules/vuetify/dist/vuetify.min.css';
 import Page from '@/pages/PageView';
 import Home from '@/pages/HomeView';
 import Report from '@/pages/ReportView';
+import Create from '@/pages/CreateView';
 
 // Add routes here
 export default new VueRouter({
@@ -30,6 +31,12 @@ export default new VueRouter({
       path: '/report',
       name: 'Report',
       component: Report,
+    },
+    {
+      title: 'CAIR Create',
+      path: '/create',
+      name: 'Create',
+      component: Create,
     },
   ],
 });

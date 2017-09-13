@@ -4,7 +4,7 @@
 <v-card class="text-xs-center">
   
   <author-create-dialog></author-create-dialog>
-  <report-create-form-toolbar @close="close"></report-create-form-toolbar>
+  <report-create-form-toolbar slot="header" @close="close"></report-create-form-toolbar>
   <!-- Input Form -->
   <!-- REFACTOR to expansion panels rather -->
   <v-card flat fluid class="ma-3">
@@ -25,7 +25,7 @@
       </form>
   </v-card>
   <!-- Button Panel -->
-  <v-container fixed grid-list-xs text-xs-center>
+  <v-container slot="footer" fixed grid-list-xs text-xs-center>
     <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
     <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
   </v-container>
