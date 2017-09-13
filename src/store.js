@@ -13,6 +13,7 @@ export default new Vuex.Store({
     viewID: 1,
     addAuthorDialog: false,
     addReportDialog: false,
+    logInDialog: true,
   },
   getters: {
     // clearReport: state => state.clearReport,
@@ -21,13 +22,14 @@ export default new Vuex.Store({
     viewID: state => state.viewID,
     addAuthorDialog: state => state.addAuthorDialog,
     addReportDialog: state => state.addReportDialog,
+    logInDialog: state => state.logInDialog,
   },
   mutations: {
     // toggleClearReport: (state) => {
     //   state.clearReport = !state.clearReport;
     // },
-    changeLogginIn: (state) => {
-      state.loggedIn = !state.loggedIn;
+    changeLoggedIn: (state, boolean) => {
+      state.loggedIn = boolean;
     },
     changeAccessLevel: (state, newValue) => {
       state.accessLevel = newValue;
@@ -41,13 +43,16 @@ export default new Vuex.Store({
     changeAddReportDialog: (state) => {
       state.addReportDialog = !state.addReportDialog;
     },
+    changeLogInDialog: (state, boolean) => {
+      state.logInDialog = boolean;
+    },
   },
   actions: {
     // toggleClearReport: (context) => {
     //   context.commit('toggleClearReport');
     // },
-    changeLoggedIn: (context) => {
-      context.commit('changeLoggedIn');
+    changeLoggedIn: (context, boolean) => {
+      context.commit('changeLoggedIn', boolean);
     },
     changeAccessLevel: (context, newValue) => {
       context.commit('changeAccessLevel', newValue);
@@ -60,6 +65,9 @@ export default new Vuex.Store({
     },
     changeAddReportDialog: (context) => {
       context.commit('changeAddReportDialog');
+    },
+    changeLogInDialog: (context, newValue) => {
+      context.commit('changeLogInDialog', newValue);
     },
   },
 });

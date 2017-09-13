@@ -1,0 +1,46 @@
+<template>
+<v-container class="ma-0 pa-0">
+  <v-list dense>
+    <v-list-tile :key="settings.text" :to="settings.link">
+      <v-list-tile-action>
+        <v-icon>{{ settings.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-title>{{ settings.text }}</v-list-tile-title>
+    </v-list-tile>
+    <v-list-tile @click.native="logOut" :to="logout.link" v-show="this.$store.getters.loggedIn">
+      <v-list-tile-action>
+        <v-icon>{{ logout.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-title>{{ logout.text }}</v-list-tile-title>
+    </v-list-tile>
+    <v-list-tile @click.native="logIn" :to="login.link" v-show="!this.$store.getters.loggedIn">
+      <v-list-tile-action>
+        <v-icon>{{ login.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-title>{{ login.text }}</v-list-tile-title>
+    </v-list-tile>
+  </v-list>
+</v-container>
+</template>
+
+<script>
+export default {
+  name: 'app-side-menu-list',
+  data() {
+    return {
+      settings: { icon: 'settings', text: 'Settings', link: '/page' },
+      logout: { icon: 'lock', text: 'Log Out', link: '/' },
+      login: { icon: 'lock_open', text: 'Log In', link: '/' },
+    };
+  },
+  methods: {
+    logOut() {
+      this.$store.dispatch('changeLoggedIn', false);
+      this.$store.dispatch('changeLogInDialog', true);
+    },
+    logIn() {
+      this.$store.dispatch('changeLogInDialog', true);
+    },
+  },
+};
+</script>
