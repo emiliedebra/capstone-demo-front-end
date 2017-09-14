@@ -4,13 +4,13 @@
   <v-app toolbar footer>
     
     <!-- Navigation Drawer -->
-    <v-navigation-drawer class="pb-0" persistent absolute height="100%" clipped fluid v-model="show">
+    <v-navigation-drawer persistent class="pb-0" absolute height="100%" clipped fluid v-model="show">
       <app-nav-drawer-list></app-nav-drawer-list>
     </v-navigation-drawer>    
     
     <!-- Toolbar -->
     <v-toolbar dark class="primary" v-show="!this.$store.getters.logInDialog">
-      <v-toolbar-side-icon @click.stop="show = !show"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="show=!show"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">{{ this.$route.name }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click.stop="search = !search">

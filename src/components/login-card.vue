@@ -10,7 +10,7 @@
         <v-text-field label="Username/Email" v-model="username"></v-text-field>
       </v-flex>
       <v-flex>
-        <v-text-field label="Password" v-model="password"></v-text-field>
+        <v-text-field label="Password" type="password" v-model="password"></v-text-field>
       </v-flex>
     </v-layout>
     <v-btn @click.native="login">Login</v-btn>

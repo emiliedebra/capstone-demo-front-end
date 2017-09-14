@@ -1,7 +1,7 @@
 <!-- CreateView.vue -->
 
 <template>
-  <v-card flat class="create pt-3" 
+  <v-card flat fluid class="create pt-3" 
   style="background-color: transparent">
     <v-expansion-panel popout class="pa-0">
       <v-expansion-panel-content>
@@ -25,6 +25,7 @@ export default {
   data() {
     return {
       msg: 'Create Page Under Construction',
+      
     };
   },
   components: {

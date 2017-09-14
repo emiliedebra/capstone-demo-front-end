@@ -5,13 +5,15 @@
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
       <!-- <v-card-text> -->
-      <h6 class="text-xs-left">Add New Node</h6>
       <form ref="nodecreateform" @clearReport="clear">
         <v-text-field label="Name" v-model="name">
         </v-text-field>
-        <v-text-field label="Area" v-model="area">
+        <v-text-field label="Location" v-model="location">
         </v-text-field>
-        <v-text-field label="Code" required v-model="code">
+        <v-text-field label="Description" v-model="description">
+        </v-text-field>
+        <!-- TO DO: Change to a list of existing users (same as on research output) -->
+        <v-text-field label="Node Administrator" v-model="nodeAdmin">
         </v-text-field>
       </form>
       <!-- </v-card-text> -->
@@ -26,7 +28,7 @@
 
 <script>
 // import reportCreateFormToolbar from './report-create-form-toolbar';
-// import { postUser } from '../utils/data-access';
+import { postNode } from '../utils/data-access';
 
 export default {
 
@@ -34,8 +36,9 @@ export default {
   data() {
     return {
       name: '',
-      area: '',
-      code: '',
+      location: '',
+      description: '',
+      nodeAdmin: '',
     };
   },
   components: {
@@ -53,7 +56,10 @@ export default {
     },
     submit() {
       // not yet implemented
-      this.clear();
+      postNode(this)
+        .then(() => {
+          this.clear();
+        });
     },
   },
 };

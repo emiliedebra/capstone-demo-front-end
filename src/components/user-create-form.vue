@@ -4,16 +4,23 @@
   <v-card flat class="text-xs-center">
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
+    <div class="ma-0 pa-0">
+      <v-radio-group v-model="admin" :mandatory="false">
+        <v-radio label="Node Administrator" value="node"></v-radio>
+        <v-radio label="Global Administrator" value="global"></v-radio>
+        <v-radio label="CAIR Member" value="cair"></v-radio>
+      </v-radio-group>
+    </div>
       <!-- <v-card-text> -->
-      <h6 class="text-xs-left">Add New User</h6>
-      <form ref="createform" @clearReport="clear">
+      <!-- /<h6 class="text-xs-left">Add New User</h6> -->
+      <v-form ref="createform" @clearReport="clear">
         <v-text-field label="First Name" v-model="first">
         </v-text-field>
         <v-text-field label="Last Name" v-model="last">
         </v-text-field>
-        <v-text-field label="Email" required type="email" v-model="email">
+        <v-text-field label="Email" :rules="emailRules" required type="email" v-model="email">
         </v-text-field>
-      </form>
+      </v-form>
       <!-- </v-card-text> -->
     </v-card>
     <!-- Button Panel -->
@@ -33,9 +40,15 @@ export default {
   name: 'user-create-form',
   data() {
     return {
+      valid: false,
       first: '',
       last: '',
       email: '',
+      admin: 'cair',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid',
+      ],
     };
   },
   components: {
@@ -48,14 +61,10 @@ export default {
       this.last = '';
       this.email = '';
     },
-    toggleDialog() {
-      this.clear();
-      this.$emit('toggle');
-    },
     submit() {
       postUser(this)
         .then(() => {
-          this.toggleDialog();
+          this.clear();
         });
     },
   },

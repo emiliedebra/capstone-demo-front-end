@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // clearReport: true,
+    clearReport: false,
     // NOT YET IMPLEMENTED
     loggedIn: false,
     accessLevel: 0,
@@ -16,7 +16,7 @@ export default new Vuex.Store({
     logInDialog: true,
   },
   getters: {
-    // clearReport: state => state.clearReport,
+    clearReport: state => state.clearReport,
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
     viewID: state => state.viewID,
@@ -25,9 +25,9 @@ export default new Vuex.Store({
     logInDialog: state => state.logInDialog,
   },
   mutations: {
-    // toggleClearReport: (state) => {
-    //   state.clearReport = !state.clearReport;
-    // },
+    toggleClearReport: (state) => {
+      state.clearReport = !state.clearReport;
+    },
     changeLoggedIn: (state, boolean) => {
       state.loggedIn = boolean;
     },
@@ -48,9 +48,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    // toggleClearReport: (context) => {
-    //   context.commit('toggleClearReport');
-    // },
+    toggleClearReport: (context) => {
+      context.commit('toggleClearReport');
+    },
     changeLoggedIn: (context, boolean) => {
       context.commit('changeLoggedIn', boolean);
     },
