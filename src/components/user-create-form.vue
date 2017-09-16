@@ -6,9 +6,9 @@
     <v-card flat fluid class="ma-3">
     <div class="ma-0 pa-0">
       <v-radio-group v-model="admin" :mandatory="false">
-        <v-radio label="Node Administrator" value="node"></v-radio>
-        <v-radio label="Global Administrator" value="global"></v-radio>
-        <v-radio label="CAIR Member" value="cair"></v-radio>
+        <v-radio label="Node Administrator" value="2"></v-radio>
+        <v-radio label="Global Administrator" value="3"></v-radio>
+        <v-radio label="CAIR Member" value="1"></v-radio>
       </v-radio-group>
     </div>
       <!-- <v-card-text> -->
@@ -20,6 +20,9 @@
         </v-text-field>
         <v-text-field label="Email" :rules="emailRules" required type="email" v-model="email">
         </v-text-field>
+        
+        <v-select v-if="admin == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
+
       </v-form>
       <!-- </v-card-text> -->
     </v-card>
@@ -44,10 +47,15 @@ export default {
       first: '',
       last: '',
       email: '',
-      admin: 'cair',
+      admin: '2',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid',
+      ],
+      node: 0,
+      nodes: [
+        { id: 1, name: 'UCT' },
+        { id: 2, name: 'Wits' },
       ],
     };
   },

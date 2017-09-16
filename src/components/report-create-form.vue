@@ -45,6 +45,12 @@ export default {
   data() {
     return {
       dialog: false,
+      title: '',
+      type: 0,
+      publication_year: 1990,
+      author: 0,
+      coauthors: [],
+      additional_info: '',
     };
   },
   components: {
@@ -63,6 +69,13 @@ export default {
       this.changeAddReportDialog();
     },
     submit() {
+      // not the greatest way to be doing things yet
+      this.title = this.$refs.basicinfo.title;
+      this.type = this.$refs.basicinfo.type;
+      this.publication_year = parseInt(this.$refs.basicinfo.publication_year, [10]);
+      this.author = this.$refs.basicinfo.author;
+      this.coauthors = this.$refs.basicinfo.coauthors;
+      this.additional_info = this.$refs.researchinfo.abstract;
       postResearchOutput(this)
         .then(() => {
           this.close();

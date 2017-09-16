@@ -12,9 +12,7 @@
         </v-text-field>
         <v-text-field label="Description" v-model="description">
         </v-text-field>
-        <!-- TO DO: Change to a list of existing users (same as on research output) -->
-        <v-text-field label="Node Administrator" v-model="nodeAdmin">
-        </v-text-field>
+        <v-select :items="users" item-text="name" item-value="id" v-model="nodeAdmin" label="Node Administrator" autocomplete></v-select>
       </form>
       <!-- </v-card-text> -->
     </v-card>
@@ -38,7 +36,11 @@ export default {
       name: '',
       location: '',
       description: '',
-      nodeAdmin: '',
+      nodeAdmin: 0,
+      users: [
+        { id: 1, name: 'Emilie Wood' },
+        { id: 2, name: 'Tommie Meyer' },
+      ],
     };
   },
   components: {
@@ -50,6 +52,7 @@ export default {
       this.name = '';
       this.code = '';
       this.area = '';
+      this.nodeAdmin = 0;
     },
     toggleDialog() {
       this.clear();
