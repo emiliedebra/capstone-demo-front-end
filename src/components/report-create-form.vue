@@ -75,8 +75,8 @@ export default {
       this.publication_year = parseInt(this.$refs.basicinfo.publication_year, [10]);
       this.author = this.$refs.basicinfo.author;
       this.coauthors = this.$refs.basicinfo.coauthors;
-      this.additional_info = this.$refs.researchinfo.abstract;
-      postResearchOutput(this)
+      this.abstract = this.$refs.researchinfo.abstract;
+      postResearchOutput(this.data)
         .then(() => {
           this.close();
         });

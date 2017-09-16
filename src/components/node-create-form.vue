@@ -59,7 +59,7 @@ export default {
     },
     submit() {
       // not yet implemented
-      postNode(this)
+      postNode(this.data)
         .then(() => {
           this.clear();
         });

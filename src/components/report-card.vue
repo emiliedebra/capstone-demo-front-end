@@ -4,7 +4,8 @@
   <v-card>
     <report-header :researchOutput="item"></report-header>
     <report-body v-show="show" :body="item.additional_info"></report-body>
-    <!-- TODO: v-on not working -->
+    <!-- TODO: Implement report-details -->
+    <!-- <report-details></report-details> -->
     <report-button-panel @changeViewID="change" @toggleShowMsg="toggleShow"></report-button-panel>
   </v-card>
 </template>

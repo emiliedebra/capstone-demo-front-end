@@ -34,25 +34,26 @@ export function postResearchOutput(data) {
   return axios
     .post('http://localhost:3000/outputs', {
       title: data.title,
-      type: data.pubType, // needs to be an id
-      publication_year: data.year, // needs to be an int
+      type: data.pubType,
+      publication_year: data.publication_year,
       additional_info: data.abstract,
-      Author_First_Name: data.authorFirst,
-      Author_Last_Name: data.authorLast,
-      text: data.text,
+      author: data.author,
+      coauthors: data.coauthors,
+      // text: data.text,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response));
 }
 
 export function postUser(data) {
-  console.log('DEBUG: ', data);
+  // console.log('DEBUG: ', data);
   return axios
     .post('http://localhost:3000/create-account', {
-      first_name: data.first,
-      last_name: data.last,
+      first_name: data.first_name,
+      last_name: data.last_name,
       email: data.email,
-      access_level: 0,
+      accessLevel: data.accessLevel,
+      node: data.node,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response, 'Post User Function Reached - Not Yet Implemented'));
@@ -82,7 +83,7 @@ export function postNode(data) {
       name: data.name,
       location: data.location,
       description: data.description,
-      admin_id: 1,
+      nodeAdmin: data.nodeAdmin,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response, 'Post Node Function Reached - Not Yet Implemented'));

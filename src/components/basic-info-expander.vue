@@ -52,12 +52,16 @@ export default {
       publication_year: '',
       // hardcoded for now - need to fetch from db on created
       authors: [
-        { id: 1, name: 'Emilie Wood' },
+        { id: 1, name: 'Alfred Mothapo' },
         { id: 2, name: 'Tommie Meyer' },
       ],
       types: [
         { id: 1, name: 'Journal' },
         { id: 2, name: 'Book' },
+        { id: 3, name: 'Book Chapter' },
+        { id: 4, name: 'Workshop Paper' },
+        { id: 5, name: 'Technical Report' },
+        { id: 6, name: 'Thesis' },
       ],
     };
   },
