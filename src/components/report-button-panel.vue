@@ -8,8 +8,8 @@
   </v-card>
   <v-spacer></v-spacer>
   <v-card flat class="text-xs-right">
-    <v-btn v-if="this.$store.getters.accessLevel > 0" small flat> Modify </v-btn>
-    <v-btn v-if="this.$store.getters.accessLevel > 0" small flat> Delete </v-btn>
+    <v-btn small flat @click.native="modifyReport"> Modify </v-btn>
+    <v-btn small flat @click.native="deleteReport"> Delete </v-btn>
     <v-btn primary small flat @click.native="changeViewID"> View </v-btn>
   </v-card>
   </v-layout>
@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import { deleteReport } from '../utils/data-access.js';
+import reportCreateDialog from '../components/report-create-dialog';
+
 export default {
   name: 'report-button-panel',
   props: ['show'],
@@ -29,6 +32,21 @@ export default {
       this.$emit('changeViewID');
       this.$router.push('./report');
     },
+    deleteReport() {
+      this.$emit('changeViewID');
+      deleteReport(this.$store.getters.viewID)
+        .then(() => {
+          console.log('Fake Delete Executed');
+        });
+    },
+    modifyReport() {
+      this.$emit('changeViewID');
+      this.$store.dispatch('toggleUpdate');
+      this.$store.dispatch('changeAddReportDialog');
+    },
+  },
+  components: {
+    reportCreateDialog,
   },
 };
 </script>

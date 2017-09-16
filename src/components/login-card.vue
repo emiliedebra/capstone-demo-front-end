@@ -35,7 +35,7 @@ export default {
       // dipatch access level
       // on success change LoggedIn to true
       // push to home page
-      this.$store.dispatch('changeAccessLevel', 0);
+      this.$store.dispatch('changeAccessLevel', 1);
       this.$store.dispatch('changeLoggedIn', true);
       this.$store.dispatch('changeLogInDialog', false);
       this.$router.push('/');

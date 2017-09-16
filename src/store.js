@@ -8,7 +8,8 @@ export default new Vuex.Store({
     clearReport: false,
     // NOT YET IMPLEMENTED
     loggedIn: false,
-    accessLevel: 0,
+    accessLevel: 1,
+    update: false,
     // IMPLEMENTED
     viewID: 1,
     addAuthorDialog: false,
@@ -17,6 +18,7 @@ export default new Vuex.Store({
   },
   getters: {
     clearReport: state => state.clearReport,
+    update: state => state.update,
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
     viewID: state => state.viewID,
@@ -27,6 +29,9 @@ export default new Vuex.Store({
   mutations: {
     toggleClearReport: (state) => {
       state.clearReport = !state.clearReport;
+    },
+    toggleUpdate: (state) => {
+      state.update = !state.update;
     },
     changeLoggedIn: (state, boolean) => {
       state.loggedIn = boolean;
@@ -50,6 +55,9 @@ export default new Vuex.Store({
   actions: {
     toggleClearReport: (context) => {
       context.commit('toggleClearReport');
+    },
+    toggleUpdate: (context) => {
+      context.commit('toggleUpdate');
     },
     changeLoggedIn: (context, boolean) => {
       context.commit('changeLoggedIn', boolean);

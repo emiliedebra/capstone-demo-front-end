@@ -45,6 +45,10 @@ export function postResearchOutput(data) {
     .catch(response => console.log(response));
 }
 
+export function updateResearchOutput(data) {
+  // do nothing for now
+}
+
 export function postUser(data) {
   // console.log('DEBUG: ', data);
   return axios
@@ -75,6 +79,15 @@ export function getReport(id) {
     .get(`http://localhost:3000/detailed_view/${id}`)
     .then(response => response.data)
     .catch(() => post);
+}
+
+export function deleteReport(data) {
+  return axios
+    .post('http://localhost:3000/delete-research-output', {
+      id: data.id,
+    })
+    .then(response => response.data)
+    .catch(() => 'DELETE: Not Implemented Yet');
 }
 
 export function postNode(data) {
