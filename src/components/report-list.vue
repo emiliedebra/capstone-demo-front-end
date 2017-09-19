@@ -1,7 +1,7 @@
 <!-- report-list.vue -->
 
 <template id="report-list">
-  <v-card>
+  <v-card flat>
     <report-card v-for="item in outputs" :item="item" :key="item.title">
     </report-card>
   </v-card>

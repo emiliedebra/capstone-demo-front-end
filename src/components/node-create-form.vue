@@ -27,6 +27,7 @@
 <script>
 // import reportCreateFormToolbar from './report-create-form-toolbar';
 import { postNode } from '../utils/data-access';
+import { getUsers } from '../utils/data';
 
 export default {
 
@@ -37,14 +38,14 @@ export default {
       location: '',
       description: '',
       nodeAdmin: 0,
-      users: [
-        { id: 1, name: 'Emilie Wood' },
-        { id: 2, name: 'Tommie Meyer' },
-      ],
+      users: [],
     };
   },
   components: {
     // reportCreateFormToolbar,
+  },
+  created() {
+    this.users = getUsers();
   },
   methods: {
     clear() {

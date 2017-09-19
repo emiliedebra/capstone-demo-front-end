@@ -8,9 +8,9 @@
   </v-card>
   <v-spacer></v-spacer>
   <v-card flat class="text-xs-right">
-    <v-btn small flat @click.native="modifyReport"> Modify </v-btn>
-    <v-btn small flat @click.native="deleteReport"> Delete </v-btn>
-    <v-btn primary small flat @click.native="changeViewID"> View </v-btn>
+    <v-btn class="pr-0 mr-0" small flat @click.native="modifyReport"> Modify </v-btn>
+    <v-btn class="pl-0 ml-0 mr-0 pr-0" small flat @click.native="deleteReport"> Delete </v-btn>
+    <v-btn class="ml-0 pl-0" primary small flat @click.native="changeViewID"> View </v-btn>
   </v-card>
   </v-layout>
 </v-card>
@@ -37,6 +37,7 @@ export default {
       deleteReport(this.$store.getters.viewID)
         .then(() => {
           console.log('Fake Delete Executed');
+          this.$route.push('/');
         });
     },
     modifyReport() {

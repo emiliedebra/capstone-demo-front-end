@@ -34,12 +34,12 @@ export function postResearchOutput(data) {
   return axios
     .post('http://localhost:3000/outputs', {
       title: data.title,
-      type: data.pubType,
+      type: data.type,
       publication_year: data.publication_year,
-      additional_info: data.abstract,
+      additional_info: data.additional_info,
       author: data.author,
       coauthors: data.coauthors,
-      // text: data.text,
+      text: data.text,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response));
@@ -56,8 +56,8 @@ export function postUser(data) {
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
-      accessLevel: data.accessLevel,
-      node: data.node,
+      access_id: data.accessLevel,
+      node_id: data.node,
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response, 'Post User Function Reached - Not Yet Implemented'));
@@ -100,4 +100,26 @@ export function postNode(data) {
     })
     .then(response => console.log(response.status))
     .catch(response => console.log(response, 'Post Node Function Reached - Not Yet Implemented'));
+}
+
+export function loginUser(username, password) {
+  return axios
+    .post('http://localhost:3000/login', {
+      email: username,
+      password,
+    });
+}
+
+export function getUsers() {
+  return axios
+    .get('http://localhost:3000/get-users')
+    .then(response => response.data)
+    .catch(() => 'ERROR');
+}
+
+export function getAuthors() {
+  return axios
+    .get('http://localhost:3000/get-authors')
+    .then(response => response.data)
+    .catch(() => 'ERROR');
 }

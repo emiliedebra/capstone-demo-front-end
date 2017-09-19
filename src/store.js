@@ -5,33 +5,39 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    clearReport: false,
-    // NOT YET IMPLEMENTED
-    loggedIn: false,
-    accessLevel: 1,
+    // Not Yet Implemented
     update: false,
     // IMPLEMENTED
+    unsuccessfulLogin: false,
+    clearReport: false,
+    loggedIn: false,
+    accessLevel: 0,
     viewID: 1,
     addAuthorDialog: false,
     addReportDialog: false,
     logInDialog: true,
+    loggedInUserID: 0,
+    showDetails: false,
   },
   getters: {
-    clearReport: state => state.clearReport,
     update: state => state.update,
+    unsuccessfulLogin: state => state.unsuccessfulLogin,
+    clearReport: state => state.clearReport,
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
     viewID: state => state.viewID,
     addAuthorDialog: state => state.addAuthorDialog,
     addReportDialog: state => state.addReportDialog,
     logInDialog: state => state.logInDialog,
+    loggedInUserID: state => state.loggedInUserID,
+    showDetails: state => state.showDetails,
   },
   mutations: {
     toggleClearReport: (state) => {
       state.clearReport = !state.clearReport;
     },
-    toggleUpdate: (state) => {
-      state.update = !state.update;
+    toggleUnsuccessfulLogin: (state) => {
+      state.unsuccessfulLogin = !state.unsuccessfulLogin;
     },
     changeLoggedIn: (state, boolean) => {
       state.loggedIn = boolean;
@@ -51,19 +57,33 @@ export default new Vuex.Store({
     changeLogInDialog: (state, boolean) => {
       state.logInDialog = boolean;
     },
+    changeLoggedInUserID: (state, newValue) => {
+      state.loggedInUserID = newValue;
+    },
+    changeShowDetails: (state, boolean) => {
+      state.showDetails = boolean;
+    }
   },
   actions: {
-    toggleClearReport: (context) => {
-      context.commit('toggleClearReport');
-    },
     toggleUpdate: (context) => {
       context.commit('toggleUpdate');
+    },
+    toggleUnsuccessfulLogin: (context) => {
+      context.commit('toggleUnsuccessfulLogin');
+    },
+    toggleClearReport: (context) => {
+      context.commit('toggleClearReport');
     },
     changeLoggedIn: (context, boolean) => {
       context.commit('changeLoggedIn', boolean);
     },
     changeAccessLevel: (context, newValue) => {
       context.commit('changeAccessLevel', newValue);
+      if (newValue > 0) {
+        context.commit('changeShowDetails', true);
+      } else {
+        context.commit('changeShowDetails', false); 
+      }
     },
     changeViewID: (context, newValue) => {
       context.commit('changeViewID', newValue);
@@ -76,6 +96,9 @@ export default new Vuex.Store({
     },
     changeLogInDialog: (context, newValue) => {
       context.commit('changeLogInDialog', newValue);
+    },
+    changeLoggedInUserID: (context, newValue) => {
+      context.commit('changeLoggedInUserID', newValue);
     },
   },
 });

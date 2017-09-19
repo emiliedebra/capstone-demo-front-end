@@ -3,7 +3,7 @@
 <template id="basic-info-expander">
   <v-card flat class="text-xs-center">
     <!-- Input Form -->
-    <v-card flat fluid class="ma-3">
+    <v-card flat fluid class="ml-3 mr-3 mt-0">
       <v-form v-model="valid" ref="basicinfo">
         <v-text-field label="Title" v-model="title">
         </v-text-field>
@@ -28,7 +28,7 @@
         <v-layout row>
           <v-select :items="types" item-text="name" item-value="id" v-model="type" label="Publication Type" autocomplete></v-select>
           <v-spacer></v-spacer>
-         <v-text-field label="Year" item-text="publication_year" v-model="publication_year">
+         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="publication_year">
           </v-text-field>
         </v-layout>
       </v-form>
@@ -37,6 +37,11 @@
 </template>
 
 <script>
+// TODO: Figure out how to use this to get authors every time 
+// research output needs to be created
+// import { getAuthors } from '../utils/data-access.js';
+import { getPublicationTypes, getUsers } from '../utils/data.js';
+
 export default {
 
   name: 'basic-info-expander',
@@ -51,28 +56,25 @@ export default {
       type: 0,
       publication_year: '',
       // hardcoded for now - need to fetch from db on created
-      authors: [
-        { id: 1, name: 'Alfred Mothapo' },
-        { id: 2, name: 'Tommie Meyer' },
-      ],
-      types: [
-        { id: 1, name: 'Journal' },
-        { id: 2, name: 'Book' },
-        { id: 3, name: 'Book Chapter' },
-        { id: 4, name: 'Workshop Paper' },
-        { id: 5, name: 'Technical Report' },
-        { id: 6, name: 'Thesis' },
+      authors: [],
+      types: [],
+      yearRules: [
+        v => (v && v.length === 4) || 'Invalid year',
       ],
     };
+  },
+  created() {
+    this.types = getPublicationTypes();
+    this.authors = getUsers();
   },
   methods: {
     clear() {
       this.$refs.basicinfo.reset();
       this.title = '';
-      this.author = 0;
+      this.author = null;
       this.coauthors = [];
       this.publication_year = '';
-      this.type = 0;
+      this.type = null;
     },
     submit() {
       this.$emit(this.data);

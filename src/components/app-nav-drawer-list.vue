@@ -17,7 +17,7 @@
       </v-list-tile-content>
     </v-list-tile>
     <!-- ADD ACCESS LEVEL STUFF -->
-    <v-list-tile ripple :to="create.link">
+    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="create.link">
       <v-list-tile-action>
         <v-icon>{{ create.icon }}</v-icon>
       </v-list-tile-action>

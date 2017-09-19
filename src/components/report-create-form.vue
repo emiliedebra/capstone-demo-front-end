@@ -6,7 +6,6 @@
   <author-create-dialog></author-create-dialog>
   <report-create-form-toolbar slot="header" @close="close"></report-create-form-toolbar>
   <!-- Input Form -->
-  <!-- REFACTOR to expansion panels rather -->
   <v-card flat fluid class="ma-3 pa-0">
       <h6 class="text-xs-left">New Research Output</h6>
       <v-card-text class="ma-0 pa-0">
@@ -14,6 +13,10 @@
           <v-expansion-panel-content>
             <div slot="header">Basic Information</div>
             <basic-info-expander ref="basicinfo" :clear="clear"></basic-info-expander>
+          </v-expansion-panel-content>
+          <v-expansion-panel-content v-show="this.$store.getters.showDetails">
+            <div slot="header">Detailed Information</div>
+            <detailed-info-expander ref="detailedinfo" :clear="clear"></detailed-info-expander>
           </v-expansion-panel-content>
           <v-expansion-panel-content>
             <div slot="header">Research Output Content</div>
@@ -35,6 +38,7 @@
 import reportCreateFormToolbar from './report-create-form-toolbar';
 import authorCreateDialog from './author-create-dialog';
 import basicInfoExpander from './basic-info-expander';
+import detailedInfoExpander from './detailed-info-expander';
 import researchOutputContentExpander from './research-output-content-expander';
 // import reportCreateFormHeader from './report-create-form-header';
 import { postResearchOutput } from '../utils/data-access';
@@ -51,17 +55,21 @@ export default {
       author: 0,
       coauthors: [],
       additional_info: '',
+      proof_verified: false,
+      proof_link: '',
     };
   },
   components: {
     reportCreateFormToolbar,
     authorCreateDialog,
     basicInfoExpander,
+    detailedInfoExpander,
     researchOutputContentExpander,
   },
   methods: {
     clear() {
       this.$refs.basicinfo.clear();
+      // this.$refs.detailedinfo.clear();
       this.$refs.researchinfo.clear();
     },
     close() {
@@ -76,10 +84,14 @@ export default {
       this.author = this.$refs.basicinfo.author;
       this.coauthors = this.$refs.basicinfo.coauthors;
       this.abstract = this.$refs.researchinfo.abstract;
-      postResearchOutput(this.data)
-        .then(() => {
-          this.close();
-        });
+      // only submit if detailed
+      this.proof_verified = this.$ref.detailedinfo.proof_verified;
+      this.proof_link = this.$ref.detailedinfo.proof_link;
+      this.$ref.home.posts = this.data;
+      // postResearchOutput(this.data)
+      //   .then(() => {
+      //     this.close();
+      //   });
     },
     changeAddReportDialog() {
       this.$store.dispatch('changeAddReportDialog');

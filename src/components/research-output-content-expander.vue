@@ -1,15 +1,16 @@
 <!-- user-create-form.vue -->
 
 <template id="research-output-content-expander">
-  <v-card flat class="text-xs-center">
+  <v-card flat class="text-xs-center ml-0">
     <!-- Input Form -->
-    <v-card flat fluid class="ma-3">
+    <v-card flat fluid class="ml-2">
       <!-- <v-card-text> -->
       <!-- /<h6 class="text-xs-left">Add New User</h6> -->
-      <v-form v-model="valid" ref="createform" @clearReport="clear">
-        <v-text-field label="Abstract" multi-line full-width v-model="abstract">
+      <v-form v-model="valid" ref="contentform">
+        <v-text-field label="Enter Abstract Here" full-width multi-line v-model="abstract">
         </v-text-field>
-        <v-text-field label="Research Output Content" multi-line full-width v-model="text">
+        <v-divider></v-divider>
+        <v-text-field label="Enter Content Here" multi-line full-width v-model="text">
         </v-text-field>
       </v-form>
       <!-- </v-card-text> -->
@@ -24,18 +25,25 @@ export default {
   data() {
     return {
       valid: false,
-      text: 'Needs Work',
-      abstract: 'Needs Work',
+      text: '',
+      abstract: '',
     };
   },
   methods: {
     clear() {
-      this.$refs.createform.reset();
+      this.$refs.contentform.reset();
       this.text = '';
       this.abstract = '';
     },
     submit() {
       this.$emit(this.data);
+    },
+    watch: {
+      clearReport() {
+        if (this.$store.getters.clearReport === true) {
+          this.clear();
+        }
+      },
     },
   },
 };

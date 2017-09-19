@@ -13,9 +13,8 @@
       <v-toolbar-side-icon @click.stop="show=!show"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">{{ this.$route.name }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click.stop="search = !search">
-        <v-icon>{{ search ? 'clear' : 'search' }}</v-icon>
-      </v-btn>
+      <v-text-field solo label="Search" append-icon="search" v-model="searchInput"></v-text-field>
+
       
       <!-- Side Menu -->
       <v-menu clipped bottom right offset-y>
@@ -29,7 +28,8 @@
     <!-- Page View -->
     <main>
       <v-container fluid>
-        <login-dialog></login-dialog>
+        <unsuccessful-login-dialog></unsuccessful-login-dialog>
+        <login-dialog v-show="!this.$store.getters.unsuccessfulLoginDialog"></login-dialog>
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
         <report-create-dialog></report-create-dialog> 
         <v-btn v-show="!this.$store.getters.logInDialog" class="pink" dark fixed bottom right fab @click.native="changeAddReportDialog">
@@ -45,18 +45,22 @@ import reportCreateDialog from './components/report-create-dialog';
 import appSideMenuList from './components/app-side-menu-list';
 import appNavDrawerList from './components/app-nav-drawer-list';
 import loginDialog from './components/login-dialog';
+import unsuccessfulLoginDialog from './components/pop-up-dialogs/unsuccessful-login-dialog';
 
 export default {
   name: 'app',
   data: () => ({
     search: false,
+    icon: 'search',
     show: false,
+    searchInput: '',
   }),
   components: {
     reportCreateDialog,
     appSideMenuList,
     appNavDrawerList,
     loginDialog,
+    unsuccessfulLoginDialog,
   },
   methods: {
     changeAddReportDialog() {

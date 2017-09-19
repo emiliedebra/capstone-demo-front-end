@@ -5,7 +5,7 @@
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
     <div class="ma-0 pa-0">
-      <v-radio-group v-model="accessLevel" :mandatory="false">
+      <v-radio-group hide-details v-model="accessLevel" :mandatory="false">
         <v-radio label="Node Administrator" value="2"></v-radio>
         <v-radio label="Global Administrator" value="3"></v-radio>
         <v-radio label="CAIR Member" value="1"></v-radio>
