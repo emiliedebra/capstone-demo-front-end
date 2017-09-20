@@ -1,13 +1,22 @@
 <!-- Report View -->
 
 <template>
-  <v-container class="report">
+  <v-container class="report" fluid>
     <v-btn icon @click.native="back">
       <v-icon>keyboard_backspace</v-icon>
     </v-btn>
-    <report-header :researchOutput="output"></report-header>
-    <report-body :body="output.additional_info"></report-body>
-    <report-details v-show="detailed" :details="output"></report-details>
+    
+  <v-card flat fluid class="ma-0 pa-0">
+    <v-layout row grid-xs-left>
+      <v-flex xs10>
+        <report-header :researchOutput="output"></report-header>
+      </v-flex>
+      <v-flex xs3 mt-3 grid-xs-right>
+        <report-details v-if="this.$store.getters.showDetails" :details="output"></report-details>
+      </v-flex>
+    </v-layout>
+  </v-card>
+  <report-body :body="output.additional_info"></report-body>
   </v-container>
 </template>
 
@@ -22,7 +31,6 @@ export default {
   name: 'report',
   data() {
     return {
-      detailed: false,
       output: [{
       }],
     };
@@ -31,12 +39,6 @@ export default {
   created() {
     // set id of report to view
     const id = this.$store.getters.viewID;
-    // set level of report view
-    if (this.$store.getters.accessLevel > 0) {
-      this.detailed = true;
-    } else {
-      this.detailed = false;
-    }
     // get report
     this.output = getReport(id);
     // getReport(id)

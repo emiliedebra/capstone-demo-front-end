@@ -32,7 +32,7 @@
         <login-dialog v-show="!this.$store.getters.unsuccessfulLoginDialog"></login-dialog>
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
         <report-create-dialog></report-create-dialog> 
-        <v-btn v-show="!this.$store.getters.logInDialog" class="pink" dark fixed bottom right fab @click.native="changeAddReportDialog">
+        <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink" dark fixed bottom right fab @click.native="changeAddReportDialog">
           <v-icon>add</v-icon>
         </v-btn>
       </v-container>
