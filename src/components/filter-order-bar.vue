@@ -3,7 +3,7 @@
 <template id="filter-order-bar">
   <v-container class="ma-0 pa-0">
     <v-layout row left>
-      <v-btn-toggle style="background-color: transparent" v-model="toggle">
+      <v-btn-toggle flat style="background-color: transparent" v-model="order">
         <v-btn flat :value="1">
           Name
         </v-btn>
@@ -26,7 +26,8 @@ export default {
   name: 'filter-order-bar',
   data() {
     return {
-      toggle: null,
+      order: null,
+      filter: 5,
     };
   },
 };
