@@ -33,6 +33,9 @@ export default new Vuex.Store({
     showDetails: state => state.showDetails,
   },
   mutations: {
+    toggleUpdate: (state) => {
+      state.update = !state.update;
+    },
     toggleClearReport: (state) => {
       state.clearReport = !state.clearReport;
     },
@@ -62,7 +65,7 @@ export default new Vuex.Store({
     },
     changeShowDetails: (state, boolean) => {
       state.showDetails = boolean;
-    }
+    },
   },
   actions: {
     toggleUpdate: (context) => {

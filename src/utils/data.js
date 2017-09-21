@@ -50,6 +50,18 @@ export function getDetailedResearchOutputs() {
   ];
 }
 
+export function getResearchOutputsSearch(search) {
+  const reports = getDetailedResearchOutputs();
+  const result = [];
+  for (const report of reports) {
+    for (const value of report) {
+      if (value === search) {
+        result.add(report);
+      }
+    }
+  }
+  return result;
+}
 export function getReport(id) {
   const reports = getDetailedResearchOutputs();
   for (const report of reports) {

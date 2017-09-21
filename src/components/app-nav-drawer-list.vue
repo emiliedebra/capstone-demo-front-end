@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       home: { icon: 'home', text: 'Home', link: '/' },
-      search: { icon: 'search', text: 'Advanced Search', link: '/page' },
+      search: { icon: 'search', text: 'Advanced Search', link: '/search' },
       create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
     };
   },

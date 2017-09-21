@@ -66,6 +66,15 @@ export default {
     detailedInfoExpander,
     researchOutputContentExpander,
   },
+  watch: {
+    update() {
+      if (this.$store.getters.update) {
+        console.log('The updated thing got here');
+      } else {
+        console.log('The updated thing did not get here');
+      }
+    },
+  },
   methods: {
     clear() {
       this.$refs.basicinfo.clear();
@@ -85,9 +94,9 @@ export default {
       this.coauthors = this.$refs.basicinfo.coauthors;
       this.abstract = this.$refs.researchinfo.abstract;
       // only submit if detailed
-      this.proof_verified = this.$ref.detailedinfo.proof_verified;
-      this.proof_link = this.$ref.detailedinfo.proof_link;
-      this.$ref.home.posts = this.data;
+      // this.proof_verified = this.$ref.detailedinfo.proof_verified;
+      // this.proof_link = this.$ref.detailedinfo.proof_link;
+      // this.$ref.home.posts = this.data;
       // postResearchOutput(this.data)
       //   .then(() => {
       //     this.close();

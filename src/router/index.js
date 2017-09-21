@@ -10,6 +10,7 @@ import Page from '@/pages/PageView';
 import Home from '@/pages/HomeView';
 import Report from '@/pages/ReportView';
 import Create from '@/pages/CreateView';
+import Search from '@/pages/SearchView';
 
 // Add routes here
 export default new VueRouter({
@@ -37,6 +38,12 @@ export default new VueRouter({
       path: '/create',
       name: 'Create',
       component: Create,
+    },
+    {
+      title: 'CAIR Search',
+      path: '/search',
+      name: 'Search',
+      component: Search,
     },
   ],
 });
