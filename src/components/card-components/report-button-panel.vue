@@ -12,7 +12,7 @@
       Modify</v-btn>
     <v-btn v-show="this.$store.getters.showDetails" class="pl-0 ml-0 mr-0 pr-0" small flat @click.native="deleteReport">
       Delete</v-btn>
-    <v-btn class="ml-0 pl-0" primary small flat @click.native="changereportID">
+    <v-btn class="ml-0 pl-0" primary small flat @click.native="changeReportContext">
       View</v-btn>
   </v-card>
   </v-layout>
@@ -21,7 +21,8 @@
 
 <script>
 import { deleteReport } from '../../utils/data-access';
-import reportCreateDialog from '../pop-up-dialogs/report-create-dialog.vue';
+import reportCreateDialog from '../pop-up-dialogs/report-modify-dialog.vue';
+import { contextState } from '../../state-machine';
 
 export default {
   name: 'report-button-panel',
@@ -32,25 +33,26 @@ export default {
       // toggle abstract
       this.$emit('toggleShowMsg', !this.show);
     },
-    changereportID() {
+    changeReportContext() {
       // change ID of current report to view
-      this.$emit('changereportID');
+      this.$emit('changeReportContext', 'viewing');
       this.$router.push('./report');
     },
     deleteReport() {
       // NB: Not implemented properly
       // change ID and fire delete of current ID
-      this.$emit('changereportID');
-      deleteReport(this.$store.getters.reportID)
+      this.$emit('changeReportContext', 'deleting');
+      deleteReport(this.$store.getters.reportContext)
         .then(() => {
           // console.log('Fake Delete Executed');
           this.$route.push('/');
+          // NOTE: can dispatch directly from here because report ID isn't needed
+          this.$store.dispatch('changeReportContext', null);
         });
     },
     modifyReport() {
       // change ID and open dialog
-      this.$emit('changereportID');
-      this.$store.dispatch('toggleUpdate');
+      this.$emit('changeReportContext', contextState.UPDATE);
       this.$store.dispatch('changeAddReportDialog');
     },
   },

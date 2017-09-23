@@ -5,8 +5,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // Not Yet Implemented
-    update: false,
     /* --------IMPLEMENTED-------- */
     // unsuccessful-login-dialog
     unsuccessfulLogin: false,
@@ -16,11 +14,13 @@ export default new Vuex.Store({
     loggedIn: false,
     // defines access level (and hence detailed/not detailed views)
     accessLevel: 0,
-    // current viewable report id - TODO: change to reportID
-    reportID: 1,
+    // current viewable report id - TODO: change to ReportContext
+    reportContext: null, // { id: 123, state: 'update' }
+    // currently showing modal dialog
+    modalDialog: null,
     // toggles user-create-dialog
     addAuthorDialog: false,
-    // toggles report-create-dialog
+    // toggles report-modify-dialog
     addReportDialog: false,
     // toggles login-dialog
     logInDialog: true,
@@ -30,12 +30,11 @@ export default new Vuex.Store({
     showDetails: false,
   },
   getters: {
-    update: state => state.update,
     unsuccessfulLogin: state => state.unsuccessfulLogin,
     clearReport: state => state.clearReport,
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
-    reportID: state => state.reportID,
+    reportContext: state => state.reportContext,
     addAuthorDialog: state => state.addAuthorDialog,
     addReportDialog: state => state.addReportDialog,
     logInDialog: state => state.logInDialog,
@@ -43,9 +42,6 @@ export default new Vuex.Store({
     showDetails: state => state.showDetails,
   },
   mutations: {
-    toggleUpdate: (state) => {
-      state.update = !state.update;
-    },
     toggleClearReport: (state) => {
       state.clearReport = !state.clearReport;
     },
@@ -58,8 +54,8 @@ export default new Vuex.Store({
     changeAccessLevel: (state, newValue) => {
       state.accessLevel = newValue;
     },
-    changereportID: (state, newValue) => {
-      state.reportID = newValue;
+    changeReportContext: (state, newValue) => {
+      state.reportContext = newValue;
     },
     changeAddAuthorDialog: (state) => {
       state.addAuthorDialog = !state.addAuthorDialog;
@@ -76,11 +72,11 @@ export default new Vuex.Store({
     changeShowDetails: (state, boolean) => {
       state.showDetails = boolean;
     },
+    changeModalDialog: (state, name) => {
+      state.modalDialog = name;
+    },
   },
   actions: {
-    toggleUpdate: (context) => {
-      context.commit('toggleUpdate');
-    },
     toggleUnsuccessfulLogin: (context) => {
       context.commit('toggleUnsuccessfulLogin');
     },
@@ -98,8 +94,8 @@ export default new Vuex.Store({
         context.commit('changeShowDetails', false);
       }
     },
-    changereportID: (context, newValue) => {
-      context.commit('changereportID', newValue);
+    changeReportContext: (context, newValue) => {
+      context.commit('changeReportContext', newValue);
     },
     changeAddAuthorDialog: (context) => {
       context.commit('changeAddAuthorDialog');
