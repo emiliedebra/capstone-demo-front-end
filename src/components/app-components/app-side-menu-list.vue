@@ -38,9 +38,11 @@ export default {
   methods: {
     logOut() {
       this.$store.dispatch('changeLoggedIn', false);
+      this.$emit('logout');
       this.$store.dispatch('changeLogInDialog', true);
     },
     logIn() {
+      this.$emit('logout');
       this.$store.dispatch('changeLogInDialog', true);
     },
   },

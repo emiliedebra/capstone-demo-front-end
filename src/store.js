@@ -16,7 +16,7 @@ export default new Vuex.Store({
     loggedIn: false,
     // defines access level (and hence detailed/not detailed views)
     accessLevel: 0,
-    // current viewable report id
+    // current viewable report id - TODO: change to reportID
     viewID: 1,
     // toggles user-create-dialog
     addAuthorDialog: false,
