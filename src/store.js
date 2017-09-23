@@ -17,7 +17,7 @@ export default new Vuex.Store({
     // defines access level (and hence detailed/not detailed views)
     accessLevel: 0,
     // current viewable report id - TODO: change to reportID
-    viewID: 1,
+    reportID: 1,
     // toggles user-create-dialog
     addAuthorDialog: false,
     // toggles report-create-dialog
@@ -35,7 +35,7 @@ export default new Vuex.Store({
     clearReport: state => state.clearReport,
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
-    viewID: state => state.viewID,
+    reportID: state => state.reportID,
     addAuthorDialog: state => state.addAuthorDialog,
     addReportDialog: state => state.addReportDialog,
     logInDialog: state => state.logInDialog,
@@ -58,8 +58,8 @@ export default new Vuex.Store({
     changeAccessLevel: (state, newValue) => {
       state.accessLevel = newValue;
     },
-    changeViewID: (state, newValue) => {
-      state.viewID = newValue;
+    changereportID: (state, newValue) => {
+      state.reportID = newValue;
     },
     changeAddAuthorDialog: (state) => {
       state.addAuthorDialog = !state.addAuthorDialog;
@@ -98,8 +98,8 @@ export default new Vuex.Store({
         context.commit('changeShowDetails', false);
       }
     },
-    changeViewID: (context, newValue) => {
-      context.commit('changeViewID', newValue);
+    changereportID: (context, newValue) => {
+      context.commit('changereportID', newValue);
     },
     changeAddAuthorDialog: (context) => {
       context.commit('changeAddAuthorDialog');

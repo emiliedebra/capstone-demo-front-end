@@ -12,7 +12,7 @@
       Modify</v-btn>
     <v-btn v-show="this.$store.getters.showDetails" class="pl-0 ml-0 mr-0 pr-0" small flat @click.native="deleteReport">
       Delete</v-btn>
-    <v-btn class="ml-0 pl-0" primary small flat @click.native="changeViewID">
+    <v-btn class="ml-0 pl-0" primary small flat @click.native="changereportID">
       View</v-btn>
   </v-card>
   </v-layout>
@@ -32,16 +32,16 @@ export default {
       // toggle abstract
       this.$emit('toggleShowMsg', !this.show);
     },
-    changeViewID() {
+    changereportID() {
       // change ID of current report to view
-      this.$emit('changeViewID');
+      this.$emit('changereportID');
       this.$router.push('./report');
     },
     deleteReport() {
       // NB: Not implemented properly
       // change ID and fire delete of current ID
-      this.$emit('changeViewID');
-      deleteReport(this.$store.getters.viewID)
+      this.$emit('changereportID');
+      deleteReport(this.$store.getters.reportID)
         .then(() => {
           // console.log('Fake Delete Executed');
           this.$route.push('/');
@@ -49,7 +49,7 @@ export default {
     },
     modifyReport() {
       // change ID and open dialog
-      this.$emit('changeViewID');
+      this.$emit('changereportID');
       this.$store.dispatch('toggleUpdate');
       this.$store.dispatch('changeAddReportDialog');
     },
