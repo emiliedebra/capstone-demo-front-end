@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function getResearchOutputs() {
-  // hard-coded error data
+  // NB: contains hard-coded error data
   const post = {
     outputs: [
       {
@@ -47,6 +47,7 @@ export function postResearchOutput(data) {
 
 export function updateResearchOutput(data) {
   // do nothing for now
+  return data; // to get rid of errors
 }
 
 export function postUser(data) {

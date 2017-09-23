@@ -1,3 +1,5 @@
+<!-- app-side-menu-list -->
+
 <template>
 <v-container class="ma-0 pa-0">
   <v-list dense>

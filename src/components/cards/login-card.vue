@@ -1,4 +1,4 @@
-<!-- login-card.vue -->
+<!-- login-card -->
 
 <template id="login-card">
   <v-container class="text-xs-center">
@@ -6,12 +6,14 @@
       <v-flex class="text-xs-left">
         <h6>Login</h6>
       </v-flex>
-      <v-flex>
-        <v-text-field label="Email" v-model="email"></v-text-field>
-      </v-flex>
-      <v-flex>
-        <v-text-field label="Password" type="password" v-model="password"></v-text-field>
-      </v-flex>
+      <v-form ref="loginform">
+        <v-flex>
+          <v-text-field label="Email" v-model="email"></v-text-field>
+        </v-flex>
+        <v-flex>
+          <v-text-field label="Password" type="password" v-model="password"></v-text-field>
+        </v-flex>
+      </v-form>
     </v-layout>
     <v-btn @click.native="loginAccess">Login</v-btn>
     <v-btn @click.native="guestAccess">Continue as Guest</v-btn>
@@ -20,7 +22,7 @@
 
 <script>
 // import { loginUser } from '../utils/data-access.js';
-import { login } from '../utils/data.js';
+import { login } from '../../utils/data';
 
 export default {
   name: 'login-card',
@@ -32,6 +34,9 @@ export default {
   },
   methods: {
     loginAccess() {
+      // check login details, on successful, change access level and other states
+      // change route and clear login form
+      // on unsuccessful, show dialog
       const user = login(this);
       if (user === 0) {
         this.$store.dispatch('toggleUnsuccessfulLogin');
@@ -41,7 +46,9 @@ export default {
         this.$store.dispatch('changeLoggedIn', true);
         this.$store.dispatch('changeLogInDialog', false);
         this.$router.push('/');
+        this.$refs.loginform.reset();
       }
+      // NB: Old code for using database
       // .then((response) => {
       //   // should only occur if successful : NB Getting here even if db access fails
       //   this.$store.dispatch('changeAccessLevel', response.access_id);
@@ -55,10 +62,11 @@ export default {
       // });
     },
     guestAccess() {
-      // set access level to observer and continue to home
+      // set access level to observer, continue to home, reset login form
       this.$store.dispatch('changeAccessLevel', 0);
       this.$store.dispatch('changeLogInDialog', false);
       this.$router.push('/');
+      this.$refs.loginform.reset();
     },
   },
 };

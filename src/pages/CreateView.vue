@@ -1,4 +1,4 @@
-<!-- CreateView.vue -->
+<!-- CreateView -->
 
 <template>
   <v-card flat fluid class="create pt-3" 
@@ -17,15 +17,14 @@
 </template>
 
 <script>
-import userCreateForm from '../components/user-create-form';
-import nodeCreateForm from '../components/node-create-form';
+import userCreateForm from '../components/forms/user-create-form.vue';
+import nodeCreateForm from '../components/forms/node-create-form.vue';
 
 export default {
   name: 'create',
   data() {
     return {
-      msg: 'Create Page Under Construction',
-      
+      // nothing for now
     };
   },
   components: {

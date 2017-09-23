@@ -1,8 +1,7 @@
-<!-- user-create-form.vue -->
+<!-- detailed-info-expander -->
 
 <template id="detailed-info-expander">
   <v-card flat class="text-xs-center">
-    <!-- Input Form -->
     <v-card flat fluid class="ml-3">
       <v-form v-model="valid" ref="detailedinfo">
         <v-checkbox hide-details class= "ma-0 pa-0" label="Proof of Verification" v-model="proof_verified">
@@ -27,16 +26,17 @@ export default {
   },
   methods: {
     clear() {
+      // clear form data
       this.$refs.detailedinfo.reset();
-      this.proof_link = '';
-      this.proof_verified = false;
     },
     submit() {
+      // send data to report-create-dialog
       this.$emit(this.data);
     },
   },
   watch: {
     clearReport() {
+      // watch global state to call local method
       if (this.$store.getters.clearReport === true) {
         this.clear();
       }

@@ -7,16 +7,26 @@ export default new Vuex.Store({
   state: {
     // Not Yet Implemented
     update: false,
-    // IMPLEMENTED
+    /* --------IMPLEMENTED-------- */
+    // unsuccessful-login-dialog
     unsuccessfulLogin: false,
+    // clears report-create-form
     clearReport: false,
+    // shows logged in state
     loggedIn: false,
+    // defines access level (and hence detailed/not detailed views)
     accessLevel: 0,
+    // current viewable report id
     viewID: 1,
+    // toggles user-create-dialog
     addAuthorDialog: false,
+    // toggles report-create-dialog
     addReportDialog: false,
+    // toggles login-dialog
     logInDialog: true,
+    // defines logged in user ID
     loggedInUserID: 0,
+    // state used to toggle display of detailed information based on accessLevel
     showDetails: false,
   },
   getters: {
@@ -85,7 +95,7 @@ export default new Vuex.Store({
       if (newValue > 0) {
         context.commit('changeShowDetails', true);
       } else {
-        context.commit('changeShowDetails', false); 
+        context.commit('changeShowDetails', false);
       }
     },
     changeViewID: (context, newValue) => {

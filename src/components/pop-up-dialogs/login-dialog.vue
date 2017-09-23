@@ -1,3 +1,5 @@
+<!-- login-dialog -->
+
 <template>
   <v-dialog persistent v-model="this.$store.getters.logInDialog" width="400">
     <v-card class="text-xs-center pt-3">
@@ -9,7 +11,7 @@
 </template>
 
 <script>
-import loginCard from './login-card';
+import loginCard from '../cards/login-card.vue';
 
 export default {
   name: 'login-dialog',

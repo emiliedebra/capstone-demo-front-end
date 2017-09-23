@@ -1,3 +1,5 @@
+<!-- report-create-dialog -->
+
 <template>
   <v-dialog v-model="this.$store.getters.addReportDialog" persistent width="800">
     <report-create-form></report-create-form>
@@ -5,7 +7,7 @@
 </template>
 
 <script>
-import reportCreateForm from './report-create-form';
+import reportCreateForm from '../forms/report-create-form.vue';
 
 export default {
   name: 'report-create-dialog',
@@ -18,6 +20,7 @@ export default {
     reportCreateForm,
   },
   changeAddReportDialog() {
+    // toggle report-create-dialog
     this.$store.dispatch('changeAddReportDialog');
   },
 };

@@ -1,4 +1,4 @@
-<!-- report-body.vue -->
+<!-- report-card -->
 
 <template id="report-card">
   <v-card flat>
@@ -13,17 +13,16 @@
       </v-layout>
     </v-container>
     <report-body v-show="show" :body="item.additional_info"></report-body>
-    <!-- TODO: Implement logic to display this -->
     <report-button-panel @changeViewID="change" @toggleShowMsg="toggleShow"></report-button-panel>
     <v-divider></v-divider>
   </v-card>
 </template>
 
 <script>
-import reportHeader from './report-header.vue';
-import reportBody from './report-body.vue';
-import reportButtonPanel from './report-button-panel.vue';
-import reportDetails from './report-details.vue';
+import reportHeader from '../card-components/report-header.vue';
+import reportBody from '../card-components/report-body.vue';
+import reportButtonPanel from '../card-components/report-button-panel.vue';
+import reportDetails from '../card-components/report-details.vue';
 
 export default {
 
@@ -42,10 +41,12 @@ export default {
   },
   methods: {
     toggleShow() {
+      // toggel abstract view
       this.show = !this.show;
     },
-
     change() {
+      // change view ID
+      // done here because button-panel doesn't receive data
       this.$store.dispatch('changeViewID', this.item.id);
     },
   },

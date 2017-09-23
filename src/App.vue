@@ -1,4 +1,4 @@
-<!-- App.vue -->
+<!-- App-->
 
 <template>
   <v-app toolbar footer>
@@ -15,7 +15,6 @@
       <v-spacer></v-spacer>
       <v-text-field solo label="Search" append-icon="search" v-model="searchInput"></v-text-field>
 
-      
       <!-- Side Menu -->
       <v-menu clipped bottom right offset-y>
         <v-btn icon slot="activator" dark>
@@ -41,11 +40,11 @@
 </template>
 
 <script>
-import reportCreateDialog from './components/report-create-dialog';
-import appSideMenuList from './components/app-side-menu-list';
-import appNavDrawerList from './components/app-nav-drawer-list';
-import loginDialog from './components/login-dialog';
-import unsuccessfulLoginDialog from './components/pop-up-dialogs/unsuccessful-login-dialog';
+import reportCreateDialog from './components/pop-up-dialogs/report-create-dialog.vue';
+import appSideMenuList from './components/app-components/app-side-menu-list.vue';
+import appNavDrawerList from './components/app-components/app-nav-drawer-list.vue';
+import loginDialog from './components/pop-up-dialogs/login-dialog.vue';
+import unsuccessfulLoginDialog from './components/pop-up-dialogs/unsuccessful-login-dialog.vue';
 
 export default {
   name: 'app',
@@ -64,11 +63,9 @@ export default {
   },
   methods: {
     changeAddReportDialog() {
+      // toggle report-create0dialog
       this.$store.dispatch('changeAddReportDialog');
     },
-  },
-  created() {
-    // TODO: apply calcs based on access level and login to pass correct item info to lists
   },
 };
 </script>

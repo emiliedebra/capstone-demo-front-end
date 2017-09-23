@@ -1,4 +1,4 @@
-<!-- report-header.vue -->
+<!-- report-header -->
 
 <template id="report-header">
   <v-card flat>

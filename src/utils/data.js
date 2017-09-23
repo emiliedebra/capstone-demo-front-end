@@ -1,5 +1,13 @@
 export function getUsers() {
+  // returns an array of user objects
   const users = [
+    {
+      id: 0,
+      name: 'Emilie Wood',
+      email: '1',
+      password: '1',
+      accessLevel: 2,
+    },
     {
       id: 1,
       name: 'Emilie Wood',
@@ -26,6 +34,8 @@ export function getUsers() {
 }
 
 export function getDetailedResearchOutputs() {
+  // return and array of research outpus objects with details
+  // NB: detailed logic is implemented in front-end using states
   return [
     {
       id: 0,
@@ -51,6 +61,8 @@ export function getDetailedResearchOutputs() {
 }
 
 export function getResearchOutputsSearch(search) {
+  // returns a list of research outputs based on search
+  // NB: Doesn't work yet
   const reports = getDetailedResearchOutputs();
   const result = [];
   for (const report of reports) {
@@ -62,7 +74,9 @@ export function getResearchOutputsSearch(search) {
   }
   return result;
 }
+
 export function getReport(id) {
+  // returns report given id
   const reports = getDetailedResearchOutputs();
   for (const report of reports) {
     if (report.id === id) {
@@ -72,6 +86,7 @@ export function getReport(id) {
 }
 
 export function getPublicationTypes() {
+  // returns a list of type objects
   return [
     {
       id: 0,
@@ -89,6 +104,7 @@ export function getPublicationTypes() {
 }
 
 export function login(data) { // data is email and password
+  // checks login details and return user or 0
   const users = getUsers();
   for (const user of users) {
     if (user.email === data.email && user.password === data.password) {

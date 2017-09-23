@@ -1,3 +1,5 @@
+<!-- app-nav-drawer-list -->
+
 <template>
   <v-list dense class="pt-0">
     <v-list-tile ripple :to="home.link">
@@ -16,7 +18,6 @@
         <v-list-tile-title>{{ search.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-    <!-- ADD ACCESS LEVEL STUFF -->
     <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="create.link">
       <v-list-tile-action>
         <v-icon>{{ create.icon }}</v-icon>

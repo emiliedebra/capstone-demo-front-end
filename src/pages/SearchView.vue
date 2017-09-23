@@ -1,20 +1,17 @@
 <!-- Search.vue -->
-<!-- Not Yet Implemented -->
-<template>
 
+<template>
   <v-container fluid>     
   <v-text-field solo label="Search" append-icon="search" v-model="searchInput"></v-text-field>
     <v-spacer></v-spacer>
-    <!-- <v-divider></v-divider> -->
     <report-list :outputs="posts"></report-list>
   </v-container>
-
 </template>
 
 <script>
-import { getResearchOutputsSearch } from '../utils/data.js';
+import { getResearchOutputsSearch } from '../utils/data';
 
-import reportList from '../components/report-list.vue';
+import reportList from '../components/app-components/report-list.vue';
 
 export default {
   name: 'search',
@@ -26,17 +23,19 @@ export default {
   },
   watch: {
     searchInput() {
+      // NB: not yet implemented
+      // call getData method and update posts
       this.getData(this.searchInput);
-      console.log('In searchInput watch');
     },
   },
   methods: {
     getData(search) {
+      // NB: not working and implemented using local data
+      // call data search method, check if results, update posts
       this.posts = getResearchOutputsSearch(search);
       if (this.posts === null) {
         this.posts = [{ title: 'No results found.' }];
       }
-      console.log('In GetData');
     },
   },
   components: {

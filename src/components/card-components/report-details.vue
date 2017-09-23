@@ -1,4 +1,4 @@
-<!-- report-details.vue -->
+<!-- report-details -->
 
 <template id="report-details">
   <v-card flat class="text-xs-right">
@@ -18,6 +18,7 @@ export default {
     };
   },
   created() {
+    // apply logic for verified information view
     if (this.details.proof_verified === 0) {
       this.show = false;
     } else {

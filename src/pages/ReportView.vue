@@ -1,4 +1,4 @@
-<!-- Report View -->
+<!-- ReportView -->
 
 <template>
   <v-container class="report" fluid>
@@ -22,9 +22,9 @@
 
 <script>
 // import axios from 'axios';
-import reportHeader from '../components/report-header.vue';
-import reportBody from '../components/report-body.vue';
-import reportDetails from '../components/report-details.vue';
+import reportHeader from '../components/card-components/report-header.vue';
+import reportBody from '../components/card-components/report-body.vue';
+import reportDetails from '../components/card-components/report-details.vue';
 import { getReport } from '../utils/data';
 
 export default {
@@ -37,6 +37,7 @@ export default {
   },
 
   created() {
+    // NB: using local data
     // set id of report to view
     const id = this.$store.getters.viewID;
     // get report
@@ -48,6 +49,7 @@ export default {
   },
   methods: {
     back() {
+      // return to home-view
       this.$router.push('/');
     },
   },

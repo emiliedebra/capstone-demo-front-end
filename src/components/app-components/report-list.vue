@@ -1,4 +1,4 @@
-<!-- report-list.vue -->
+<!-- report-list -->
 
 <template id="report-list">
   <v-card flat>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import reportCard from './report-card.vue';
+import reportCard from '../cards/report-card.vue';
 
 export default {
   name: 'report-list',

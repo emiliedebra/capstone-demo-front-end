@@ -1,10 +1,8 @@
-<!-- user-create-form.vue -->
+<!-- node-create-form -->
 
 <template id="user-create-form">
   <v-card flat class="text-xs-center">
-    <!-- Input Form -->
     <v-card flat fluid class="ma-3">
-      <!-- <v-card-text> -->
       <form ref="nodecreateform" @clearReport="clear">
         <v-text-field label="Name" v-model="name">
         </v-text-field>
@@ -14,7 +12,6 @@
         </v-text-field>
         <v-select :items="users" item-text="name" item-value="id" v-model="nodeAdmin" label="Node Administrator" autocomplete></v-select>
       </form>
-      <!-- </v-card-text> -->
     </v-card>
     <!-- Button Panel -->
     <v-container fixed grid-list-xs text-xs-center>
@@ -26,8 +23,8 @@
 
 <script>
 // import reportCreateFormToolbar from './report-create-form-toolbar';
-import { postNode } from '../utils/data-access';
-import { getUsers } from '../utils/data';
+import { postNode } from '../../utils/data-access';
+import { getUsers } from '../../utils/data';
 
 export default {
 
@@ -45,21 +42,22 @@ export default {
     // reportCreateFormToolbar,
   },
   created() {
+    // fetch a list of users for nodeAdmin option
     this.users = getUsers();
   },
   methods: {
     clear() {
+      // clear form data
       this.$refs.nodecreateform.reset();
-      this.name = '';
-      this.code = '';
-      this.area = '';
-      this.nodeAdmin = 0;
     },
     toggleDialog() {
+      // NB: not used
+      // fire clear on dialog-toggle
       this.clear();
     },
     submit() {
-      // not yet implemented
+      // NB: not yet implemented
+      // post node data and on success clear form
       postNode(this.data)
         .then(() => {
           this.clear();

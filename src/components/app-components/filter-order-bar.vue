@@ -1,4 +1,4 @@
-<!-- filter-order-bar.vue -->
+<!-- filter-order-bar -->
 
 <template id="filter-order-bar">
   <v-container class="ma-0 pa-0">
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       order: null,
-      filter: 5,
+      filter: null,
     };
   },
 };

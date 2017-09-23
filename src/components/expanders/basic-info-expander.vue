@@ -1,8 +1,7 @@
-<!-- user-create-form.vue -->
+<!-- basic-info-expander -->
 
 <template id="basic-info-expander">
   <v-card flat class="text-xs-center">
-    <!-- Input Form -->
     <v-card flat fluid class="ml-3 mr-3 mt-0">
       <v-form v-model="valid" ref="basicinfo">
         <v-text-field label="Title" v-model="title">
@@ -37,10 +36,8 @@
 </template>
 
 <script>
-// TODO: Figure out how to use this to get authors every time 
-// research output needs to be created
 // import { getAuthors } from '../utils/data-access.js';
-import { getPublicationTypes, getUsers } from '../utils/data.js';
+import { getPublicationTypes, getUsers } from '../../utils/data';
 
 export default {
 
@@ -50,38 +47,38 @@ export default {
       valid: false,
       title: '',
       // will be an id (int)
-      author: 0,
+      author: null,
       // will be an array of id's (ints)
       coauthors: [],
-      type: 0,
+      type: null,
       publication_year: '',
-      // hardcoded for now - need to fetch from db on created
+      // fetched on created()
       authors: [],
       types: [],
+      // RULES
       yearRules: [
         v => (v && v.length === 4) || 'Invalid year',
       ],
     };
   },
   created() {
+    // NB: needs to be tested with changing data
     this.types = getPublicationTypes();
     this.authors = getUsers();
   },
   methods: {
     clear() {
+      // clear form data
       this.$refs.basicinfo.reset();
-      this.title = '';
-      this.author = null;
-      this.coauthors = [];
-      this.publication_year = '';
-      this.type = null;
     },
     submit() {
+      // send data to report-create-dialog
       this.$emit(this.data);
     },
   },
   watch: {
     clearReport() {
+      // watch global state to fire local clear
       if (this.$store.getters.clearReport === true) {
         this.clear();
       }

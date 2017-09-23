@@ -1,3 +1,5 @@
+<!-- unsuccessful-login-dialog -->
+
 <template>
   <v-dialog persistent v-model="this.$store.getters.unsuccessfulLogin">
     <v-card class="text-xs-center">
@@ -19,6 +21,7 @@ export default {
   },
   methods: {
     close() {
+      // toggle unsuccessful-login-dialog
       this.$store.dispatch('toggleUnsuccessfulLogin');
     },
   },

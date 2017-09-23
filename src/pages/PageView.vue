@@ -1,4 +1,4 @@
-<!-- Page.vue -->
+<!-- Page -->
 
 <!-- For construction purposes -->
 <template>

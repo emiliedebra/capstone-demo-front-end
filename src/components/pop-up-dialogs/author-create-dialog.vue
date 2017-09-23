@@ -1,3 +1,5 @@
+<!-- author-create-dialog -->
+
 <template>
   <v-dialog persistent v-model="this.$store.getters.addAuthorDialog">  
     <v-card class="text-xs-center">
@@ -10,8 +12,8 @@
 </template>
 
 <script>
-import userCreateForm from './user-create-form';
-import reportCreateFormToolbar from './report-create-form-toolbar';
+import userCreateForm from '../forms/user-create-form.vue';
+import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
 
 export default {
 
@@ -23,6 +25,7 @@ export default {
   },
   methods: {
     close() {
+      // toggle author-create-dialog
       this.$store.dispatch('changeAddAuthorDialog');
     },
   },

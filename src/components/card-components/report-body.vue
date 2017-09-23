@@ -1,4 +1,4 @@
-<!-- report-body.vue -->
+<!-- report-body -->
 
 <template id="report-body">
   <v-card flat>

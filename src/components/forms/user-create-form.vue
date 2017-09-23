@@ -1,18 +1,16 @@
-<!-- user-create-form.vue -->
+<!-- user-create-form -->
 
 <template id="user-create-form">
   <v-card flat class="text-xs-center">
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
-    <div class="ma-0 pa-0">
-      <v-radio-group hide-details v-model="accessLevel" :mandatory="false">
-        <v-radio label="Node Administrator" value="2"></v-radio>
-        <v-radio label="Global Administrator" value="3"></v-radio>
-        <v-radio label="CAIR Member" value="1"></v-radio>
-      </v-radio-group>
-    </div>
-      <!-- <v-card-text> -->
-      <!-- /<h6 class="text-xs-left">Add New User</h6> -->
+      <div class="ma-0 pa-0">
+        <v-radio-group hide-details v-model="accessLevel" :mandatory="false">
+          <v-radio label="Node Administrator" value="2"></v-radio>
+          <v-radio label="Global Administrator" value="3"></v-radio>
+          <v-radio label="CAIR Member" value="1"></v-radio>
+        </v-radio-group>
+      </div>
       <v-form ref="createform" @clearReport="clear">
         <v-text-field label="First Name" v-model="first_name">
         </v-text-field>
@@ -24,7 +22,6 @@
         <v-select v-if="accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
 
       </v-form>
-      <!-- </v-card-text> -->
     </v-card>
     <!-- Button Panel -->
     <v-container fixed grid-list-xs text-xs-center>
@@ -35,8 +32,8 @@
 </template>
 
 <script>
-import reportCreateFormToolbar from './report-create-form-toolbar';
-import { postUser } from '../utils/data-access';
+import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
+import { postUser } from '../../utils/data-access';
 
 export default {
 
@@ -48,14 +45,16 @@ export default {
       last_name: '',
       email: '',
       accessLevel: '2',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid',
-      ],
       node: 0,
+      // NB: hard-coded
       nodes: [
         { id: 1, name: 'UCT' },
         { id: 2, name: 'Wits' },
+      ],
+      // RULES
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid',
       ],
     };
   },
@@ -64,14 +63,12 @@ export default {
   },
   methods: {
     clear() {
+      // clear form data
       this.$refs.createform.reset();
-      this.first_name = '';
-      this.last_name = '';
-      this.email = '';
-      this.accessLevel = 0;
-      this.node = 0;
     },
     submit() {
+      // NB: not yet implemented
+      // post new user data and on success, clear
       postUser(this.data)
         .then(() => {
           this.clear();

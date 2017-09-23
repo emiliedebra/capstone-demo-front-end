@@ -1,18 +1,18 @@
 /*
-  Define all routing and routing logic in here
+Define all routing and routing logic in here
 */
 import VueRouter from 'vue-router';
 
 import '../../node_modules/vuetify/dist/vuetify.min.css';
 
-// Import pages here
-import Page from '@/pages/PageView';
-import Home from '@/pages/HomeView';
-import Report from '@/pages/ReportView';
-import Create from '@/pages/CreateView';
-import Search from '@/pages/SearchView';
+// Import pages
+import Page from '../pages/PageView.vue';
+import Home from '../pages/HomeView.vue';
+import Report from '../pages/ReportView.vue';
+import Create from '../pages/CreateView.vue';
+import Search from '../pages/SearchView.vue';
 
-// Add routes here
+// Define routes
 export default new VueRouter({
   routes: [
     {

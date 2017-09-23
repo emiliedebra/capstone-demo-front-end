@@ -1,10 +1,8 @@
-
 <!-- Home.vue -->
 
 <template ref="home">
   <v-container fluid>
     <v-layout row>
-      <!-- <v-card-text class="ma-1 pa-0 body-2">Order By:</v-card-text> -->
       <v-flex xs10>
         <filter-order-bar></filter-order-bar>
       </v-flex>
@@ -15,7 +13,6 @@
       </v-flex>
     </v-layout>
     <v-spacer></v-spacer>
-    <!-- <v-divider></v-divider> -->
     <report-list :outputs="posts"></report-list>
   </v-container>
 </template>
@@ -24,8 +21,8 @@
 import { printOutputs } from '../utils/print-services';
 import { getDetailedResearchOutputs } from '../utils/data';
 
-import reportList from '../components/report-list.vue';
-import filterOrderBar from '../components/filter-order-bar.vue';
+import reportList from '../components/app-components/report-list.vue';
+import filterOrderBar from '../components/app-components/filter-order-bar.vue';
 
 export default {
   name: 'home',
@@ -36,11 +33,9 @@ export default {
   },
 
   mounted() {
-    // if (this.$store.getters.accessLevel > 0) {
+    // NB: using local data
+    // get reports to display in report-list
     this.posts = getDetailedResearchOutputs();
-    // } else {
-    //  this.posts = getBasicResearchOutputs();
-    // }
     // getResearchOutputs()
     //   .then((posts) => {
     //     this.posts = posts;
@@ -54,6 +49,7 @@ export default {
 
   methods: {
     print() {
+      // fire print-services method
       printOutputs(this.posts);
     },
   },
