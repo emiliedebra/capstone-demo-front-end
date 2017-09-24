@@ -33,7 +33,7 @@
 
 <script>
 import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
-import { postUser } from '../../utils/data-access';
+import { postUser } from '../../services/data-access';
 
 export default {
 

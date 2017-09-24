@@ -22,7 +22,7 @@
 
 <script>
 // import { loginUser } from '../utils/data-access.js';
-import { login } from '../../utils/data';
+import { login } from '../../services/data';
 
 export default {
   name: 'login-card',

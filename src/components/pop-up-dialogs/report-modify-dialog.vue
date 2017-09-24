@@ -12,7 +12,7 @@ import { mapState } from 'vuex';
 import reportCreateForm from '../forms/report-create-form.vue';
 import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReportX } from '../../utils/data';
+import { newReport, getReportX } from '../../services/data';
 
 export default {
   name: 'report-modify-dialog',

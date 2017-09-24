@@ -25,7 +25,7 @@
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
 import reportDetails from '../components/card-components/report-details.vue';
-import { getReport } from '../utils/data';
+import { getReport } from '../services/data';
 
 export default {
   name: 'report',

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { getResearchOutputsSearch } from '../utils/data';
+import { getResearchOutputsSearch } from '../services/data';
 
 import reportList from '../components/app-components/report-list.vue';
 

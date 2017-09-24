@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { deleteReport } from '../../utils/data-access';
+import { deleteReport } from '../../services/data-access';
 import reportCreateDialog from '../pop-up-dialogs/report-modify-dialog.vue';
 import { contextState } from '../../state-machine';
 

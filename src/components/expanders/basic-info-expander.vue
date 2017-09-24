@@ -37,7 +37,7 @@
 
 <script>
 // import { getAuthors } from '../utils/data-access.js';
-import { getPublicationTypes, getUsers } from '../../utils/data';
+import { getPublicationTypes, getUsers } from '../../services/data';
 
 export default {
 

@@ -23,8 +23,8 @@
 
 <script>
 // import reportCreateFormToolbar from './report-create-form-toolbar';
-import { postNode } from '../../utils/data-access';
-import { getUsers } from '../../utils/data';
+import { postNode } from '../../services/data-access';
+import { getUsers } from '../../services/data';
 
 export default {
 

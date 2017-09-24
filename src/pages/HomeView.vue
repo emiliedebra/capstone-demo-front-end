@@ -19,7 +19,7 @@
 
 <script>
 import { printOutputs } from '../utils/print-services';
-import { getDetailedResearchOutputs } from '../utils/data';
+import { getDetailedResearchOutputs } from '../services/data';
 
 import reportList from '../components/app-components/report-list.vue';
 import filterOrderBar from '../components/app-components/filter-order-bar.vue';
