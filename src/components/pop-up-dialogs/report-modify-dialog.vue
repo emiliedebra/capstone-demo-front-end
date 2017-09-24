@@ -50,9 +50,5 @@ export default {
       this.$store.dispatch('changeReportContext', null);
     },
   },
-  // changeAddReportDialog() {
-  //   // toggle report-modify-dialog
-  //   this.$store.dispatch('changeAddReportDialog');
-  // },
 };
 </script>

@@ -4,10 +4,10 @@
   <v-card flat class="text-xs-center ml-0">
     <v-card flat fluid class="ml-2">
       <v-form v-model="valid" ref="contentform">
-        <v-text-field label="Enter Abstract Here" full-width multi-line v-model="abstract">
+        <v-text-field label="Enter Abstract Here" full-width multi-line v-model="report.additional_info">
         </v-text-field>
         <v-divider></v-divider>
-        <v-text-field label="Enter Content Here" multi-line full-width v-model="text">
+        <v-text-field label="Enter Content Here" multi-line full-width v-model="report.text">
         </v-text-field>
       </v-form>
     </v-card>
@@ -18,6 +18,7 @@
 export default {
 
   name: 'research-output-content-expander',
+  props: ['report'],
   data() {
     return {
       valid: false,

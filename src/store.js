@@ -20,8 +20,6 @@ export default new Vuex.Store({
     modalDialog: null,
     // toggles user-create-dialog
     addAuthorDialog: false,
-    // toggles report-modify-dialog
-    addReportDialog: false,
     // toggles login-dialog
     logInDialog: true,
     // defines logged in user ID
@@ -36,7 +34,6 @@ export default new Vuex.Store({
     accesslevel: state => state.accessLevel,
     reportContext: state => state.reportContext,
     addAuthorDialog: state => state.addAuthorDialog,
-    addReportDialog: state => state.addReportDialog,
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
     showDetails: state => state.showDetails,
@@ -59,9 +56,6 @@ export default new Vuex.Store({
     },
     changeAddAuthorDialog: (state) => {
       state.addAuthorDialog = !state.addAuthorDialog;
-    },
-    changeAddReportDialog: (state) => {
-      state.addReportDialog = !state.addReportDialog;
     },
     changeLogInDialog: (state, boolean) => {
       state.logInDialog = boolean;
@@ -99,9 +93,6 @@ export default new Vuex.Store({
     },
     changeAddAuthorDialog: (context) => {
       context.commit('changeAddAuthorDialog');
-    },
-    changeAddReportDialog: (context) => {
-      context.commit('changeAddReportDialog');
     },
     changeLogInDialog: (context, newValue) => {
       context.commit('changeLogInDialog', newValue);

@@ -53,7 +53,6 @@ export default {
     modifyReport() {
       // change ID and open dialog
       this.$emit('changeReportContext', contextState.UPDATE);
-      this.$store.dispatch('changeAddReportDialog');
     },
   },
   components: {

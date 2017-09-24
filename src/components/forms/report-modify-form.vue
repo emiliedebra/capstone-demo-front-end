@@ -5,8 +5,7 @@
     <author-create-dialog></author-create-dialog>
 
     <!-- Input Form -->
-    <v-card flat fluid class="ma-3 pa-0">
-        <h6 class="text-xs-left">New Research Output</h6>
+    <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
         <v-card-text class="ma-0 pa-0">
           <v-expansion-panel invert class="ma-0 pa-0">
             <v-expansion-panel-content>
@@ -15,11 +14,11 @@
             </v-expansion-panel-content>
             <v-expansion-panel-content v-show="this.$store.getters.showDetails">
               <div slot="header">Detailed Information</div>
-              <detailed-info-expander ref="detailedinfo" :clear="clear"></detailed-info-expander>
+              <detailed-info-expander ref="detailedinfo" :report="report" :clear="clear"></detailed-info-expander>
             </v-expansion-panel-content>
             <v-expansion-panel-content>
               <div slot="header">Research Output Content</div>
-              <research-output-content-expander ref="researchinfo"></research-output-content-expander>
+              <research-output-content-expander ref="researchinfo" :report="report"></research-output-content-expander>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-card-text>
@@ -66,28 +65,16 @@ export default {
     detailedInfoExpander,
     researchOutputContentExpander,
   },
-  watch: {
-    update() {
-      // NB: an attempt to get report-create-form to automatically load report
-      // data if 'MODIFY' button is clicked
-      if (this.$store.getters.update) {
-        // console.log('The updated thing got here');
-      } else {
-        // console.log('The updated thing did not get here');
-      }
-    },
-  },
   methods: {
     clear() {
       // clear form data
-      this.$refs.basicinfo.clear();
+      this.$refs.basicinfo.reset();
       // this.$refs.detailedinfo.clear();
-      this.$refs.researchinfo.clear();
+      this.$refs.researchinfo.reset();
     },
     close() {
-      // clear data and update dialog state
+      // clear data
       this.clear();
-      this.changeAddReportDialog();
     },
     submit() {
       // NB: an attempt to implement submitting a new report
@@ -106,10 +93,6 @@ export default {
       //   .then(() => {
       //     this.close();
       //   });
-    },
-    changeAddReportDialog() {
-      // toggle report-modify-dialog
-      this.$store.dispatch('changeAddReportDialog');
     },
     changeAddAuthorDialog() {
       // NB: not yet implemented

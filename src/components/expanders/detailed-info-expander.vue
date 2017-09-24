@@ -4,9 +4,9 @@
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3">
       <v-form v-model="valid" ref="detailedinfo">
-        <v-checkbox hide-details class= "ma-0 pa-0" label="Proof of Verification" v-model="proof_verified">
+        <v-checkbox hide-details class= "ma-0 pa-0" label="Proof of Verification" v-model="report.proof_verified">
         </v-checkbox>
-        <v-text-field class="mt-0 pr-3" label="Proof of Verification Link" v-model="proof_link">
+        <v-text-field class="mt-0 pr-3" label="Proof of Verification Link" v-model="report.proof_link">
         </v-text-field>
       </v-form>
     </v-card>
@@ -17,6 +17,7 @@
 export default {
 
   name: 'detailed-info-expander',
+  props: ['report'],
   data() {
     return {
       valid: false,

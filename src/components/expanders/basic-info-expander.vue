@@ -6,8 +6,8 @@
       <v-form v-model="valid" ref="basicinfo">
         <v-text-field label="Title" v-model="report.title">
         </v-text-field>
-        <v-select :items="authors" item-text="name" item-value="id" v-model="author" label="Author" autocomplete></v-select>
-        <v-select label="Co-Authors" v-bind:items="authors" v-model="coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
+        <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
+        <v-select label="Co-Authors" v-bind:items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
           <template slot="selection" scope="data">
             <v-chip close @input="data.parent.selectItem(data.item)" :selected="data.selected" class="chip--select-multi" :key="JSON.stringify(data.id)">
               {{ data.item.name }}
@@ -25,9 +25,9 @@
           </template>
         </v-select>
         <v-layout row>
-          <v-select :items="types" item-text="name" item-value="id" v-model="type" label="Publication Type" autocomplete></v-select>
+          <v-select :items="types" item-text="name" item-value="id" v-model="report.type" label="Publication Type" autocomplete></v-select>
           <v-spacer></v-spacer>
-         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="publication_year">
+         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="report.publication_year">
           </v-text-field>
         </v-layout>
       </v-form>

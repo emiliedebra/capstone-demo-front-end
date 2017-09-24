@@ -45,6 +45,7 @@ import appSideMenuList from './components/app-components/app-side-menu-list.vue'
 import appNavDrawerList from './components/app-components/app-nav-drawer-list.vue';
 import loginDialog from './components/pop-up-dialogs/login-dialog.vue';
 import unsuccessfulLoginDialog from './components/pop-up-dialogs/unsuccessful-login-dialog.vue';
+import { contextState } from './state-machine';
 
 export default {
   name: 'app',
@@ -64,7 +65,7 @@ export default {
   methods: {
     changeReportContext() {
       // toggle report-create0dialog
-      this.$store.dispatch('changeReportContext', { id: null, state: 'creating' });
+      this.$store.dispatch('changeReportContext', { id: null, state: contextState.CREATE });
     },
   },
 };
