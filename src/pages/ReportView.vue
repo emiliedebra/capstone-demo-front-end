@@ -22,27 +22,37 @@
 
 <script>
 // import axios from 'axios';
+import { mapState } from 'vuex';
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
 import reportDetails from '../components/card-components/report-details.vue';
-import { getReport } from '../services/data';
+import { getReportX, newReport } from '../services/data';
+import contextState from '../state-machine';
 
 export default {
   name: 'report',
   data() {
     return {
-      output: [{
-      }],
+      output: {
+      },
     };
   },
-
+  computed: {
+    ...mapState({
+      reportContext: state => state.reportContext,
+    }),
+  },
   created() {
     // NB: using local data
     // set id of report to view
-    const id = this.$store.getters.reportContext && this.$store.getters.reportContext.id;
     // get report
-    if (id) {
-      this.output = getReport(id);
+    if (this.reportContext) {
+      getReportX(this.reportContext.id)
+        .then((output) => {
+          this.output = output;
+        });
+    } else {
+      this.output = newReport();
     }
     // getReport(id)
     //   .then((output) => {

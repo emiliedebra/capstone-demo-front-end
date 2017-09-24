@@ -35,13 +35,13 @@ export default {
     },
     changeReportContext() {
       // change ID of current report to view
-      this.$emit('changeReportContext', 'viewing');
+      this.$emit('changeReportContext', contextState.VIEW);
       this.$router.push('./report');
     },
     deleteReport() {
       // NB: Not implemented properly
       // change ID and fire delete of current ID
-      this.$emit('changeReportContext', 'deleting');
+      this.$emit('changeReportContext', contextState.DELETE);
       deleteReport(this.$store.getters.reportContext)
         .then(() => {
           // console.log('Fake Delete Executed');

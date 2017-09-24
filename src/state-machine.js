@@ -4,6 +4,8 @@ import store from './store';
 export const contextState = {
   CREATE: 'CREATE',
   UPDATE: 'UPDATE',
+  VIEW: 'VIEW',
+  DELETE: 'DELETE',
 };
 
 export const modalState = {
@@ -11,7 +13,7 @@ export const modalState = {
   MODIFY: 'MODIFY',
 };
 
-// watch for store changes to modify modalDialoge state
+// watch for store changes to modify modalDialog state
 store.watch(
   state => state.reportContext,
   (reportContext) => {
