@@ -3,7 +3,7 @@
 <template>
   <v-dialog persistent v-model="this.$store.getters.addAuthorDialog">  
     <v-card class="text-xs-center">
-      <report-create-form-toolbar @close="close"></report-create-form-toolbar>
+      <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
       <v-card flat fluid class="ma-0">
         <user-create-form @toggle="close"></user-create-form>
       </v-card>
@@ -13,7 +13,7 @@
 
 <script>
 import userCreateForm from '../forms/user-create-form.vue';
-import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
+import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 
 export default {
 
@@ -31,7 +31,7 @@ export default {
   },
   components: {
     userCreateForm,
-    reportCreateFormToolbar,
+    reportModifyFormToolbar,
   },
 };
 </script>

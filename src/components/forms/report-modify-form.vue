@@ -1,6 +1,6 @@
-<!-- report-create-form -->
+<!-- report-modify-form -->
 
-<template id="report-create-form">
+<template id="report-modify-form">
   <v-card class="text-xs-center">
     <author-create-dialog></author-create-dialog>
 
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
+import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import authorCreateDialog from '../pop-up-dialogs/author-create-dialog.vue';
 import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
@@ -44,7 +44,7 @@ import researchOutputContentExpander from '../expanders/research-output-content-
 
 export default {
 
-  name: 'report-create-form',
+  name: 'report-modify-form',
   props: ['report'],
   data() {
     return {
@@ -60,7 +60,7 @@ export default {
     };
   },
   components: {
-    reportCreateFormToolbar,
+    reportModifyFormToolbar,
     authorCreateDialog,
     basicInfoExpander,
     detailedInfoExpander,

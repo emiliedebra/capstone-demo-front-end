@@ -21,7 +21,7 @@
 
 <script>
 import { deleteReport } from '../../services/data-access';
-import reportCreateDialog from '../pop-up-dialogs/report-modify-dialog.vue';
+import reportModifyDialog from '../pop-up-dialogs/report-modify-dialog.vue';
 import { contextState } from '../../state-machine';
 
 export default {
@@ -57,7 +57,7 @@ export default {
     },
   },
   components: {
-    reportCreateDialog,
+    reportModifyDialog,
   },
 };
 </script>

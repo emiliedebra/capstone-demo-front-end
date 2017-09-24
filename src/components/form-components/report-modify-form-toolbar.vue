@@ -1,6 +1,6 @@
-<!-- report-create-form-toolbar -->
+<!-- report-modify-form-toolbar -->
 
-<template id="report-create-form-toolbar">
+<template id="report-modify-form-toolbar">
 
   <v-system-bar card fixed window>
     <v-spacer></v-spacer> <!-- NB: places close button to the right -->
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'report-create-form-toolbar',
+  name: 'report-modify-form-toolbar',
   methods: {
     close() {
       // fire report-modify-dialog to close

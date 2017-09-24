@@ -2,15 +2,15 @@
 
 <template>
   <v-dialog v-model="showDialog" persistent width="800">
-    <report-create-form-toolbar @close="close"></report-create-form-toolbar>
-    <report-create-form :report="report"></report-create-form>
+    <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
+    <report-modify-form :report="report"></report-modify-form>
   </v-dialog>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import reportCreateForm from '../forms/report-create-form.vue';
-import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
+import reportModifyForm from '../forms/report-modify-form.vue';
+import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import { contextState, modalState } from '../../state-machine';
 import { newReport, getReportX } from '../../services/data';
 
@@ -22,8 +22,8 @@ export default {
     };
   },
   components: {
-    reportCreateForm,
-    reportCreateFormToolbar,
+    reportModifyForm,
+    reportModifyFormToolbar,
   },
   computed: {
     ...mapState({

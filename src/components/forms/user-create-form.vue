@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import reportCreateFormToolbar from '../form-components/report-create-form-toolbar.vue';
+import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import { postUser } from '../../services/data-access';
 
 export default {
@@ -59,7 +59,7 @@ export default {
     };
   },
   components: {
-    reportCreateFormToolbar,
+    reportModifyFormToolbar,
   },
   methods: {
     clear() {
