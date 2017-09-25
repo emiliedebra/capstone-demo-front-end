@@ -26,6 +26,8 @@ export default new Vuex.Store({
     loggedInUserID: 0,
     // state used to toggle display of detailed information based on accessLevel
     showDetails: false,
+    // search input from search bar
+    searchInput: '',
   },
   getters: {
     unsuccessfulLogin: state => state.unsuccessfulLogin,
@@ -37,6 +39,7 @@ export default new Vuex.Store({
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
     showDetails: state => state.showDetails,
+    searchInput: state => state.searchInput,
   },
   mutations: {
     toggleClearReport: (state) => {
@@ -69,6 +72,9 @@ export default new Vuex.Store({
     changeModalDialog: (state, name) => {
       state.modalDialog = name;
     },
+    changeSearchInput: (state, name) => {
+      state.searchInput = name;
+    },
   },
   actions: {
     toggleUnsuccessfulLogin: (context) => {
@@ -99,6 +105,9 @@ export default new Vuex.Store({
     },
     changeLoggedInUserID: (context, newValue) => {
       context.commit('changeLoggedInUserID', newValue);
+    },
+    changeSearchInput: (context, newValue) => {
+      context.commit('changeSearchInput', newValue);
     },
   },
 });

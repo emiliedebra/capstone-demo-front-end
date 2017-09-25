@@ -60,19 +60,28 @@ export function getDetailedResearchOutputs() {
   ];
 }
 
-export function getResearchOutputsSearch(search) {
+export function getResearchOutputsSearchX(search) {
   // returns a list of research outputs based on search
   // NB: Doesn't work yet
   const reports = getDetailedResearchOutputs();
   const result = [];
   for (const report of reports) {
-    for (const value of report) {
-      if (value === search) {
-        result.add(report);
+    for (const key of Object.keys(report)) {
+      if (report[key] === search) {
+        console.log(report[key]);
+        result.push(report);
       }
     }
   }
-  return result;
+  if (result.length > 0) {
+    console.log('got here');
+    return result;
+  }
+  return [];
+}
+
+export function getResearchOutputsSearch(search) {
+  return Promise.resolve(getResearchOutputsSearchX(search));
 }
 
 export function getReportX(id) {

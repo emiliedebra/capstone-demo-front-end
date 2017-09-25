@@ -4,7 +4,7 @@
   <v-app toolbar footer>
 
     <!-- Navigation Drawer -->
-    <v-navigation-drawer persistent class="pb-0" absolute disable-route-watcher height="100%" clipped fluid v-model="show">
+    <v-navigation-drawer persistent class="pb-0" absolute enable-resize-watcher disable-route-watcher height="100%" clipped fluid v-model="show">
       <app-nav-drawer-list></app-nav-drawer-list>
     </v-navigation-drawer>
 
@@ -13,7 +13,7 @@
       <v-toolbar-side-icon @click="show=!show"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">{{ this.$route.name }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-text-field solo label="Search" append-icon="search" v-model="searchInput"></v-text-field>
+      <v-text-field solo label="Search" append-icon="search" v-on:keyup.enter="searchOnEnter" v-model="searchInput"></v-text-field>
 
       <!-- Side Menu -->
       <v-menu clipped bottom right offset-y>
@@ -66,6 +66,10 @@ export default {
     changeReportContext() {
       // toggle report-create0dialog
       this.$store.dispatch('changeReportContext', { id: null, state: contextState.CREATE });
+    },
+    searchOnEnter() {
+      this.$store.dispatch('changeSearchInput', this.searchInput);
+      this.$router.push('/search');
     },
   },
 };
