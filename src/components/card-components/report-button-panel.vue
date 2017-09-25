@@ -4,7 +4,7 @@
 <v-card flat>
   <v-layout row>
   <v-card flat class="text-xs-left">
-  <v-btn small flat @click.native="toggleShow"> Abstract </v-btn>
+  <!-- <v-btn small flat @click.native="toggleShow"> Abstract </v-btn> -->
   </v-card>
   <v-spacer></v-spacer>
   <v-card flat class="text-xs-right">
@@ -29,10 +29,6 @@ export default {
   props: ['show'],
 
   methods: {
-    toggleShow() {
-      // toggle abstract
-      this.$emit('toggleShowMsg', !this.show);
-    },
     changeReportContext() {
       // change ID of current report to view
       this.$emit('changeReportContext', contextState.VIEW);

@@ -34,7 +34,7 @@ export default {
       name: '',
       location: '',
       description: '',
-      nodeAdmin: 0,
+      nodeAdmin: null,
       users: [],
     };
   },

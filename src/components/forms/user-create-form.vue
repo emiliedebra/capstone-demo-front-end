@@ -44,8 +44,8 @@ export default {
       first_name: '',
       last_name: '',
       email: '',
-      accessLevel: '2',
-      node: 0,
+      accessLevel: null,
+      node: null,
       // NB: hard-coded
       nodes: [
         { id: 1, name: 'UCT' },
