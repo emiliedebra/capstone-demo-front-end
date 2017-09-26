@@ -3,7 +3,7 @@
 <template>
   <v-dialog v-model="showDialog" persistent width="800">
     <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
-    <report-modify-form :report="report"></report-modify-form>
+    <report-modify-form ref="modifyform" :report="report" @submit="submit"></report-modify-form>
   </v-dialog>
 </template>
 
@@ -12,7 +12,8 @@ import { mapState } from 'vuex';
 import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReportX } from '../../services/data';
+import { newReport, getReportX, postResearchOutput } from '../../services/data';
+
 
 export default {
   name: 'report-modify-dialog',
@@ -37,6 +38,7 @@ export default {
         // fetch report when updating
         getReportX(state.id)
           .then((report) => {
+            console.log(report);
             this.report = report;
           });
       } else {
@@ -46,7 +48,17 @@ export default {
     },
   },
   methods: {
+    submit() {
+      console.log(this.report);
+      const report = this.report;
+      postResearchOutput(report)
+        .then(() => {
+          this.close();
+        })
+        .catch(error => console.log(error));
+    },
     close() {
+      this.$refs.modifyform.clear();
       this.$store.dispatch('changeReportContext', null);
     },
   },

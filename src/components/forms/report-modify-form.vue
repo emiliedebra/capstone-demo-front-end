@@ -10,11 +10,11 @@
           <v-expansion-panel invert class="ma-0 pa-0">
             <v-expansion-panel-content>
               <div slot="header">Basic Information</div>
-              <basic-info-expander ref="basicinfo" :report="report" :clear="clear"></basic-info-expander>
+              <basic-info-expander ref="basicinfo" :report="report"></basic-info-expander>
             </v-expansion-panel-content>
             <v-expansion-panel-content v-show="this.$store.getters.showDetails">
               <div slot="header">Detailed Information</div>
-              <detailed-info-expander ref="detailedinfo" :report="report" :clear="clear"></detailed-info-expander>
+              <detailed-info-expander ref="detailedinfo" :report="report"></detailed-info-expander>
             </v-expansion-panel-content>
             <v-expansion-panel-content>
               <div slot="header">Research Output Content</div>
@@ -39,7 +39,6 @@ import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
 import researchOutputContentExpander from '../expanders/research-output-content-expander.vue';
 // import reportCreateFormHeader from './report-create-form-header';
-// import { postResearchOutput } from '../../utils/data-access';
 
 export default {
 
@@ -47,15 +46,7 @@ export default {
   props: ['report'],
   data() {
     return {
-      // dialog: false,
-      // title: '',
-      // type: 0,
-      // publication_year: 1990,
-      // author: 0,
-      // coauthors: [],
-      // additional_info: '',
-      // proof_verified: false,
-      // proof_link: '',
+      // don't need
     };
   },
   components: {
@@ -68,9 +59,9 @@ export default {
   methods: {
     clear() {
       // clear form data
-      this.$refs.basicinfo.reset();
-      // this.$refs.detailedinfo.clear();
-      this.$refs.researchinfo.reset();
+      this.$refs.basicinfo.clear();
+      this.$refs.detailedinfo.clear();
+      this.$refs.researchinfo.clear();
     },
     close() {
       // clear data
@@ -78,21 +69,7 @@ export default {
     },
     submit() {
       // NB: an attempt to implement submitting a new report
-      // NB: not yet implemented
-      this.title = this.$refs.basicinfo.title;
-      this.type = this.$refs.basicinfo.type;
-      this.publication_year = parseInt(this.$refs.basicinfo.publication_year, [10]);
-      this.author = this.$refs.basicinfo.author;
-      this.coauthors = this.$refs.basicinfo.coauthors;
-      this.abstract = this.$refs.researchinfo.abstract;
-      // only submit if detailed
-      // this.proof_verified = this.$ref.detailedinfo.proof_verified;
-      // this.proof_link = this.$ref.detailedinfo.proof_link;
-      // this.$ref.home.posts = this.data;
-      // postResearchOutput(this.data)
-      //   .then(() => {
-      //     this.close();
-      //   });
+      this.$emit('submit');
     },
     changeAddAuthorDialog() {
       // NB: not yet implemented

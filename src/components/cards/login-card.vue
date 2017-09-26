@@ -37,17 +37,19 @@ export default {
       // check login details, on successful, change access level and other states
       // change route and clear login form
       // on unsuccessful, show dialog
-      const user = login(this);
-      if (user === 0) {
-        this.$store.dispatch('toggleUnsuccessfulLogin');
-      } else {
-        this.$store.dispatch('changeAccessLevel', user.accessLevel);
-        this.$store.dispatch('changeLoggedInUserID', user.id);
-        this.$store.dispatch('changeLoggedIn', true);
-        this.$store.dispatch('changeLogInDialog', false);
-        this.$router.push('/');
-        this.$refs.loginform.reset();
-      }
+      login(this)
+        .then((user) => {
+          if (!user) {
+            this.$store.dispatch('toggleUnsuccessfulLogin');
+          } else {
+            this.$store.dispatch('changeAccessLevel', user.accessLevel);
+            this.$store.dispatch('changeLoggedInUserID', user.id);
+            this.$store.dispatch('changeLoggedIn', true);
+            this.$store.dispatch('changeLogInDialog', false);
+            this.$router.push('/');
+            this.$refs.loginform.reset();
+          }
+        });
       // NB: Old code for using database
       // .then((response) => {
       //   // should only occur if successful : NB Getting here even if db access fails

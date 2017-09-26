@@ -3,7 +3,7 @@
 <template id="detailed-info-expander">
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3">
-      <v-form v-model="valid" ref="detailedinfo">
+      <v-form ref="detailedinfo">
         <v-checkbox hide-details class= "ma-0 pa-0" label="Proof of Verification" v-model="report.proof_verified">
         </v-checkbox>
         <v-text-field class="mt-0 pr-3" label="Proof of Verification Link" v-model="report.proof_link">
@@ -20,7 +20,6 @@ export default {
   props: ['report'],
   data() {
     return {
-      valid: false,
       proof_verified: false,
       proof_link: '',
     };

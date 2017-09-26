@@ -3,7 +3,7 @@
 <template id="basic-info-expander">
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3 mr-3 mt-0">
-      <v-form v-model="valid" ref="basicinfo">
+      <v-form ref="basicinfo">
         <v-text-field label="Title" v-model="report.title">
         </v-text-field>
         <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
@@ -45,7 +45,6 @@ export default {
   props: ['report'],
   data() {
     return {
-      valid: false,
       title: '',
       // will be an id (int)
       author: null,
@@ -65,7 +64,8 @@ export default {
   created() {
     // NB: needs to be tested with changing data
     this.types = getPublicationTypes();
-    this.authors = getUsers();
+    getUsers()
+      .then((users) => { this.users = users; });
   },
   methods: {
     clear() {

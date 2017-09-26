@@ -1,63 +1,76 @@
+const users = [
+  {
+    id: 0,
+    name: 'Emilie Wood',
+    email: '1',
+    password: '1',
+    accessLevel: 2,
+  },
+  {
+    id: 1,
+    name: 'Emilie Wood',
+    email: 'emilie@anotherway.co.za',
+    password: '1234',
+    accessLevel: 2,
+  },
+  {
+    id: 2,
+    name: 'Clinton Wood',
+    email: 'clint@anotherway.co.za',
+    password: '12345',
+    accessLevel: 1,
+  },
+  {
+    id: 3,
+    name: 'Caitlin Wood',
+    email: 'cait@anotherway.co.za',
+    password: '123',
+    accessLevel: 0,
+  },
+];
+
+let lastId = 0;
+const researchOutputs = [
+  {
+    id: lastId++,
+    title: 'Hello This is a Long Journal Entry Name for Testing Purposes That Goes over the Edge Perhaps',
+    type: 'Journal',
+    publication_year: '2017',
+    author: 'Emilie Wood',
+    additional_info: 'Just some hard-coded data that needs to probably be removed soon',
+    proof_link: 'www.proof.com',
+    proof_verified: 1,
+  },
+  {
+    id: lastId++,
+    title: 'Hello',
+    type: 'Book',
+    publication_year: '2017',
+    author: 'Clinton Wood',
+    additional_info: 'Just some hard-coded data that needs to probably be removed soon',
+    proof_link: null,
+    proof_verified: 0,
+  },
+];
+
 export function getUsers() {
   // returns an array of user objects
-  const users = [
-    {
-      id: 0,
-      name: 'Emilie Wood',
-      email: '1',
-      password: '1',
-      accessLevel: 2,
-    },
-    {
-      id: 1,
-      name: 'Emilie Wood',
-      email: 'emilie@anotherway.co.za',
-      password: '1234',
-      accessLevel: 2,
-    },
-    {
-      id: 2,
-      name: 'Clinton Wood',
-      email: 'clint@anotherway.co.za',
-      password: '12345',
-      accessLevel: 1,
-    },
-    {
-      id: 3,
-      name: 'Caitlin Wood',
-      email: 'cait@anotherway.co.za',
-      password: '123',
-      accessLevel: 0,
-    },
-  ];
-  return users;
+  return Promise.resolve(users);
 }
 
 export function getDetailedResearchOutputs() {
   // return and array of research outpus objects with details
   // NB: detailed logic is implemented in front-end using states
-  return [
-    {
-      id: 0,
-      title: 'Hello This is a Long Journal Entry Name for Testing Purposes That Goes over the Edge Perhaps',
-      type: 'Journal',
-      publication_year: '2017',
-      author: 'Emilie Wood',
-      additional_info: 'Just some hard-coded data that needs to probably be removed soon',
-      proof_link: 'www.proof.com',
-      proof_verified: 1,
-    },
-    {
-      id: 1,
-      title: 'Hello',
-      type: 'Book',
-      publication_year: '2017',
-      author: 'Clinton Wood',
-      additional_info: 'Just some hard-coded data that needs to probably be removed soon',
-      proof_link: null,
-      proof_verified: 0,
-    },
-  ];
+  return Promise.resolve(researchOutputs);
+}
+
+export function postResearchOutput(data) {
+  lastId++;
+  data.id = lastId;
+  researchOutputs.push(data);
+  console.log(data);
+  console.log(researchOutputs);
+  return Promise.resolve();
 }
 
 export function getResearchOutputsSearchX(search) {
@@ -132,11 +145,12 @@ export function getPublicationTypes() {
 
 export function login(data) { // data is email and password
   // checks login details and return user or 0
-  const users = getUsers();
-  for (const user of users) {
-    if (user.email === data.email && user.password === data.password) {
-      return user;
-    }
-  }
-  return 0;
+  return getUsers()
+    .then((result) => {
+      for (const user of result) {
+        if (user.email === data.email && user.password === data.password) {
+          return user;
+        }
+      }
+    });
 }

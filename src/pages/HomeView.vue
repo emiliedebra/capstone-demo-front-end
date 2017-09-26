@@ -35,11 +35,10 @@ export default {
   mounted() {
     // NB: using local data
     // get reports to display in report-list
-    this.posts = getDetailedResearchOutputs();
-    // getResearchOutputs()
-    //   .then((posts) => {
-    //     this.posts = posts;
-    //   });
+    getDetailedResearchOutputs()
+      .then((posts) => {
+        this.posts = posts;
+      });
   },
 
   components: {

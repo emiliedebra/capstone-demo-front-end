@@ -3,7 +3,7 @@
 <template id="research-output-content-expander">
   <v-card flat class="text-xs-center ml-0">
     <v-card flat fluid class="ml-2">
-      <v-form v-model="valid" ref="contentform">
+      <v-form ref="contentform">
         <v-text-field label="Enter Abstract Here" full-width multi-line v-model="report.additional_info">
         </v-text-field>
         <v-divider></v-divider>
@@ -21,7 +21,6 @@ export default {
   props: ['report'],
   data() {
     return {
-      valid: false,
       text: '',
       abstract: '',
     };
