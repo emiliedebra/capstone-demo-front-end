@@ -12,7 +12,7 @@ import { mapState } from 'vuex';
 import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReportX, postResearchOutput } from '../../services/data';
+import { newReport, getReport, postResearchOutput } from '../../services/data';
 
 
 export default {
@@ -36,9 +36,8 @@ export default {
     reportContext(state) {
       if (state && state.state === contextState.UPDATE) {
         // fetch report when updating
-        getReportX(state.id)
+        getReport(state.id)
           .then((report) => {
-            console.log(report);
             this.report = report;
           });
       } else {
@@ -49,7 +48,6 @@ export default {
   },
   methods: {
     submit() {
-      console.log(this.report);
       const report = this.report;
       postResearchOutput(report)
         .then(() => {

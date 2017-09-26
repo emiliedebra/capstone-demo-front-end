@@ -26,8 +26,8 @@ import { mapState } from 'vuex';
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
 import reportDetails from '../components/card-components/report-details.vue';
-import { getReportX, newReport } from '../services/data';
-import contextState from '../state-machine';
+import { getReport, newReport } from '../services/data';
+// import { contextState } from '../state-machine';
 
 export default {
   name: 'report',
@@ -46,22 +46,20 @@ export default {
     // NB: using local data
     // set id of report to view
     // get report
+    const _this = this;
     if (this.reportContext) {
-      getReportX(this.reportContext.id)
+      getReport(this.reportContext.id)
         .then((output) => {
-          this.output = output;
+          _this.output = output;
         });
     } else {
       this.output = newReport();
     }
-    // getReport(id)
-    //   .then((output) => {
-    //     this.output = output[0];
-    //   });
   },
   methods: {
     back() {
       // return to home-view
+      this.$store.dispatch('changeReportContext', null);
       this.$router.push('/');
     },
   },

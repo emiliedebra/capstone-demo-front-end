@@ -63,9 +63,10 @@ export default {
   },
   created() {
     // NB: needs to be tested with changing data
-    this.types = getPublicationTypes();
+    getPublicationTypes()
+      .then((types) => { this.types = types; });
     getUsers()
-      .then((users) => { this.users = users; });
+      .then((users) => { this.authors = users; });
   },
   methods: {
     clear() {

@@ -1,3 +1,5 @@
+import { cloneObject } from '../utils/data-utils';
+
 const users = [
   {
     id: 0,
@@ -29,14 +31,29 @@ const users = [
   },
 ];
 
+const publicationTypes = [
+  {
+    id: 0,
+    name: 'Book',
+  },
+  {
+    id: 1,
+    name: 'Journal',
+  },
+  {
+    id: 2,
+    name: 'Book Chapter',
+  },
+];
+
 let lastId = 0;
 const researchOutputs = [
   {
     id: lastId++,
     title: 'Hello This is a Long Journal Entry Name for Testing Purposes That Goes over the Edge Perhaps',
-    type: 'Journal',
+    type: 0,
     publication_year: '2017',
-    author: 'Emilie Wood',
+    author: 1,
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: 'www.proof.com',
     proof_verified: 1,
@@ -44,9 +61,9 @@ const researchOutputs = [
   {
     id: lastId++,
     title: 'Hello',
-    type: 'Book',
+    type: 0,
     publication_year: '2017',
-    author: 'Clinton Wood',
+    author: 2,
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: null,
     proof_verified: 0,
@@ -58,6 +75,18 @@ export function getUsers() {
   return Promise.resolve(users);
 }
 
+export function getAuthorName(id) {
+  // returns an array of user objects
+  return getUsers()
+    .then((result) => {
+      for (const user of result) {
+        if (user.id === id) {
+          return user.name;
+        }
+      }
+    });
+}
+
 export function getDetailedResearchOutputs() {
   // return and array of research outpus objects with details
   // NB: detailed logic is implemented in front-end using states
@@ -65,11 +94,10 @@ export function getDetailedResearchOutputs() {
 }
 
 export function postResearchOutput(data) {
+  const _data = cloneObject(data);
   lastId++;
-  data.id = lastId;
-  researchOutputs.push(data);
-  console.log(data);
-  console.log(researchOutputs);
+  _data.id = lastId;
+  researchOutputs.push(_data);
   return Promise.resolve();
 }
 
@@ -97,10 +125,6 @@ export function getResearchOutputsSearch(search) {
   return Promise.resolve(getResearchOutputsSearchX(search));
 }
 
-export function getReportX(id) {
-  return Promise.resolve(getReport(id));
-}
-
 export function newReport() {
   return {
     // dialog: false,
@@ -117,30 +141,31 @@ export function newReport() {
 
 export function getReport(id) {
   // returns report given id
-  const reports = getDetailedResearchOutputs();
-  for (const report of reports) {
-    if (report.id === id) {
-      return report;
-    }
-  }
+  return getDetailedResearchOutputs()
+    .then((reports) => {
+      for (const report of reports) {
+        if (report.id === id) {
+          return report;
+        }
+      }
+    });
 }
 
 export function getPublicationTypes() {
   // returns a list of type objects
-  return [
-    {
-      id: 0,
-      name: 'Book',
-    },
-    {
-      id: 1,
-      name: 'Journal',
-    },
-    {
-      id: 2,
-      name: 'Book Chapter',
-    },
-  ];
+  return Promise.resolve(publicationTypes);
+}
+
+export function getPublicationType(id) {
+  // returns a list of type objects
+  return getPublicationTypes()
+    .then((result) => {
+      for (const pub of result) {
+        if (pub.id === id) {
+          return pub.name;
+        }
+      }
+    });
 }
 
 export function login(data) { // data is email and password
