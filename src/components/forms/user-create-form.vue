@@ -12,11 +12,11 @@
         </v-radio-group>
       </div>
       <v-form ref="createform" @clearReport="clear">
-        <v-text-field label="First Name" v-model="first_name">
+        <v-text-field label="First Name" v-model="user.first_name">
         </v-text-field>
-        <v-text-field label="Last Name" v-model="last_name">
+        <v-text-field label="Last Name" v-model="user.last_name">
         </v-text-field>
-        <v-text-field label="Email" :rules="emailRules" required type="email" v-model="email">
+        <v-text-field label="Email" :rules="emailRules" required type="email" v-model="user.email">
         </v-text-field>
         
         <v-select v-if="accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
@@ -33,7 +33,7 @@
 
 <script>
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
-import { postUser } from '../../services/data-access';
+import { postUser } from '../../services/data';
 
 export default {
 
@@ -41,9 +41,11 @@ export default {
   data() {
     return {
       valid: false,
-      first_name: '',
-      last_name: '',
-      email: '',
+      user: {
+        first_name: '',
+        last_name: '',
+        email: '',
+      },
       accessLevel: null,
       node: null,
       // NB: hard-coded
@@ -69,7 +71,11 @@ export default {
     submit() {
       // NB: not yet implemented
       // post new user data and on success, clear
-      postUser(this.data)
+      const user = {
+        name: `${this.user.first_name} ${this.user.last_name}`,
+        email: this.email,
+      }
+      postUser(user)
         .then(() => {
           this.clear();
         });

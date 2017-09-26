@@ -1,29 +1,30 @@
 import { cloneObject } from '../utils/data-utils';
 
+let lastUserId = 0;
 const users = [
   {
-    id: 0,
+    id: lastUserId++,
     name: 'Emilie Wood',
     email: '1',
     password: '1',
     accessLevel: 2,
   },
   {
-    id: 1,
+    id: lastUserId++,
     name: 'Emilie Wood',
     email: 'emilie@anotherway.co.za',
     password: '1234',
     accessLevel: 2,
   },
   {
-    id: 2,
+    id: lastUserId++,
     name: 'Clinton Wood',
     email: 'clint@anotherway.co.za',
     password: '12345',
     accessLevel: 1,
   },
   {
-    id: 3,
+    id: lastUserId++,
     name: 'Caitlin Wood',
     email: 'cait@anotherway.co.za',
     password: '123',
@@ -112,6 +113,17 @@ export function deleteResearchOutput(data) {
   return Promise.resolve();
 }
 
+export function updateResearchOutput(data) {
+  const _data = cloneObject(data);
+  const index = researchOutputs.findIndex(x => x.id == _data.id);
+  // const index = researchOutputs.indexOf(data);
+  if (index > -1) {
+    researchOutputs[index] = _data;
+  }
+  // researchOutputs.push(_data);
+  return Promise.resolve();
+}
+
 export function getResearchOutputsSearchX(search) {
   // returns a list of research outputs based on search
   // NB: Doesn't work yet
@@ -189,4 +201,12 @@ export function login(data) { // data is email and password
         }
       }
     });
+}
+
+export function postUser(data) {
+  const _data = cloneObject(data);
+  lastUserId++;
+  _data.id = lastUserId;
+  users.push(_data);
+  return Promise.resolve();
 }

@@ -43,7 +43,8 @@ export default {
   },
   created() {
     // fetch a list of users for nodeAdmin option
-    this.users = getUsers();
+    getUsers()
+    .then((users) => {this.users = users });
   },
   methods: {
     clear() {

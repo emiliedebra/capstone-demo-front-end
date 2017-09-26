@@ -12,7 +12,7 @@ import { mapState } from 'vuex';
 import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReport, postResearchOutput } from '../../services/data';
+import { newReport, getReport, postResearchOutput, updateResearchOutput } from '../../services/data';
 
 
 export default {
@@ -49,11 +49,20 @@ export default {
   methods: {
     submit() {
       const report = this.report;
-      postResearchOutput(report)
-        .then(() => {
-          this.close();
-        })
-        .catch(error => console.log(error));
+      if (this.reportContext.state === contextState.UPDATE) {
+        updateResearchOutput(report)
+          .then(() => {
+            this.close();
+            this.$router.push('/');
+          })
+          .catch(error => console.log(error));
+      } else {
+        postResearchOutput(report)
+          .then(() => {
+            this.close();
+          })
+          .catch(error => console.log(error));
+      }
     },
     close() {
       this.$refs.modifyform.clear();
