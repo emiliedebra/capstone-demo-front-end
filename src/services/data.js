@@ -76,7 +76,6 @@ export function getUsers() {
 }
 
 export function getAuthorName(id) {
-  console.log(id);
   // returns an array of user objects
   return getUsers()
     .then((result) => {
@@ -110,13 +109,11 @@ export function getResearchOutputsSearchX(search) {
   for (const report of reports) {
     for (const key of Object.keys(report)) {
       if (report[key] === search) {
-        console.log(report[key]);
         result.push(report);
       }
     }
   }
   if (result.length > 0) {
-    console.log('got here');
     return result;
   }
   return [];

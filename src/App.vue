@@ -4,8 +4,8 @@
   <v-app toolbar footer>
 
     <!-- Navigation Drawer -->
-    <v-navigation-drawer persistent class="pb-0" absolute enable-resize-watcher disable-route-watcher height="100%" clipped fluid v-model="show">
-      <app-nav-drawer-list></app-nav-drawer-list>
+    <v-navigation-drawer persistent class="pb-0" absolute disable-route-watcher height="100%" clipped fluid v-model="show">
+      <app-nav-drawer-list ></app-nav-drawer-list>
     </v-navigation-drawer>
 
     <!-- Toolbar -->
