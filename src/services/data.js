@@ -103,7 +103,8 @@ export function postResearchOutput(data) {
 
 export function deleteResearchOutput(data) {
   const _data = cloneObject(data);
-  const index = researchOutputs.indexOf(data);
+  const index = researchOutputs.findIndex(x => x.id == _data);
+  // const index = researchOutputs.indexOf(data);
   if (index > -1) {
     researchOutputs.splice(index, 1);
   }

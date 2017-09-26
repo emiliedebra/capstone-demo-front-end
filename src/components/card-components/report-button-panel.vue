@@ -38,13 +38,6 @@ export default {
       // NB: Not implemented properly
       // change ID and fire delete of current ID
       this.$emit('changeReportContext', contextState.DELETE);
-      deleteResearchOutput(this.$store.getters.reportContext)
-        .then(() => {
-          // console.log('Fake Delete Executed');
-          this.$router.push('/');
-          // NOTE: can dispatch directly from here because report ID isn't needed
-          this.$store.dispatch('changeReportContext', null);
-        });
     },
     modifyReport() {
       // change ID and open dialog

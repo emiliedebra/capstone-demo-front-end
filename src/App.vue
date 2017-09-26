@@ -31,6 +31,7 @@
         <login-dialog v-show="!this.$store.getters.unsuccessfulLoginDialog"></login-dialog>
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
         <report-modify-dialog></report-modify-dialog>
+        <report-delete-dialog></report-delete-dialog>
         <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink" dark fixed bottom right fab @click.native="changeReportContext">
           <v-icon>add</v-icon>
         </v-btn>
@@ -41,6 +42,7 @@
 
 <script>
 import reportModifyDialog from './components/pop-up-dialogs/report-modify-dialog.vue';
+import reportDeleteDialog from './components/pop-up-dialogs/report-delete-dialog.vue';
 import appSideMenuList from './components/app-components/app-side-menu-list.vue';
 import appNavDrawerList from './components/app-components/app-nav-drawer-list.vue';
 import loginDialog from './components/pop-up-dialogs/login-dialog.vue';
@@ -57,6 +59,7 @@ export default {
   }),
   components: {
     reportModifyDialog,
+    reportDeleteDialog,
     appSideMenuList,
     appNavDrawerList,
     loginDialog,

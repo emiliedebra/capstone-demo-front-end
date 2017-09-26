@@ -11,6 +11,7 @@ export const contextState = {
 export const modalState = {
   NONE: null,
   MODIFY: 'MODIFY',
+  DELETE: 'DELETE',
 };
 
 // watch for store changes to modify modalDialog state
@@ -20,6 +21,8 @@ store.watch(
     if (reportContext) {
       if (reportContext.state === contextState.UPDATE || reportContext.state === contextState.CREATE) {
         store.commit('changeModalDialog', modalState.MODIFY);
+      } else if (reportContext.state === contextState.DELETE) {
+        store.commit('changeModalDialog', modalState.DELETE);
       }
     } else {
       // no context so...
