@@ -61,7 +61,7 @@ const researchOutputs = [
   {
     id: lastId++,
     title: 'Hello',
-    type: 0,
+    type: 1,
     publication_year: '2017',
     author: 2,
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
@@ -76,6 +76,7 @@ export function getUsers() {
 }
 
 export function getAuthorName(id) {
+  console.log(id);
   // returns an array of user objects
   return getUsers()
     .then((result) => {

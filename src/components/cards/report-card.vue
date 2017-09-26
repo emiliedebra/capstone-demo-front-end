@@ -14,7 +14,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <report-body v-show="show" :body="item.additional_info"></report-body>
+    <report-body v-show="show" :body="item"></report-body>
     <v-divider></v-divider>
   </v-card>
 </template>

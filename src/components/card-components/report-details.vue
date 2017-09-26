@@ -23,7 +23,7 @@ export default {
       this.show = false;
     } else {
       this.show = true;
-      this.details.proof_verified = 'Verified';
+      // this.details.proof_verified = 'Verified';
     }
   },
 };

@@ -22,9 +22,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import { getAuthorName, getPublicationType } from '../../services/data';
-import { contextState } from '../../state-machine';
+import { isEmpty } from '../../utils/data-utils';
 
 export default {
   name: 'report-header',
@@ -40,23 +39,26 @@ export default {
       // toggle abstract
       this.$emit('toggleShowMsg', !this.show);
     },
-  },
-  computed: {
-    ...mapState({
-      reportContext: state => state.reportContext,
-    }),
-  },
-  watch: {
-    reportContext(state) {
-      if (state && state.state === contextState.VIEW) {
-        getAuthorName(this.researchOutput.author).then((name) => { this.author_name = name; });
-        getPublicationType(this.researchOutput.type).then((name) => { this.publication_type_name = name; });
+    fetchData() {
+      if (this.researchOutput) {
+        if (!isEmpty(this.researchOutput.author)) {
+          getAuthorName(this.researchOutput.author)
+            .then((name) => { this.author_name = name; });
+        }
+        if (!isEmpty(this.researchOutput.type)) {
+          getPublicationType(this.researchOutput.type)
+            .then((name) => { this.publication_type_name = name; });
+        }
       }
     },
   },
-  created() {
-    getAuthorName(this.researchOutput.author).then((name) => { this.author_name = name; });
-    getPublicationType(this.researchOutput.type).then((name) => { this.publication_type_name = name; });
+  mounted() {
+    this.fetchData();
+  },
+  watch: {
+    researchOutput() {
+      this.fetchData();
+    },
   },
 };
 </script>

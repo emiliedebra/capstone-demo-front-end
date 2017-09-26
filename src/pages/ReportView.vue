@@ -16,7 +16,7 @@
       </v-flex>
     </v-layout>
   </v-card>
-  <report-body :body="output.additional_info"></report-body>
+  <report-body :body="output"></report-body>
   </v-container>
 </template>
 
@@ -33,8 +33,7 @@ export default {
   name: 'report',
   data() {
     return {
-      output: {
-      },
+      output: newReport(),
     };
   },
   computed: {
@@ -42,7 +41,7 @@ export default {
       reportContext: state => state.reportContext,
     }),
   },
-  created() {
+  mounted() {
     // NB: using local data
     // set id of report to view
     // get report
