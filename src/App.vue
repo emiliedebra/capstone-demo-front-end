@@ -10,7 +10,7 @@
 
     <!-- Toolbar -->
     <v-toolbar dark class="primary" v-show="!this.$store.getters.logInDialog">
-      <v-toolbar-side-icon @click="show=!show"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="show=!show"></v-toolbar-side-icon>
       <v-toolbar-title class="white--text">{{ this.$route.name }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-text-field solo label="Search" append-icon="search" v-on:keyup.enter="searchOnEnter" v-model="searchInput"></v-text-field>

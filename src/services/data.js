@@ -101,22 +101,34 @@ export function postResearchOutput(data) {
   return Promise.resolve();
 }
 
+export function deleteResearchOutput(data) {
+  const _data = cloneObject(data);
+  const index = researchOutputs.indexOf(data);
+  if (index > -1) {
+    researchOutputs.splice(index, 1);
+  }
+  // researchOutputs.push(_data);
+  return Promise.resolve();
+}
+
 export function getResearchOutputsSearchX(search) {
   // returns a list of research outputs based on search
   // NB: Doesn't work yet
-  const reports = getDetailedResearchOutputs();
-  const result = [];
-  for (const report of reports) {
-    for (const key of Object.keys(report)) {
-      if (report[key] === search) {
-        result.push(report);
+  return getDetailedResearchOutputs()
+    .then(reports => {
+      const result = [];
+      for (const report of reports) {
+        for (const key of Object.keys(report)) {
+          if (report[key] === search) {
+            result.push(report);
+          }
+        }
       }
-    }
-  }
-  if (result.length > 0) {
-    return result;
-  }
-  return [];
+      if (result.length > 0) {
+        return result;
+      }
+      return [];
+    });
 }
 
 export function getResearchOutputsSearch(search) {

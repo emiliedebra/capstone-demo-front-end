@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { deleteReport } from '../../services/data-access';
+import { deleteResearchOutput } from '../../services/data';
 import reportModifyDialog from '../pop-up-dialogs/report-modify-dialog.vue';
 import { contextState } from '../../state-machine';
 
@@ -38,10 +38,10 @@ export default {
       // NB: Not implemented properly
       // change ID and fire delete of current ID
       this.$emit('changeReportContext', contextState.DELETE);
-      deleteReport(this.$store.getters.reportContext)
+      deleteResearchOutput(this.$store.getters.reportContext)
         .then(() => {
           // console.log('Fake Delete Executed');
-          this.$route.push('/');
+          this.$router.push('/');
           // NOTE: can dispatch directly from here because report ID isn't needed
           this.$store.dispatch('changeReportContext', null);
         });
