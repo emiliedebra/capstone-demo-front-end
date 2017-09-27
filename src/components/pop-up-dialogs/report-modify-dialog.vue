@@ -16,7 +16,7 @@ import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReport, postResearchOutput, updateResearchOutput } from '../../services/data';
+import { newReport, getReport, getAuthorName, postResearchOutput, updateResearchOutput } from '../../services/data';
 
 
 export default {
@@ -57,6 +57,15 @@ export default {
     },
     modify() {
       const report = this.report;
+      // replace nulls with default values
+      if (report.additional_info === "") {
+        report.additional_info = 'No abstract available.';
+      }
+      if (report.author === null) {
+        report.author = this.$store.getters.loggedInUserID;
+      }
+      console.log(report);
+      // update or create
       if (this.reportContext.state === contextState.UPDATE) {
         updateResearchOutput(report)
           .then(() => {

@@ -30,10 +30,6 @@ export default {
       // clear form data
       this.$refs.contentform.reset();
     },
-    submit() {
-      // send data to report-modify-dialog
-      this.$emit(this.data);
-    },
     watch: {
       clearReport() {
         // watch global variable to fire local clear

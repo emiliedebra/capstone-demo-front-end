@@ -4,7 +4,7 @@
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3 mr-3 mt-0">
       <v-form ref="basicinfo">
-        <v-text-field label="Title" v-model="report.title">
+        <v-text-field label="Title" v-model="report.title" required>
         </v-text-field>
         <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
         <v-select label="Co-Authors" :items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
@@ -25,9 +25,9 @@
           </template>
         </v-select>
         <v-layout row>
-          <v-select :items="types" item-text="name" item-value="id" v-model="report.type" label="Publication Type" autocomplete></v-select>
+          <v-select :items="types" item-text="name" item-value="id" v-model="report.type" label="Publication Type" autocomplete required></v-select>
           <v-spacer></v-spacer>
-         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="report.publication_year">
+         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="report.publication_year" required>
           </v-text-field>
         </v-layout>
       </v-form>
