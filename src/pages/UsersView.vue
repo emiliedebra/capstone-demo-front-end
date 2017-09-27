@@ -22,7 +22,7 @@ import userList from '../components/app-components/user-list.vue';
 import { getUsers } from '../services/data';
 
 export default {
-  name: 'users',
+  name: 'user-view',
   data() {
     return {
       users: [],

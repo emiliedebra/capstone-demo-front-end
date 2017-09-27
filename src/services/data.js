@@ -37,28 +37,28 @@ const nodes = [
   {
     id: lastNodeId++,
     name: 'UCT',
-    description: '1',
+    description: 'Center for AI.',
     location: 'Cape Town',
     nodeAdmin: 2,
   },
   {
     id: lastNodeId++,
     name: 'Wits',
-    description: '',
+    description: 'Center for AI in Human Robotics',
     location: 'Pretoria',
     nodeAdmin: 2,
   },
   {
     id: lastNodeId++,
     name: 'Stellenbosch',
-    description: '',
+    description: 'Research Institute of AI',
     location: 'Western Cape',
     nodeAdmin: 1,
   },
   {
     id: lastNodeId++,
     name: 'UJ',
-    description: '',
+    description: 'Partners of Stellenbosch Node',
     location: 'Johannesburg',
     nodeAdmin: 0,
   },
@@ -252,3 +252,9 @@ export function postNode(data) {
   nodes.push(_data);
   return Promise.resolve();
 }
+
+export function getNodes() {
+  // returns an array of user objects
+  return Promise.resolve(nodes);
+}
+
