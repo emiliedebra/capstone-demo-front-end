@@ -8,9 +8,9 @@
   </v-card>
   <v-spacer></v-spacer>
   <v-card flat class="text-xs-right">
-    <v-btn v-show="this.$store.getters.showDetails" class="pr-0 mr-0" small flat @click.native="modifyReport">
+    <v-btn v-show="this.$store.getters.buttonDetails" class="pr-0 mr-0" small flat @click.native="modifyReport">
       Modify</v-btn>
-    <v-btn v-show="this.$store.getters.showDetails" class="pl-0 ml-0 mr-0 pr-0" small flat @click.native="deleteReport">
+    <v-btn v-show="this.$store.getters.buttonDetails" class="pl-0 ml-0 mr-0 pr-0" small flat @click.native="deleteReport">
       Delete</v-btn>
     <v-btn class="ml-0 pl-0" primary small flat @click.native="changeReportContext">
       View</v-btn>
@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { deleteResearchOutput } from '../../services/data';
 import reportModifyDialog from '../pop-up-dialogs/report-modify-dialog.vue';
 import { contextState } from '../../state-machine';
 

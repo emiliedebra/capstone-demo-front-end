@@ -7,8 +7,8 @@ const users = [
     name: 'Sean Wood',
     email: '1',
     password: '1',
-    accessLevel: 2,
-    node: 0,
+    accessLevel: 1,
+    node: 1,
   },
   {
     id: lastUserId++,
@@ -127,6 +127,31 @@ export function getDetailedResearchOutputs() {
   // return and array of research outpus objects with details
   // NB: detailed logic is implemented in front-end using states
   return Promise.resolve(researchOutputs);
+}
+
+export function getBasicResearchOutputs() {
+  return getDetailedResearchOutputs()
+    .then((outputs) => {
+      const basic = JSON.parse(JSON.stringify(outputs));
+      for (const item of basic) {
+        delete item.proof_link;
+        delete item.proof_verified;
+      }
+      return Promise.resolve(basic);
+    });
+}
+
+export function nameReports() {
+  const data = JSON.parse(JSON.stringify(researchOutputs));
+  for (const item of data) {
+    getNodeName(item.node)
+      .then((node) => { item.node = node; });
+    getPublicationType(item.type)
+      .then((type) => { item.type = type; });
+    getAuthorName(item.author)
+      .then((name) => { item.author = name; });
+  }
+  return Promise.resolve(data);
 }
 
 export function postResearchOutput(data) {

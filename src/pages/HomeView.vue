@@ -18,8 +18,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import { printOutputs } from '../utils/print-services';
-import { getDetailedResearchOutputs } from '../services/data';
+import { getDetailedResearchOutputs, getBasicResearchOutputs } from '../services/data';
 
 import reportList from '../components/app-components/report-list.vue';
 import filterOrderBar from '../components/app-components/filter-order-bar.vue';
@@ -31,14 +32,41 @@ export default {
       posts: [],
     };
   },
-
+  computed: {
+    ...mapState({
+      accessLevel: state => state.accessLevel,
+    }),
+  },
+  watch: {
+    accessLevel(state) {
+      if (state > 1) {
+        const _this = this;
+        getDetailedResearchOutputs()
+          .then((posts) => {
+            _this.posts = posts;
+          });
+      } else {
+        getBasicResearchOutputs()
+          .then((posts) => {
+            this.posts = posts;
+          });
+      }
+    },
+  },
   mounted() {
     // NB: using local data
     // get reports to display in report-list
-    getDetailedResearchOutputs()
-      .then((posts) => {
-        this.posts = posts;
-      });
+    if (this.$store.getters.accessLevel > 1) {
+      getDetailedResearchOutputs()
+        .then((posts) => {
+          this.posts = posts;
+        });
+    } else {
+      getBasicResearchOutputs()
+        .then((posts) => {
+          this.posts = posts;
+        });
+    }
   },
 
   components: {

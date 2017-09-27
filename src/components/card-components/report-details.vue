@@ -20,11 +20,13 @@ export default {
   methods: {
     updateData() {
       // apply logic for verified information view
-      if (this.details.proof_verified === false) {
-        this.show = false;
-      } else {
-        this.show = true;
-        this.details.proof_verified = 'Verified';
+      if (this.$store.getters.accessLevel > 1) {
+        if (this.details.proof_verified === false) {
+          this.show = false;
+        } else {
+          this.show = true;
+          this.details.proof_verified = 'Verified';
+        }
       }
     },
   },

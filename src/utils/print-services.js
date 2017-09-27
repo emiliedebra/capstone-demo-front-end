@@ -1,6 +1,8 @@
 /* eslint no-undef: 0 */
 /* Print Services for Generating Reports */
 import 'print.js/dist/print.min';
+import { nameReports } from '../services/data';
+import store from '../store';
 
 export function printJSON(json, ...props) {
   // transform into require json
@@ -11,31 +13,34 @@ export function printJSON(json, ...props) {
   });
 }
 
-function printBasic(data) {
-  printJS({
-    printable: data,
-    properties: ['title', 'author', 'publication_year', 'type'],
-    type: 'json',
-  });
+function printBasic() {
+  nameReports()
+    .then((result) => {
+      printJS({
+        printable: result,
+        properties: ['title', 'author', 'publication_year', 'type'],
+        type: 'json',
+      });
+    });
 }
 
-function printDetailed(data) {
-  printJS({
-    printable: data,
-    properties: ['title', 'Author_First_Name', 'Author_Last_Name', 'publication_year', 'peerReview'],
-    type: 'json',
-  });
+function printDetailed() {
+  nameReports()
+    .then((result) => {
+      printJS({
+        printable: result,
+        properties: ['title', 'author', 'publication_year', 'node', 'type'],
+        type: 'json',
+      });
+    });
 }
 
-export function printOutputs(data) {
+export function printOutputs() {
   // transform into require json
 
-  // TODO: get from store
-  const access = 10;
-
-  if (access > 1) {
-    printBasic(data);
+  if (store.accessLevel > 1) {
+    printDetailed();
   } else {
-    printDetailed(data);
+    printBasic();
   }
 }

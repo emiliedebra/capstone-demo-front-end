@@ -26,6 +26,7 @@ export default new Vuex.Store({
     loggedInUserID: 0,
     // state used to toggle display of detailed information based on accessLevel
     showDetails: false,
+    buttonDetails: false,
     // search input from search bar
     searchInput: '',
   },
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
     showDetails: state => state.showDetails,
+    buttonDetails: state => state.buttonDetails,
     searchInput: state => state.searchInput,
   },
   mutations: {
@@ -69,6 +71,9 @@ export default new Vuex.Store({
     changeShowDetails: (state, boolean) => {
       state.showDetails = boolean;
     },
+    changeButtonDetails: (state, boolean) => {
+      state.buttonDetails = boolean;
+    },
     changeModalDialog: (state, name) => {
       state.modalDialog = name;
     },
@@ -91,10 +96,15 @@ export default new Vuex.Store({
     },
     changeAccessLevel: (context, newValue) => {
       context.commit('changeAccessLevel', newValue);
-      if (newValue > 0) {
+      if (newValue > 1) {
         context.commit('changeShowDetails', true);
+        context.commit('changeButtonDetails', true);
+      } else if (newValue > 0) {
+        context.commit('changeShowDetails', false);
+        context.commit('changeButtonDetails', true);
       } else {
         context.commit('changeShowDetails', false);
+        context.commit('changeButtonDetails', false);
       }
     },
     changeReportContext: (context, newValue) => {
