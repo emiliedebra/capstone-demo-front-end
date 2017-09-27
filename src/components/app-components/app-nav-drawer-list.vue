@@ -18,12 +18,20 @@
         <v-list-tile-title>{{ search.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="create.link">
+    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="nodes.link">
       <v-list-tile-action>
-        <v-icon>{{ create.icon }}</v-icon>
+        <v-icon>{{ nodes.icon }}</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>{{ create.text }}</v-list-tile-title>
+        <v-list-tile-title>{{ nodes.text }}</v-list-tile-title>
+      </v-list-tile-content>
+    </v-list-tile>
+    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="users.link">
+      <v-list-tile-action>
+        <v-icon>{{ users.icon }}</v-icon>
+      </v-list-tile-action>
+      <v-list-tile-content>
+        <v-list-tile-title>{{ users.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
@@ -36,7 +44,9 @@ export default {
     return {
       home: { icon: 'home', text: 'Home', link: '/' },
       search: { icon: 'search', text: 'Advanced Search', link: '/search' },
-      create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
+      // create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
+      nodes: { icon: 'create', text: 'Manage Nodes', link: '/manage-nodes' },
+      users: { icon: 'create', text: 'Manage Users', link: '/manage-users' },
     };
   },
 };

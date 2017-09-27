@@ -75,7 +75,9 @@ export default {
       // post new user data and on success, clear
       const user = {
         name: `${this.user.first_name} ${this.user.last_name}`,
-        email: this.email,
+        email: this.user.email,
+        accessLevel: parseInt(this.user.accessLevel, [10]),
+        node: this.user.node,
       };
       postUser(user)
         .then(() => {

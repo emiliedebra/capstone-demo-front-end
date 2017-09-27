@@ -10,6 +10,8 @@ import Page from '../pages/PageView.vue';
 import Home from '../pages/HomeView.vue';
 import Report from '../pages/ReportView.vue';
 import Create from '../pages/CreateView.vue';
+import Nodes from '../pages/NodesView.vue';
+import Users from '../pages/UsersView.vue';
 import Search from '../pages/SearchView.vue';
 
 // Define routes
@@ -32,6 +34,18 @@ export default new VueRouter({
       path: '/report',
       name: 'Report',
       component: Report,
+    },
+    {
+      title: 'CAIR Manage Users',
+      path: '/manage-users',
+      name: 'Manage Users',
+      component: Users,
+    },
+    {
+      title: 'CAIR Manage Node',
+      path: '/manage-nodes',
+      name: 'Manage Nodes',
+      component: Nodes,
     },
     {
       title: 'CAIR Create',
