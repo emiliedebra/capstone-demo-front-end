@@ -4,10 +4,11 @@ let lastUserId = 0;
 const users = [
   {
     id: lastUserId++,
-    name: 'Emilie Wood',
+    name: 'Sean Wood',
     email: '1',
     password: '1',
     accessLevel: 2,
+    node: 0,
   },
   {
     id: lastUserId++,
@@ -257,4 +258,17 @@ export function getNodes() {
   // returns an array of user objects
   return Promise.resolve(nodes);
 }
+
+export function getNodeName(id) {
+  // returns an array of user objects
+  return getNodes()
+    .then((result) => {
+      for (const node of result) {
+        if (node.id === id) {
+          return node.name;
+        }
+      }
+    });
+}
+
 

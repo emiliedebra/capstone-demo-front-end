@@ -45,8 +45,8 @@ export default {
       home: { icon: 'home', text: 'Home', link: '/' },
       search: { icon: 'search', text: 'Advanced Search', link: '/search' },
       // create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
-      nodes: { icon: 'create', text: 'Manage Nodes', link: '/manage-nodes' },
-      users: { icon: 'create', text: 'Manage Users', link: '/manage-users' },
+      nodes: { icon: 'location_city', text: 'Manage Nodes', link: '/manage-nodes' },
+      users: { icon: 'person_add', text: 'Manage Users', link: '/manage-users' },
     };
   },
 };

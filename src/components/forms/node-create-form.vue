@@ -4,9 +4,9 @@
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ma-3">
       <form ref="nodecreateform" @clearReport="clear">
-        <v-text-field label="Name" v-model="node.name">
+        <v-text-field label="Name" v-model="node.name" required>
         </v-text-field>
-        <v-text-field label="Location" v-model="node.location">
+        <v-text-field label="Location" v-model="node.location" required>
         </v-text-field>
         <v-text-field label="Description" v-model="node.description">
         </v-text-field>

@@ -18,7 +18,7 @@
         </v-text-field>
         <v-text-field label="Email" :rules="emailRules" required type="email" v-model="user.email">
         </v-text-field>
-        <v-select v-if="user.accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
+        <v-select v-if="user.accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="user.node" label="Node" autocomplete></v-select>
       </v-form>
     </v-card>
     <!-- Button Panel -->
@@ -34,7 +34,7 @@
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import userCreateDialog from '../pop-up-dialogs/user-create-dialog.vue';
 import { contextState } from '../../state-machine';
-import { postUser } from '../../services/data';
+import { postUser, getNodes } from '../../services/data';
 
 export default {
 
@@ -50,10 +50,7 @@ export default {
       },
       node: null,
       // NB: hard-coded
-      nodes: [
-        { id: 1, name: 'UCT' },
-        { id: 2, name: 'Wits' },
-      ],
+      nodes: [],
       // RULES
       emailRules: [
         v => !!v || 'E-mail is required',
@@ -86,6 +83,10 @@ export default {
           this.clear();
         });
     },
+  },
+  mounted() {
+    getNodes()
+      .then((nodes) => { this.nodes = nodes; });
   },
 };
 </script>

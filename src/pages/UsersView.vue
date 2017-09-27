@@ -2,14 +2,14 @@
 
 <template>
   <v-card flat fluid class="create pt-3" style="background-color: transparent">
-    <v-expansion-panel popout class="pa-0 pb-3">
+    <v-expansion-panel class="pa-0 mb-3">
       <v-expansion-panel-content>
         <div slot="header">Create New Account</div>
         <user-create-form></user-create-form>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <v-divider></v-divider>
-    <div class="pt-2">
+    <div class="pt-3">
       <h6>Existing Users</h6>
       <user-list :outputs="users"></user-list>
     </div>

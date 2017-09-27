@@ -5,22 +5,25 @@
     <v-divider class="mb-2"></v-divider>
     <div>Email: {{ body.email }}</div>
     <div>Access Level: {{ accessLevelName }}</div>
-    <div>Node: {{ body.node }}</div>
+    <div>Node: {{ nodeName }}</div>
   </v-card>
 </template>
 
 <script>
+import { getNodeName } from '../../services/data';
+
 export default {
   name: 'user-body',
   props: ['body'],
   data() {
     return {
       accessLevelName: '',
+      nodeName: '',
     };
   },
   mounted() {
     this.getAccessLevelName();
-    this.getNodeName();
+    this.getNode();
   },
   methods: {
     getAccessLevelName() {
@@ -35,10 +38,13 @@ export default {
         this.accessLevelName = 'Global Administrator';
       }
     },
-    getNodeName() {
+    getNode() {
       // TODO: complete with get nodes
-      if (!this.body.node || this.body.node === null) {
-        this.body.node = 'None';
+      if (this.body.node !== 0 && (!this.body.node || this.body.node === null)) {
+        this.nodeName = 'None';
+      } else {
+        getNodeName(this.body.node)
+          .then((name) => { this.nodeName = name; });
       }
     },
   },

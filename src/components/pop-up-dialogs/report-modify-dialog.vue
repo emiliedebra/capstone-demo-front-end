@@ -58,13 +58,12 @@ export default {
     modify() {
       const report = this.report;
       // replace nulls with default values
-      if (report.additional_info === "") {
+      if (report.additional_info === '') {
         report.additional_info = 'No abstract available.';
       }
       if (report.author === null) {
         report.author = this.$store.getters.loggedInUserID;
       }
-      console.log(report);
       // update or create
       if (this.reportContext.state === contextState.UPDATE) {
         updateResearchOutput(report)
