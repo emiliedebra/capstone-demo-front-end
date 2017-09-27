@@ -3,6 +3,7 @@ import store from './store';
 
 export const contextState = {
   CREATE: 'CREATE',
+  CREATEUSER: 'CREATEUSER',
   UPDATE: 'UPDATE',
   VIEW: 'VIEW',
   DELETE: 'DELETE',
@@ -12,6 +13,7 @@ export const modalState = {
   NONE: null,
   MODIFY: 'MODIFY',
   DELETE: 'DELETE',
+  CREATEUSER: 'CREATEUSER',
 };
 
 // watch for store changes to modify modalDialog state
@@ -23,6 +25,8 @@ store.watch(
         store.commit('changeModalDialog', modalState.MODIFY);
       } else if (reportContext.state === contextState.DELETE) {
         store.commit('changeModalDialog', modalState.DELETE);
+      } else if (reportContext.state === contextState.CREATEUSER) {
+        store.commit('changeModalDialog', modalState.CREATEUSER);
       }
     } else {
       // no context so...

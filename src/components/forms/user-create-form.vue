@@ -4,23 +4,21 @@
   <v-card flat class="text-xs-center">
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
+      <v-form ref="createform" @clearReport="clear">
       <div class="ma-0 pa-0">
-        <v-radio-group hide-details v-model="accessLevel" :mandatory="false">
+        <v-radio-group hide-details v-model="user.accessLevel" :mandatory="false">
           <v-radio label="Node Administrator" value="2"></v-radio>
           <v-radio label="Global Administrator" value="3"></v-radio>
           <v-radio label="CAIR Member" value="1"></v-radio>
         </v-radio-group>
       </div>
-      <v-form ref="createform" @clearReport="clear">
         <v-text-field label="First Name" v-model="user.first_name">
         </v-text-field>
         <v-text-field label="Last Name" v-model="user.last_name">
         </v-text-field>
         <v-text-field label="Email" :rules="emailRules" required type="email" v-model="user.email">
         </v-text-field>
-        
-        <v-select v-if="accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
-
+        <v-select v-if="user.accessLevel == 2" required :items="nodes" item-text="name" item-value="id" v-model="node" label="Node" autocomplete></v-select>
       </v-form>
     </v-card>
     <!-- Button Panel -->
@@ -28,11 +26,16 @@
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
       <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
     </v-container>
+    
+    <user-create-dialog :user="user"></user-create-dialog>
+
   </v-card>
 </template>
 
 <script>
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
+import userCreateDialog from '../pop-up-dialogs/user-create-dialog.vue';
+import { contextState } from '../../state-machine';
 import { postUser } from '../../services/data';
 
 export default {
@@ -45,8 +48,8 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
+        accessLevel: null,
       },
-      accessLevel: null,
       node: null,
       // NB: hard-coded
       nodes: [
@@ -62,6 +65,7 @@ export default {
   },
   components: {
     reportModifyFormToolbar,
+    userCreateDialog,
   },
   methods: {
     clear() {
@@ -74,9 +78,11 @@ export default {
       const user = {
         name: `${this.user.first_name} ${this.user.last_name}`,
         email: this.email,
-      }
+      };
       postUser(user)
         .then(() => {
+          const state = contextState.CREATEUSER;
+          this.$store.dispatch('changeReportContext', { id: null, state });
           this.clear();
         });
     },

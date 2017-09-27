@@ -18,6 +18,7 @@
 
 <script>
 import userCreateForm from '../components/forms/user-create-form.vue';
+import userCreateDialog from '../components/pop-up-dialogs/user-create-dialog.vue';
 import nodeCreateForm from '../components/forms/node-create-form.vue';
 
 export default {
@@ -29,6 +30,7 @@ export default {
   },
   components: {
     userCreateForm,
+    userCreateDialog,
     nodeCreateForm,
   },
 };
