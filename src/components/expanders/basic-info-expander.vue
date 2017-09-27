@@ -7,7 +7,7 @@
         <v-text-field label="Title" v-model="report.title">
         </v-text-field>
         <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
-        <v-select label="Co-Authors" v-bind:items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
+        <v-select label="Co-Authors" :items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
           <template slot="selection" scope="data">
             <v-chip close @input="data.parent.selectItem(data.item)" :selected="data.selected" class="chip--select-multi" :key="JSON.stringify(data.id)">
               {{ data.item.name }}

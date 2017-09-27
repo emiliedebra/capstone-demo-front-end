@@ -55,6 +55,7 @@ const researchOutputs = [
     type: 0,
     publication_year: '2017',
     author: 1,
+    coauthors: [],
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: 'www.proof.com',
     proof_verified: 1,
@@ -65,6 +66,7 @@ const researchOutputs = [
     type: 1,
     publication_year: '2017',
     author: 2,
+    coauthors: [],
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: null,
     proof_verified: 0,
@@ -128,7 +130,7 @@ export function getResearchOutputsSearchX(search) {
   // returns a list of research outputs based on search
   // NB: Doesn't work yet
   return getDetailedResearchOutputs()
-    .then(reports => {
+    .then((reports) => {
       const result = [];
       for (const report of reports) {
         for (const key of Object.keys(report)) {
