@@ -1,9 +1,9 @@
-<!--report-modify-confirmation-dialog-->
+<!--report-clear-confirmation-dialog-->
 
 <template>
   <v-dialog persistent v-model="showDialog">
     <v-card class="text-xs-center">
-      <v-card-text>Are you sure you want to submit these changes?</v-card-text>
+      <v-card-text>Are you sure you want to clear these changes?</v-card-text>
       <v-btn @click.native="modifyReport">Yes</v-btn>
       <v-btn @click.native="close">No</v-btn>
     </v-card>
@@ -17,7 +17,7 @@ import { contextState } from '../../state-machine';
 
 export default {
 
-  name: 'report-modify-confirmation-dialog',
+  name: 'report-clear-confirmation-dialog',
   data() {
     return {
       // nothing for now
@@ -25,15 +25,15 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.confirmationDialog === contextState.CONFIRM,
+      showDialog: state => state.confirmationDialog === contextState.CONFIRMCLEAR,
     }),
   },
   methods: {
     close() {
-      this.$store.dispatch('changeReportContext', null);
+      this.$store.dispatch('changeConfirmationDialog', null);
     },
     modifyReport() {
-      this.$emit('modify');
+      this.$emit('clear');
     },
   },
 };

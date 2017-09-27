@@ -1,16 +1,20 @@
 <!-- report-modify-dialog -->
 
 <template>
-  <v-dialog v-model="showDialog" persistent width="800">
-    <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
-    <report-modify-form ref="modifyform" :report="report" @submit="submit"></report-modify-form>
-  </v-dialog>
+  <v-card>
+    <report-modify-confirmation-dialog @modify="modify"></report-modify-confirmation-dialog>
+    <v-dialog v-model="showDialog" persistent width="800">
+      <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
+      <report-modify-form ref="modifyform" :report="report" @submit="submit"></report-modify-form>
+    </v-dialog>
+  </v-card>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
+import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
 import { contextState, modalState } from '../../state-machine';
 import { newReport, getReport, postResearchOutput, updateResearchOutput } from '../../services/data';
 
@@ -25,6 +29,7 @@ export default {
   components: {
     reportModifyForm,
     reportModifyFormToolbar,
+    reportModifyConfirmationDialog,
   },
   computed: {
     ...mapState({
@@ -48,12 +53,14 @@ export default {
   },
   methods: {
     submit() {
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRM);
+    },
+    modify() {
       const report = this.report;
       if (this.reportContext.state === contextState.UPDATE) {
         updateResearchOutput(report)
           .then(() => {
             this.close();
-            this.$router.push('/');
           })
           .catch(error => console.log(error));
       } else {

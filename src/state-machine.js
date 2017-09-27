@@ -8,6 +8,8 @@ export const contextState = {
   UPDATE: 'UPDATE',
   VIEW: 'VIEW',
   DELETE: 'DELETE',
+  CONFIRM: 'CONFIRM',
+  CONFIRMCLEAR: 'CONFIRMCLEAR',
 };
 
 export const modalState = {
@@ -35,6 +37,7 @@ store.watch(
     } else {
       // no context so...
       store.commit('changeModalDialog', modalState.NONE);
+      store.commit('changeConfirmationDialog', modalState.NONE);
     }
   }
 );

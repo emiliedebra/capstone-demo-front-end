@@ -19,7 +19,7 @@ export default new Vuex.Store({
     // currently showing modal dialog
     modalDialog: null,
     // toggles user-create-dialog
-    addAuthorDialog: false,
+    confirmationDialog: null,
     // toggles login-dialog
     logInDialog: true,
     // defines logged in user ID
@@ -72,6 +72,9 @@ export default new Vuex.Store({
     changeModalDialog: (state, name) => {
       state.modalDialog = name;
     },
+    changeConfirmationDialog: (state, name) => {
+      state.confirmationDialog = name;
+    },
     changeSearchInput: (state, name) => {
       state.searchInput = name;
     },
@@ -108,6 +111,9 @@ export default new Vuex.Store({
     },
     changeSearchInput: (context, newValue) => {
       context.commit('changeSearchInput', newValue);
+    },
+    changeConfirmationDialog: (context, newValue) => {
+      context.commit('changeConfirmationDialog', newValue);
     },
   },
 });

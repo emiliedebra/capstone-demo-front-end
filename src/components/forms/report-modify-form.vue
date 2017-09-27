@@ -1,9 +1,8 @@
 <!-- report-modify-form -->
 
 <template id="report-modify-form">
-  <v-card class="text-xs-center">
-    <author-create-dialog></author-create-dialog>
-
+  <v-card class="text-xs-center"> 
+    <report-clear-confirmation-dialog @clear="clear"></report-clear-confirmation-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
         <v-card-text class="ma-0 pa-0">
@@ -26,15 +25,17 @@
     <!-- Button Panel -->
     <v-container slot="footer" fixed grid-list-xs text-xs-center>
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
-      <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
+      <v-btn flat class="ma-0 pa-0" @click="confirmClear" v-if="clearButton">clear</v-btn>
     </v-container>
 
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { contextState } from '../../state-machine';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
-import authorCreateDialog from '../pop-up-dialogs/author-create-dialog.vue';
+import reportClearConfirmationDialog from '../pop-up-dialogs/report-clear-confirmation-dialog.vue';
 import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
 import researchOutputContentExpander from '../expanders/research-output-content-expander.vue';
@@ -46,15 +47,29 @@ export default {
   props: ['report'],
   data() {
     return {
-      // don't need
+      clearButton: false,
     };
   },
   components: {
     reportModifyFormToolbar,
-    authorCreateDialog,
+    reportClearConfirmationDialog,
     basicInfoExpander,
     detailedInfoExpander,
     researchOutputContentExpander,
+  },
+  computed: {
+    ...mapState({
+      reportContext: state => state.reportContext,
+    }),
+  },
+  watch: {
+    reportContext(state) {
+      if (state && state.state === contextState.CREATE) {
+        this.clearButton = true;
+      } else if (state && state.state === contextState.UPDATE) {
+        this.clearButton = false;
+      }
+    },
   },
   methods: {
     clear() {
@@ -62,6 +77,11 @@ export default {
       this.$refs.basicinfo.clear();
       this.$refs.detailedinfo.clear();
       this.$refs.researchinfo.clear();
+      this.$store.dispatch('changeConfirmationDialog', null);
+    },
+    confirmClear() {
+      // clear form data
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMCLEAR);
     },
     close() {
       // clear data
@@ -70,11 +90,6 @@ export default {
     submit() {
       // NB: an attempt to implement submitting a new report
       this.$emit('submit');
-    },
-    changeAddAuthorDialog() {
-      // NB: not yet implemented
-      // toggle author-create-dialog
-      this.$store.dispatch('changeAddAuthorDialog');
     },
   },
 };
