@@ -4,13 +4,13 @@
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ma-3">
       <form ref="nodecreateform" @clearReport="clear">
-        <v-text-field label="Name" v-model="name">
+        <v-text-field label="Name" v-model="node.name">
         </v-text-field>
-        <v-text-field label="Location" v-model="location">
+        <v-text-field label="Location" v-model="node.location">
         </v-text-field>
-        <v-text-field label="Description" v-model="description">
+        <v-text-field label="Description" v-model="node.description">
         </v-text-field>
-        <v-select :items="users" item-text="name" item-value="id" v-model="nodeAdmin" label="Node Administrator" autocomplete></v-select>
+        <v-select :items="users" item-text="name" item-value="id" v-model="node.nodeAdmin" label="Node Administrator" autocomplete></v-select>
       </form>
     </v-card>
     <!-- Button Panel -->
@@ -18,33 +18,39 @@
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
       <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
     </v-container>
+    <node-create-dialog></node-create-dialog>
   </v-card>
 </template>
 
 <script>
 // import reportCreateFormToolbar from './report-create-form-toolbar';
-import { postNode } from '../../services/data-access';
-import { getUsers } from '../../services/data';
+// import { postNode } from '../../services/data-access';
+import { getUsers, postNode } from '../../services/data';
+import { contextState } from '../../state-machine';
+import nodeCreateDialog from '../pop-up-dialogs/node-create-dialog.vue';
 
 export default {
 
   name: 'node-create-form',
   data() {
     return {
-      name: '',
-      location: '',
-      description: '',
-      nodeAdmin: null,
+      node: {
+        name: '',
+        location: '',
+        description: '',
+        nodeAdmin: null,
+      },
       users: [],
     };
   },
   components: {
     // reportCreateFormToolbar,
+    nodeCreateDialog,
   },
   created() {
     // fetch a list of users for nodeAdmin option
     getUsers()
-    .then((users) => {this.users = users });
+      .then((users) => { this.users = users; });
   },
   methods: {
     clear() {
@@ -59,8 +65,10 @@ export default {
     submit() {
       // NB: not yet implemented
       // post node data and on success clear form
-      postNode(this.data)
+      postNode(this.node)
         .then(() => {
+          const state = contextState.CREATENODE;
+          this.$store.dispatch('changeReportContext', { id: null, state });
           this.clear();
         });
     },

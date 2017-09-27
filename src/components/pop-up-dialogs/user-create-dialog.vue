@@ -15,7 +15,6 @@ import { mapState } from 'vuex';
 import { modalState } from '../../state-machine';
 
 export default {
-
   name: 'user-create-dialog',
   data() {
     return {

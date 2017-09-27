@@ -26,9 +26,7 @@
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
       <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
     </v-container>
-    
-    <user-create-dialog :user="user"></user-create-dialog>
-
+    <user-create-dialog></user-create-dialog>
   </v-card>
 </template>
 

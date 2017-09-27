@@ -32,6 +32,38 @@ const users = [
   },
 ];
 
+let lastNodeId = 0;
+const nodes = [
+  {
+    id: lastNodeId++,
+    name: 'UCT',
+    description: '1',
+    location: 'Cape Town',
+    nodeAdmin: 2,
+  },
+  {
+    id: lastNodeId++,
+    name: 'Wits',
+    description: '',
+    location: 'Pretoria',
+    nodeAdmin: 2,
+  },
+  {
+    id: lastNodeId++,
+    name: 'Stellenbosch',
+    description: '',
+    location: 'Western Cape',
+    nodeAdmin: 1,
+  },
+  {
+    id: lastNodeId++,
+    name: 'UJ',
+    description: '',
+    location: 'Johannesburg',
+    nodeAdmin: 0,
+  },
+];
+
 const publicationTypes = [
   {
     id: 0,
@@ -210,5 +242,13 @@ export function postUser(data) {
   lastUserId++;
   _data.id = lastUserId;
   users.push(_data);
+  return Promise.resolve();
+}
+
+export function postNode(data) {
+  const _data = cloneObject(data);
+  lastNodeId++;
+  _data.id = lastNodeId;
+  nodes.push(_data);
   return Promise.resolve();
 }
