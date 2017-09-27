@@ -164,7 +164,7 @@ export function postResearchOutput(data) {
 
 export function deleteResearchOutput(data) {
   const _data = cloneObject(data);
-  const index = researchOutputs.findIndex(x => x.id == _data);
+  const index = researchOutputs.findIndex(x => x.id === _data);
   // const index = researchOutputs.indexOf(data);
   if (index > -1) {
     researchOutputs.splice(index, 1);
@@ -175,7 +175,7 @@ export function deleteResearchOutput(data) {
 
 export function updateResearchOutput(data) {
   const _data = cloneObject(data);
-  const index = researchOutputs.findIndex(x => x.id == _data.id);
+  const index = researchOutputs.findIndex(x => x.id === _data.id);
   // const index = researchOutputs.indexOf(data);
   if (index > -1) {
     researchOutputs[index] = _data;
@@ -295,5 +295,3 @@ export function getNodeName(id) {
       }
     });
 }
-
-

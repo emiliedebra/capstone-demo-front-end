@@ -9,7 +9,6 @@ import '../../node_modules/vuetify/dist/vuetify.min.css';
 import Page from '../pages/PageView.vue';
 import Home from '../pages/HomeView.vue';
 import Report from '../pages/ReportView.vue';
-import Create from '../pages/CreateView.vue';
 import Nodes from '../pages/NodesView.vue';
 import Users from '../pages/UsersView.vue';
 import Search from '../pages/SearchView.vue';
@@ -46,12 +45,6 @@ export default new VueRouter({
       path: '/manage-nodes',
       name: 'Manage Nodes',
       component: Nodes,
-    },
-    {
-      title: 'CAIR Create',
-      path: '/create',
-      name: 'Create',
-      component: Create,
     },
     {
       title: 'CAIR Search',

@@ -16,7 +16,7 @@ import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReport, getAuthorName, postResearchOutput, updateResearchOutput } from '../../services/data';
+import { newReport, getReport, postResearchOutput, updateResearchOutput } from '../../services/data';
 
 
 export default {
