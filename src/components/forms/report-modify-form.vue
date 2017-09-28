@@ -2,7 +2,7 @@
 
 <template id="report-modify-form">
   <v-card class="text-xs-center"> 
-    <report-clear-confirmation-dialog @clear="clear"></report-clear-confirmation-dialog>
+    <report-modify-confirmation-dialog @modify="modify" @clear="clear"></report-modify-confirmation-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
         <v-card-text class="ma-0 pa-0">
@@ -35,7 +35,7 @@
 import { mapState } from 'vuex';
 import { contextState } from '../../state-machine';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
-import reportClearConfirmationDialog from '../pop-up-dialogs/report-clear-confirmation-dialog.vue';
+import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
 import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
 import researchOutputContentExpander from '../expanders/research-output-content-expander.vue';
@@ -52,7 +52,7 @@ export default {
   },
   components: {
     reportModifyFormToolbar,
-    reportClearConfirmationDialog,
+    reportModifyConfirmationDialog,
     basicInfoExpander,
     detailedInfoExpander,
     researchOutputContentExpander,
@@ -72,24 +72,20 @@ export default {
     },
   },
   methods: {
+    // confirm clear before emitting clear
+    confirmClear() {
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMCLEAR);
+    },
+    submit() {
+      this.$emit('submit');
+    },
+    modify() {
+      this.$emit('modify');
+    },
     clear() {
-      // clear form data
       this.$refs.basicinfo.clear();
       this.$refs.detailedinfo.clear();
       this.$refs.researchinfo.clear();
-      this.$store.dispatch('changeConfirmationDialog', null);
-    },
-    confirmClear() {
-      // clear form data
-      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMCLEAR);
-    },
-    close() {
-      // clear data
-      this.clear();
-    },
-    submit() {
-      // NB: an attempt to implement submitting a new report
-      this.$emit('submit');
     },
   },
 };

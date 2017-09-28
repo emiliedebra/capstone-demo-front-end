@@ -3,7 +3,7 @@
 <template id="user-create-form">
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ma-3">
-      <form ref="nodecreateform" @clearReport="clear">
+      <v-form ref="nodecreateform" @clearReport="clear">
         <v-text-field label="Name" v-model="node.name" required>
         </v-text-field>
         <v-text-field label="Location" v-model="node.location" required>
@@ -11,7 +11,7 @@
         <v-text-field label="Description" v-model="node.description">
         </v-text-field>
         <v-select :items="users" item-text="name" item-value="id" v-model="node.nodeAdmin" label="Node Administrator" autocomplete></v-select>
-      </form>
+      </v-form>
     </v-card>
     <!-- Button Panel -->
     <v-container fixed grid-list-xs text-xs-center>
@@ -65,12 +65,16 @@ export default {
     submit() {
       // NB: not yet implemented
       // post node data and on success clear form
-      postNode(this.node)
-        .then(() => {
-          const state = contextState.CREATENODE;
-          this.$store.dispatch('changeReportContext', { id: null, state });
-          this.clear();
-        });
+      if (this.node.name !== '' || this.node.location !== '') {
+        postNode(this.node)
+          .then(() => {
+            const state = contextState.CREATENODE;
+            this.$store.dispatch('changeReportContext', { id: null, state });
+            this.clear();
+          });
+      } else {
+        this.$store.commit('changeConfirmationDialog', contextState.ERROR);
+      }
     },
   },
 };

@@ -7,7 +7,7 @@ const users = [
     name: 'Sean Wood',
     email: '1',
     password: '1',
-    accessLevel: 1,
+    accessLevel: 2,
     node: 1,
   },
   {

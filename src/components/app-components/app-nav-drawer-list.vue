@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       home: { icon: 'home', text: 'Home', link: '/' },
-      search: { icon: 'search', text: 'Advanced Search', link: '/search' },
+      search: { icon: 'search', text: 'Search', link: '/search' },
       // create: { icon: 'create', text: 'Create Account/Node', link: '/create' },
       nodes: { icon: 'location_city', text: 'Manage Nodes', link: '/manage-nodes' },
       users: { icon: 'person_add', text: 'Manage Users', link: '/manage-users' },

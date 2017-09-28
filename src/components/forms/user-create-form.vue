@@ -12,9 +12,9 @@
           <v-radio label="CAIR Member" value="1"></v-radio>
         </v-radio-group>
       </div>
-        <v-text-field label="First Name" v-model="user.first_name">
+        <v-text-field label="First Name" required v-model="user.first_name">
         </v-text-field>
-        <v-text-field label="Last Name" v-model="user.last_name">
+        <v-text-field label="Last Name" required v-model="user.last_name">
         </v-text-field>
         <v-text-field label="Email" :rules="emailRules" required type="email" v-model="user.email">
         </v-text-field>
@@ -46,7 +46,7 @@ export default {
         first_name: '',
         last_name: '',
         email: '',
-        accessLevel: null,
+        accessLevel: 0,
       },
       node: null,
       // NB: hard-coded
@@ -70,18 +70,22 @@ export default {
     submit() {
       // NB: not yet implemented
       // post new user data and on success, clear
-      const user = {
-        name: `${this.user.first_name} ${this.user.last_name}`,
-        email: this.user.email,
-        accessLevel: parseInt(this.user.accessLevel, [10]),
-        node: this.user.node,
-      };
-      postUser(user)
-        .then(() => {
-          const state = contextState.CREATEUSER;
-          this.$store.dispatch('changeReportContext', { id: null, state });
-          this.clear();
-        });
+      if (this.user.email !== '' || this.user.first_name !== '' || this.user.last_name !== '') {
+        const user = {
+          name: `${this.user.first_name} ${this.user.last_name}`,
+          email: this.user.email,
+          accessLevel: parseInt(this.user.accessLevel, [10]),
+          node: this.user.node,
+        };
+        postUser(user)
+          .then(() => {
+            const state = contextState.CREATEUSER;
+            this.$store.dispatch('changeReportContext', { id: null, state });
+            this.clear();
+          });
+      } else {
+        this.$store.commit('changeConfirmationDialog', contextState.ERROR);
+      }
     },
   },
   mounted() {

@@ -23,7 +23,7 @@ export default {
   mounted() {
     this.getAdminName();
     if (this.body.description === '') {
-      this.body.description = 'No description';
+      this.body.description = 'No Description';
     }
   },
   methods: {

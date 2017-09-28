@@ -10,6 +10,7 @@ export const contextState = {
   DELETE: 'DELETE',
   CONFIRM: 'CONFIRM',
   CONFIRMCLEAR: 'CONFIRMCLEAR',
+  ERROR: 'ERROR',
 };
 
 export const modalState = {

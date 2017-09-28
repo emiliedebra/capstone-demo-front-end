@@ -2,10 +2,11 @@
 
 <template>
   <v-card>
-    <report-modify-confirmation-dialog @modify="modify"></report-modify-confirmation-dialog>
+    
+
     <v-dialog v-model="showDialog" persistent width="800">
       <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
-      <report-modify-form ref="modifyform" :report="report" @submit="submit"></report-modify-form>
+      <report-modify-form ref="modifyform" :report="report" @submit="submit" @modify="modify"></report-modify-form>
     </v-dialog>
   </v-card>
 </template>
@@ -53,7 +54,12 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRM);
+      // check data before confirming submit
+      if (this.report.title !== '' && this.report.year !== null && this.report.type !== null) {
+        this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRM);
+      } else {
+        this.$store.dispatch('changeConfirmationDialog', contextState.ERROR);
+      }
     },
     modify() {
       const report = this.report;
@@ -64,7 +70,6 @@ export default {
       if (report.author === null) {
         report.author = this.$store.getters.loggedInUserID;
       }
-      // update or create
       if (this.reportContext.state === contextState.UPDATE) {
         updateResearchOutput(report)
           .then(() => {
@@ -79,8 +84,11 @@ export default {
           .catch(error => console.log(error));
       }
     },
-    close() {
+    clear() {
       this.$refs.modifyform.clear();
+      this.$store.dispatch('changeConfirmationDialog', null);
+    },
+    close() {
       this.$store.dispatch('changeReportContext', null);
     },
   },

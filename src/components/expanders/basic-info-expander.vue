@@ -3,8 +3,8 @@
 <template id="basic-info-expander">
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3 mr-3 mt-0">
-      <v-form lazy-validation ref="basicinfo">
-        <v-text-field label="Title" v-model="report.title" :rules="titleRules" required>
+      <v-form ref="basicinfo">
+        <v-text-field label="Title" v-model="report.title" required>
         </v-text-field>
         <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
         <v-select label="Co-Authors" :items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
@@ -43,6 +43,7 @@ export default {
 
   name: 'basic-info-expander',
   props: ['report'],
+  $validates: true,
   data() {
     return {
       valid: false,
@@ -60,9 +61,9 @@ export default {
       yearRules: [
         v => (v && v.length === 4) || 'Invalid year',
       ],
-      titleRules: [
-        v => !!v || 'Title is required',
-      ],
+      // titleRules: [
+      //   v => !!v || 'Title is required',
+      // ],
       typeRules: [
         v => !!v || 'Type is required',
       ],
@@ -79,10 +80,6 @@ export default {
     clear() {
       // clear form data
       this.$refs.basicinfo.reset();
-    },
-    submit() {
-      // send data to report-modify-dialog
-      this.$emit(this.data);
     },
   },
   watch: {

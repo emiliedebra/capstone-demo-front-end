@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "print.js": "^1.0.18",
+    "vee-validate": "^2.0.0-rc.18",
     "vue": "^2.4.2",
     "vue-axios": "^2.0.2",
     "vue-router": "^2.7.0",
