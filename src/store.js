@@ -31,6 +31,7 @@ export default new Vuex.Store({
     buttonDetails: false,
     // search input from search bar
     searchInput: '',
+    toolTip: 'Add Report',
   },
   getters: {
     unsuccessfulLogin: state => state.unsuccessfulLogin,
@@ -44,6 +45,7 @@ export default new Vuex.Store({
     showDetails: state => state.showDetails,
     buttonDetails: state => state.buttonDetails,
     searchInput: state => state.searchInput,
+    toolTip: state => state.toolTip,
   },
   mutations: {
     toggleClearReport: (state) => {
@@ -85,6 +87,9 @@ export default new Vuex.Store({
     changeSearchInput: (state, name) => {
       state.searchInput = name;
     },
+    changeToolTip: (state, name) => {
+      state.toolTip = name;
+    },
   },
   actions: {
     toggleUnsuccessfulLogin: (context) => {
@@ -123,6 +128,9 @@ export default new Vuex.Store({
     },
     changeSearchInput: (context, newValue) => {
       context.commit('changeSearchInput', newValue);
+    },
+    changeToolTip: (context, newValue) => {
+      context.commit('changeToolTip', newValue);
     },
     changeConfirmationDialog: (context, newValue) => {
       context.commit('changeConfirmationDialog', newValue);

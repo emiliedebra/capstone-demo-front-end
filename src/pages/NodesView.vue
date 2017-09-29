@@ -36,6 +36,7 @@ export default {
       .then((nodes) => {
         this.nodes = nodes;
       });
+    this.$store.dispatch('changeToolTip', 'New Node');
   },
 };
 </script>

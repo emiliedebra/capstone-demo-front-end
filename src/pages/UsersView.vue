@@ -42,6 +42,7 @@ export default {
       .then((users) => {
         this.users = users;
       });
+    this.$store.dispatch('changeToolTip', 'New User');
   },
 
 };

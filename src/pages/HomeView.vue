@@ -64,6 +64,7 @@ export default {
     // NB: using local data
     // get reports to display in report-list
     this.getResearchOutputs();
+    this.$store.dispatch('changeToolTip', 'New Report');
   },
 
   components: {

@@ -32,7 +32,7 @@
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
         <report-modify-dialog></report-modify-dialog>
         <report-delete-dialog></report-delete-dialog>
-        <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink" dark fixed bottom right fab @click.native="add">
+        <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink ma-4" v-tooltip:top="{ html: `${toolTip}` }" dark fixed bottom right fab @click.native="add">
           <v-icon>add</v-icon>
         </v-btn>
       </v-container>
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import reportModifyDialog from './components/pop-up-dialogs/report-modify-dialog.vue';
 import reportDeleteDialog from './components/pop-up-dialogs/report-delete-dialog.vue';
 import appSideMenuList from './components/app-components/app-side-menu-list.vue';
@@ -64,6 +65,11 @@ export default {
     appNavDrawerList,
     loginDialog,
     unsuccessfulLoginDialog,
+  },
+  computed: {
+    ...mapState({
+      toolTip: state => state.toolTip,
+    }),
   },
   methods: {
     changeReportContext() {
