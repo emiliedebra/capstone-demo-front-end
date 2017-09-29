@@ -94,7 +94,7 @@ const researchOutputs = [
     coauthors: [],
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: 'www.proof.com',
-    proof_verified: 1,
+    proof_verified: true,
   },
   {
     id: lastId++,
@@ -105,7 +105,7 @@ const researchOutputs = [
     coauthors: [],
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: null,
-    proof_verified: 0,
+    proof_verified: false,
   },
 ];
 
@@ -137,11 +137,13 @@ export function getDetailedResearchOutputs() {
             getAuthorName(output.author),
             getPublicationType(output.type),
             getNodeName(output.node),
+            getVerificationDetails(output),
           ])
-            .then(([author, type, node]) => {
+            .then(([author, type, node, verificationDetails]) => {
               output.author = author;
               output.type = type;
               output.node = node;
+              output.proof_verified = verificationDetails;
               return output;
             })
         ))
@@ -247,6 +249,17 @@ export function getReport(id) {
       }
     });
 }
+export function getNormalizedReport(id) {
+  // returns report given id
+  return Promise.resolve(researchOutputs)
+    .then((reports) => {
+      for (const report of reports) {
+        if (report.id === id) {
+          return report;
+        }
+      }
+    });
+}
 
 export function getPublicationTypes() {
   // returns a list of type objects
@@ -311,4 +324,11 @@ export function getNodeName(id) {
       });
   }
   return 'None';
+}
+
+export function getVerificationDetails(report) {
+  if (report.proof_verified === false) {
+    return 'Not Verified';
+  }
+  return 'Verified';
 }

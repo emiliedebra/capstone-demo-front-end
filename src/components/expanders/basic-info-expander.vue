@@ -66,7 +66,6 @@ export default {
     };
   },
   created() {
-    // NB: needs to be tested with changing data
     getPublicationTypes()
       .then((types) => { this.types = types; });
     getUsers()

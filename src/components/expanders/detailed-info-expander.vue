@@ -18,12 +18,6 @@ export default {
 
   name: 'detailed-info-expander',
   props: ['report'],
-  data() {
-    return {
-      proof_verified: false,
-      proof_link: '',
-    };
-  },
   methods: {
     clear() {
       // clear form data

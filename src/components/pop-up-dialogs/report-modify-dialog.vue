@@ -15,7 +15,7 @@ import reportModifyForm from '../forms/report-modify-form.vue';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
 import { contextState, modalState } from '../../state-machine';
-import { newReport, getReport, postResearchOutput, updateResearchOutput } from '../../services/data';
+import { newReport, getNormalizedReport, postResearchOutput, updateResearchOutput } from '../../services/data';
 
 
 export default {
@@ -40,8 +40,9 @@ export default {
     reportContext(state) {
       if (state && state.state === contextState.UPDATE) {
         // fetch report when updating
-        getReport(state.id)
+        getNormalizedReport(state.id)
           .then((report) => {
+            console.log(report);
             this.report = report;
           });
       } else {
