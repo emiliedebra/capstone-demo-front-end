@@ -12,6 +12,7 @@
         <p class="pa-0 ma-0 grey--text">{{ publication_type_name }}</p>
         <p class="pa-0 ma-0 ml-2 grey--text">|</p>
         <p class="pa-0 ma-0 ml-2 grey--text">{{ researchOutput.publication_year }}</p>
+        <!-- To view abstract NOTE: May change architecture to expansion panels -->
         <p v-if="this.$route.name !== 'Report'" class="pa-0 ma-0 ml-2 grey--text">|</p>
         <v-btn-toggle v-if="this.$route.name !== 'Report'" class="pa-0 ma-0 ml-2" small @click.native="toggleShow"> 
           View Abstract
@@ -40,6 +41,7 @@ export default {
       this.$emit('toggleShowMsg', !this.show);
     },
     fetchData() {
+      // NOTE: Should this be done on the backend?
       if (this.researchOutput) {
         if (!isEmpty(this.researchOutput.author)) {
           getAuthorName(this.researchOutput.author)

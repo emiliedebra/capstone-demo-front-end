@@ -35,15 +35,16 @@ export default {
   computed: {
     ...mapState({
       accessLevel: state => state.accessLevel,
+      reportContext: state => state.reportContext,
     }),
   },
   watch: {
     accessLevel(state) {
       if (state > 1) {
-        const _this = this;
+        // const this = this;
         getDetailedResearchOutputs()
           .then((posts) => {
-            _this.posts = posts;
+            this.posts = posts;
           });
       } else {
         getBasicResearchOutputs()
@@ -52,21 +53,16 @@ export default {
           });
       }
     },
+    reportContext(state) {
+      if (state === null) {
+        this.getResearchOutputs();
+      }
+    },
   },
   mounted() {
     // NB: using local data
     // get reports to display in report-list
-    if (this.$store.getters.accessLevel > 1) {
-      getDetailedResearchOutputs()
-        .then((posts) => {
-          this.posts = posts;
-        });
-    } else {
-      getBasicResearchOutputs()
-        .then((posts) => {
-          this.posts = posts;
-        });
-    }
+    this.getResearchOutputs();
   },
 
   components: {
@@ -78,6 +74,19 @@ export default {
     print() {
       // fire print-services method
       printOutputs(this.posts);
+    },
+    getResearchOutputs() {
+      if (this.$store.getters.accessLevel > 1) {
+        getDetailedResearchOutputs()
+          .then((posts) => {
+            this.posts = posts;
+          });
+      } else {
+        getBasicResearchOutputs()
+          .then((posts) => {
+            this.posts = posts;
+          });
+      }
     },
   },
 };

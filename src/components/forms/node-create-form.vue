@@ -1,6 +1,6 @@
 <!-- node-create-form -->
 
-<template id="user-create-form">
+<template id="node-create-form">
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ma-3">
       <v-form ref="nodecreateform" @clearReport="clear">
@@ -18,6 +18,7 @@
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
       <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
     </v-container>
+    <!-- Success Dialog -->
     <node-create-dialog></node-create-dialog>
   </v-card>
 </template>
@@ -57,15 +58,9 @@ export default {
       // clear form data
       this.$refs.nodecreateform.reset();
     },
-    toggleDialog() {
-      // NB: not used
-      // fire clear on dialog-toggle
-      this.clear();
-    },
     submit() {
-      // NB: not yet implemented
       // post node data and on success clear form
-      if (this.node.name !== '' || this.node.location !== '') {
+      if (this.node.name !== '' || this.node.location !== '') { // checks validity
         postNode(this.node)
           .then(() => {
             const state = contextState.CREATENODE;

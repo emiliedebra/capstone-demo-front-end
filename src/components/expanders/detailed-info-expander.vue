@@ -29,10 +29,6 @@ export default {
       // clear form data
       this.$refs.detailedinfo.reset();
     },
-    submit() {
-      // send data to report-modify-dialog
-      this.$emit(this.data);
-    },
   },
   watch: {
     clearReport() {

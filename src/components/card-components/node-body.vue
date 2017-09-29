@@ -1,4 +1,4 @@
-<!-- report-body -->
+<!-- node-body -->
 
 <template id="node-body">
   <v-card flat class="pl-4 pb-3">

@@ -47,7 +47,7 @@ export default {
     },
     change(state) {
       // change view ID
-      // done here because button-panel doesn't receive data
+      // NOTE: done here because button-panel doesn't receive data
       this.$store.dispatch('changeReportContext', { id: this.item.id, state });
     },
   },

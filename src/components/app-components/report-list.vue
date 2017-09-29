@@ -2,8 +2,7 @@
 
 <template id="report-list">
   <v-card flat>
-    <report-card v-for="item in outputs" :item="item" :key="item.title">
-    </report-card>
+    <report-card v-for="item in outputs" :item="item" :key="item.title"></report-card>
   </v-card>
 </template>
 
@@ -12,14 +11,12 @@ import reportCard from '../cards/report-card.vue';
 
 export default {
   name: 'report-list',
-  props: {
-    outputs: {
-      type: Array,
-    },
+  props: ['outputs'],
+  data() {
+    return {
+      // nothing
+    };
   },
-  data: () => ({
-    show: false,
-  }),
   components: {
     reportCard,
   },

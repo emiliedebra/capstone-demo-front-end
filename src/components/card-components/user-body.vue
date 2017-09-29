@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     getAccessLevelName() {
-      // TODO: do more efficiently
+      // TODO: do more efficiently (backend??)
       if (this.body.accessLevel === 0) {
         this.accessLevelName = 'Author';
       } else if (this.body.accessLevel === 1) {
@@ -39,7 +39,7 @@ export default {
       }
     },
     getNode() {
-      // TODO: complete with get nodes
+      // NOTE: Implement on backend?
       if (this.body.node !== 0 && (!this.body.node || this.body.node === null)) {
         this.nodeName = 'None';
       } else {

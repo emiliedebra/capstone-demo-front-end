@@ -5,8 +5,8 @@
     
 
     <v-dialog v-model="showDialog" persistent width="800">
-      <report-modify-form-toolbar @close="close"></report-modify-form-toolbar>
-      <report-modify-form ref="modifyform" :report="report" @submit="submit" @modify="modify"></report-modify-form>
+      <report-modify-form-toolbar></report-modify-form-toolbar>
+      <report-modify-form ref="modifyform" :report="report" @submit="submit" @modify="modify" @clear="clear"></report-modify-form>
     </v-dialog>
   </v-card>
 </template>
@@ -64,6 +64,7 @@ export default {
     modify() {
       const report = this.report;
       // replace nulls with default values
+      // NOTE: Done on Backend?
       if (report.additional_info === '') {
         report.additional_info = 'No abstract available.';
       }
@@ -85,7 +86,6 @@ export default {
       }
     },
     clear() {
-      this.$refs.modifyform.clear();
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     close() {

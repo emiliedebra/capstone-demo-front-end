@@ -4,7 +4,7 @@
 
   <v-system-bar card fixed window>
     <div class="subheading">{{ title }}</div>
-    <v-spacer></v-spacer> <!-- NB: places close button to the right -->
+    <v-spacer></v-spacer> <!-- NOTE: places close button to the right -->
     <v-btn icon @click.native="close">
       <v-icon class="text-xs-center">close</v-icon>
     </v-btn>
@@ -30,6 +30,7 @@ export default {
   },
   watch: {
     reportContext(state) {
+      // Defines header for modify dialog
       if (state && state.state === contextState.CREATE) {
         this.title = 'New Research Output';
       } else if (state && state.state === contextState.UPDATE) {
@@ -40,7 +41,7 @@ export default {
   methods: {
     close() {
       // fire report-modify-dialog to close
-      this.$emit('close');
+      this.$store.dispatch('changeReportContext', null);
     },
   },
 };

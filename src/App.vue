@@ -20,7 +20,7 @@
         <v-btn icon slot="activator" dark>
           <v-icon>more_vert</v-icon>
         </v-btn>
-        <app-side-menu-list @logout="show=false"></app-side-menu-list>
+        <app-side-menu-list @logout="show = false"></app-side-menu-list>
       </v-menu>
     </v-toolbar>
 

@@ -3,7 +3,7 @@
 <template>
   <v-dialog persistent v-model="this.$store.getters.unsuccessfulLogin">
     <v-card class="text-xs-center">
-      <v-card-text>You have entered the incorrect email/password combination. 
+      <v-card-text>Incorrect Details.
         Please try again or continue as a guest.</v-card-text>
         <v-btn @click.native="close">OK</v-btn>
     </v-card>

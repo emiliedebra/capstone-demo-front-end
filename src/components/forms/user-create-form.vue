@@ -5,13 +5,15 @@
     <!-- Input Form -->
     <v-card flat fluid class="ma-3">
       <v-form ref="createform" @clearReport="clear">
-      <div class="ma-0 pa-0">
-        <v-radio-group hide-details v-model="user.accessLevel" :mandatory="false">
-          <v-radio label="Node Administrator" value="2"></v-radio>
-          <v-radio label="Global Administrator" value="3"></v-radio>
-          <v-radio label="CAIR Member" value="1"></v-radio>
-        </v-radio-group>
-      </div>
+        <!-- Access Levels -->
+        <div class="ma-0 pa-0">
+          <v-radio-group hide-details v-model="user.accessLevel" :mandatory="false">
+            <v-radio label="Global Administrator" value="3"></v-radio>
+            <v-radio label="Node Administrator" value="2"></v-radio>
+            <v-radio label="CAIR Member" value="1"></v-radio>
+          </v-radio-group>
+        </div>
+        <!-- Personal Info -->
         <v-text-field label="First Name" required v-model="user.first_name">
         </v-text-field>
         <v-text-field label="Last Name" required v-model="user.last_name">
@@ -68,13 +70,12 @@ export default {
       this.$refs.createform.reset();
     },
     submit() {
-      // NB: not yet implemented
       // post new user data and on success, clear
-      if (this.user.email !== '' || this.user.first_name !== '' || this.user.last_name !== '') {
+      if (this.user.email !== '' || this.user.first_name !== '' || this.user.last_name !== '') { // validation
         const user = {
           name: `${this.user.first_name} ${this.user.last_name}`,
           email: this.user.email,
-          accessLevel: parseInt(this.user.accessLevel, [10]),
+          accessLevel: parseInt(this.user.accessLevel, [10]), // convert to int
           node: this.user.node,
         };
         postUser(user)

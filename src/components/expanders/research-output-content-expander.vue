@@ -21,8 +21,7 @@ export default {
   props: ['report'],
   data() {
     return {
-      text: '',
-      abstract: '',
+      // nothing
     };
   },
   methods: {
@@ -30,13 +29,13 @@ export default {
       // clear form data
       this.$refs.contentform.reset();
     },
-    watch: {
-      clearReport() {
-        // watch global variable to fire local clear
-        if (this.$store.getters.clearReport === true) {
-          this.clear();
-        }
-      },
+  },
+  watch: {
+    clearReport() {
+      // watch global variable to fire local clear
+      if (this.$store.getters.clearReport === true) {
+        this.clear();
+      }
     },
   },
 };

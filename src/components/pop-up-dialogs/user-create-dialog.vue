@@ -11,7 +11,6 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { deleteResearchOutput } from '../../services/data';
 import { modalState } from '../../state-machine';
 
 export default {

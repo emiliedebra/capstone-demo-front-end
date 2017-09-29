@@ -4,7 +4,6 @@
 <v-card flat>
   <v-layout row>
   <v-card flat class="text-xs-left">
-  <!-- <v-btn small flat @click.native="toggleShow"> Abstract </v-btn> -->
   </v-card>
   <v-spacer></v-spacer>
   <v-card flat class="text-xs-right">
@@ -25,21 +24,18 @@ import { contextState } from '../../state-machine';
 
 export default {
   name: 'report-button-panel',
-  props: ['show'],
-
   methods: {
     changeReportContext() {
-      // change ID of current report to view
+      // change report context to deal with view and push to report page
       this.$emit('changeReportContext', contextState.VIEW);
       this.$router.push('./report');
     },
     deleteReport() {
-      // NB: Not implemented properly
-      // change ID and fire delete of current ID
+      // change report context to deal with delete
       this.$emit('changeReportContext', contextState.DELETE);
     },
     modifyReport() {
-      // change ID and open dialog
+      // change report context to deal with update
       this.$emit('changeReportContext', contextState.UPDATE);
     },
   },

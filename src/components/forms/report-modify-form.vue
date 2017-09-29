@@ -7,14 +7,17 @@
     <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
         <v-card-text class="ma-0 pa-0">
           <v-expansion-panel invert class="ma-0 pa-0">
+            <!-- Basic Info -->
             <v-expansion-panel-content>
               <div slot="header">Basic Information</div>
               <basic-info-expander ref="basicinfo" :report="report"></basic-info-expander>
             </v-expansion-panel-content>
+            <!-- Detailed Info -->
             <v-expansion-panel-content v-show="this.$store.getters.showDetails">
               <div slot="header">Detailed Information</div>
               <detailed-info-expander ref="detailedinfo" :report="report"></detailed-info-expander>
             </v-expansion-panel-content>
+            <!-- Content Info -->
             <v-expansion-panel-content>
               <div slot="header">Research Output Content</div>
               <research-output-content-expander ref="researchinfo" :report="report"></research-output-content-expander>
@@ -39,7 +42,6 @@ import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-conf
 import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
 import researchOutputContentExpander from '../expanders/research-output-content-expander.vue';
-// import reportCreateFormHeader from './report-create-form-header';
 
 export default {
 
@@ -64,6 +66,7 @@ export default {
   },
   watch: {
     reportContext(state) {
+      // Hide or show clear button
       if (state && state.state === contextState.CREATE) {
         this.clearButton = true;
       } else if (state && state.state === contextState.UPDATE) {
@@ -77,15 +80,19 @@ export default {
       this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMCLEAR);
     },
     submit() {
+      // fire submit in report-modify-dialog
       this.$emit('submit');
     },
     modify() {
+      // fire modify in report-modify-dialog
       this.$emit('modify');
     },
     clear() {
+      // clear form and fire clear in report-modify-dialog
       this.$refs.basicinfo.clear();
       this.$refs.detailedinfo.clear();
       this.$refs.researchinfo.clear();
+      this.$emit('clear');
     },
   },
 };

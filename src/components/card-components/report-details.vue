@@ -20,6 +20,7 @@ export default {
   methods: {
     updateData() {
       // apply logic for verified information view
+      // NOTE: Should this be done in the backend??
       if (this.$store.getters.accessLevel > 1) {
         if (this.details.proof_verified === false) {
           this.show = false;

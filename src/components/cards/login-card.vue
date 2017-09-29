@@ -21,7 +21,6 @@
 </template>
 
 <script>
-// import { loginUser } from '../utils/data-access.js';
 import { login } from '../../services/data';
 
 export default {
@@ -50,18 +49,6 @@ export default {
             this.$refs.loginform.reset();
           }
         });
-      // NB: Old code for using database
-      // .then((response) => {
-      //   // should only occur if successful : NB Getting here even if db access fails
-      //   this.$store.dispatch('changeAccessLevel', response.access_id);
-      //   this.$store.dispatch('changeLoggedIn', true);
-      //   this.$store.dispatch('changeLogInDialog', false);
-      //   this.$router.push('/');
-      // })
-      // .catch((response) => {
-      //   // open dialog that rejects login
-      //   console.log('Cannot Log In');
-      // });
     },
     guestAccess() {
       // set access level to observer, continue to home, reset login form

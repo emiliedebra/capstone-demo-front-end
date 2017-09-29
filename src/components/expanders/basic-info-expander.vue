@@ -4,9 +4,12 @@
   <v-card flat class="text-xs-center">
     <v-card flat fluid class="ml-3 mr-3 mt-0">
       <v-form ref="basicinfo">
+        <!-- Title -->
         <v-text-field label="Title" v-model="report.title" required>
         </v-text-field>
+        <!-- Author -->
         <v-select :items="authors" item-text="name" item-value="id" v-model="report.author" label="Author" autocomplete></v-select>
+        <!-- Co-Author -->
         <v-select label="Co-Authors" :items="authors" v-model="report.coauthors" item-text="name" item-value="id" multiple chips max-height="auto" autocomplete>
           <template slot="selection" scope="data">
             <v-chip close @input="data.parent.selectItem(data.item)" :selected="data.selected" class="chip--select-multi" :key="JSON.stringify(data.id)">
@@ -24,10 +27,11 @@
             </template>
           </template>
         </v-select>
+        <!-- Type and Year -->
         <v-layout row>
-          <v-select :items="types" item-text="name" item-value="id" v-model="report.type" label="Publication Type" autocomplete :rules="typeRules" required></v-select>
+          <v-select :items="types" item-text="name" item-value="id" v-model="report.type" label="Publication Type" autocomplete required></v-select>
           <v-spacer></v-spacer>
-         <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="report.publication_year" required>
+          <v-text-field label="Year" :rules="yearRules" item-text="publication_year" v-model="report.publication_year" required>
           </v-text-field>
         </v-layout>
       </v-form>
@@ -36,14 +40,12 @@
 </template>
 
 <script>
-// import { getAuthors } from '../utils/data-access.js';
 import { getPublicationTypes, getUsers } from '../../services/data';
 
 export default {
 
   name: 'basic-info-expander',
   props: ['report'],
-  $validates: true,
   data() {
     return {
       valid: false,
@@ -59,13 +61,7 @@ export default {
       types: [],
       // RULES
       yearRules: [
-        v => (v && v.length === 4) || 'Invalid year',
-      ],
-      // titleRules: [
-      //   v => !!v || 'Title is required',
-      // ],
-      typeRules: [
-        v => !!v || 'Type is required',
+        v => (v && v !== 0 && v.length === 4) || 'Invalid year',
       ],
     };
   },
