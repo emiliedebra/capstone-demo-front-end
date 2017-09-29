@@ -1,24 +1,19 @@
 <!-- report-header -->
 
 <template id="report-header">
-  <v-card flat>
-    <v-card-text class="pb-0 mb-0">
-      <div class="pa-0 ma-0 subheading">{{ researchOutput.title }}</div>
-    </v-card-text>
-    <v-card-text class="mt-0 pt-0 mb-0 pb-0">
+  <v-card flat class="pt-2 pb-2 pl-2">
+    <!-- <v-card-text class="pb-0 mb-0"> -->
+    <div class="subheading">{{ researchOutput.title }}</div>
+    <!-- </v-card-text> -->
+    <v-container fluid class="ma-0 pa-0">
       <v-layout row>
         <p class="pa-0 ma-0">{{ author_name }}</p>
         <p class="pa-0 ma-0 ml-2 mr-2 grey--text">|</p>
         <p class="pa-0 ma-0 grey--text">{{ publication_type_name }}</p>
         <p class="pa-0 ma-0 ml-2 grey--text">|</p>
         <p class="pa-0 ma-0 ml-2 grey--text">{{ researchOutput.publication_year }}</p>
-        <!-- To view abstract NOTE: May change architecture to expansion panels -->
-        <p v-if="this.$route.name !== 'Report'" class="pa-0 ma-0 ml-2 grey--text">|</p>
-        <v-btn-toggle v-if="this.$route.name !== 'Report'" class="pa-0 ma-0 ml-2" small @click.native="toggleShow"> 
-          View Abstract
-        </v-btn-toggle>
       </v-layout>
-    </v-card-text>
+    </v-container>
   </v-card>
 </template>
 

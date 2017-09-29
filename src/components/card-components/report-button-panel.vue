@@ -24,19 +24,20 @@ import { contextState } from '../../state-machine';
 
 export default {
   name: 'report-button-panel',
+  props: ['reportID'],
   methods: {
     changeReportContext() {
       // change report context to deal with view and push to report page
-      this.$emit('changeReportContext', contextState.VIEW);
+      this.$store.dispatch('changeReportContext', { id: this.reportID, state: contextState.VIEW });
       this.$router.push('./report');
     },
     deleteReport() {
       // change report context to deal with delete
-      this.$emit('changeReportContext', contextState.DELETE);
+      this.$store.dispatch('changeReportContext', { id: this.reportID, state: contextState.DELETE });
     },
     modifyReport() {
       // change report context to deal with update
-      this.$emit('changeReportContext', contextState.UPDATE);
+      this.$store.dispatch('changeReportContext', { id: this.reportID, state: contextState.UPDATE });
     },
   },
   components: {

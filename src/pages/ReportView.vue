@@ -7,11 +7,11 @@
     </v-btn>
     
   <v-card flat fluid class="ma-0 pa-0">
-    <v-layout row grid-xs-left>
-      <v-flex xs10>
+    <v-layout column grid-xs-left>
+      <v-flex xs10 class="pl-2">
         <report-header :researchOutput="output"></report-header>
       </v-flex>
-      <v-flex xs3 mt-3 grid-xs-right>
+      <v-flex xs3 grid-xs-right>
         <report-details v-if="this.$store.getters.showDetails" :details="output"></report-details>
       </v-flex>
     </v-layout>
@@ -21,13 +21,11 @@
 </template>
 
 <script>
-// import axios from 'axios';
 import { mapState } from 'vuex';
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
 import reportDetails from '../components/card-components/report-details.vue';
 import { getReport, newReport } from '../services/data';
-// import { contextState } from '../state-machine';
 
 export default {
   name: 'report',
