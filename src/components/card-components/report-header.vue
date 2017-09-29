@@ -18,9 +18,6 @@
 </template>
 
 <script>
-import { getAuthorName, getPublicationType } from '../../services/data';
-import { isEmpty } from '../../utils/data-utils';
-
 export default {
   name: 'report-header',
   props: ['researchOutput'],
@@ -29,27 +26,6 @@ export default {
       // toggle abstract
       this.$emit('toggleShowMsg', !this.show);
     },
-  //   fetchData() {
-  //     // NOTE: Should this be done on the backend?
-  //     if (this.researchOutput) {
-  //       if (!isEmpty(this.researchOutput.author)) {
-  //         getAuthorName(this.researchOutput.author)
-  //           .then((name) => { this.author_name = name; });
-  //       }
-  //       if (!isEmpty(this.researchOutput.type)) {
-  //         getPublicationType(this.researchOutput.type)
-  //           .then((name) => { this.publication_type_name = name; });
-  //       }
-  //     }
-  //   },
-  // },
-  // mounted() {
-  //   this.fetchData();
-  // },
-  // watch: {
-  //   researchOutput() {
-  //     this.fetchData();
-  //   },
   },
 };
 </script>

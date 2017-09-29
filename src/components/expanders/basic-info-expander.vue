@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getPublicationTypes, getUsers } from '../../services/data';
+import { getPublicationTypes, getUsers } from '../../services/data-access-layer';
 
 export default {
 

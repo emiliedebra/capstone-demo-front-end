@@ -36,7 +36,7 @@
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import userCreateDialog from '../pop-up-dialogs/user-create-dialog.vue';
 import { contextState } from '../../state-machine';
-import { postUser, getNodes } from '../../services/data';
+import { postUser, getNodes } from '../../services/data-access-layer';
 
 export default {
 

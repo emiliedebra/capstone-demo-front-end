@@ -19,7 +19,7 @@
 <script>
 import nodeCreateForm from '../components/forms/node-create-form.vue';
 import nodeList from '../components/app-components/node-list.vue';
-import { getNodes } from '../services/data';
+import { getNodes } from '../services/data-access-layer';
 
 export default {
   name: 'node-view',

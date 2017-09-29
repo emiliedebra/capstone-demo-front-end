@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { getNodeName } from '../../services/data';
+import { getNodeName } from '../../services/data-access-layer';
 
 export default {
   name: 'user-body',

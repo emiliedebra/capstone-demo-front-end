@@ -19,7 +19,7 @@
 <script>
 import userCreateForm from '../components/forms/user-create-form.vue';
 import userList from '../components/app-components/user-list.vue';
-import { getUsers } from '../services/data';
+import { getUsers } from '../services/data-access-layer';
 
 export default {
   name: 'user-view',
