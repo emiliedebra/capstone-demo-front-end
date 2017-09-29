@@ -3,6 +3,7 @@
 <template id="report-modify-form">
   <v-card class="text-xs-center"> 
     <report-modify-confirmation-dialog @modify="modify" @clear="clear"></report-modify-confirmation-dialog>
+    <report-confirm-clear-dialog @clear="clear"></report-confirm-clear-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
         <v-card-text class="ma-0 pa-0">
@@ -39,6 +40,7 @@ import { mapState } from 'vuex';
 import { contextState } from '../../state-machine';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import reportModifyConfirmationDialog from '../pop-up-dialogs/report-modify-confirmation-dialog.vue';
+import reportConfirmClearDialog from '../pop-up-dialogs/report-confirm-clear-dialog.vue';
 import basicInfoExpander from '../expanders/basic-info-expander.vue';
 import detailedInfoExpander from '../expanders/detailed-info-expander.vue';
 import researchOutputContentExpander from '../expanders/research-output-content-expander.vue';
@@ -55,6 +57,7 @@ export default {
   components: {
     reportModifyFormToolbar,
     reportModifyConfirmationDialog,
+    reportConfirmClearDialog,
     basicInfoExpander,
     detailedInfoExpander,
     researchOutputContentExpander,

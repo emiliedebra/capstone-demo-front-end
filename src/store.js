@@ -16,6 +16,8 @@ export default new Vuex.Store({
     accessLevel: 0,
     // current viewable report id - TODO: change to ReportContext
     reportContext: null, // { id: 123, state: 'update' }
+    // add node or add user
+    addContext: null,
     // currently showing modal dialog
     modalDialog: null,
     // toggles user-create-dialog
@@ -36,7 +38,7 @@ export default new Vuex.Store({
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
     reportContext: state => state.reportContext,
-    addAuthorDialog: state => state.addAuthorDialog,
+    addContext: state => state.addContext,
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
     showDetails: state => state.showDetails,
@@ -59,8 +61,8 @@ export default new Vuex.Store({
     changeReportContext: (state, newValue) => {
       state.reportContext = newValue;
     },
-    changeAddAuthorDialog: (state) => {
-      state.addAuthorDialog = !state.addAuthorDialog;
+    changeAddContext: (state, newValue) => {
+      state.addContext = newValue;
     },
     changeLogInDialog: (state, boolean) => {
       state.logInDialog = boolean;
@@ -110,8 +112,8 @@ export default new Vuex.Store({
     changeReportContext: (context, newValue) => {
       context.commit('changeReportContext', newValue);
     },
-    changeAddAuthorDialog: (context) => {
-      context.commit('changeAddAuthorDialog');
+    changeAddContext: (context, newValue) => {
+      context.commit('changeAddContext', newValue);
     },
     changeLogInDialog: (context, newValue) => {
       context.commit('changeLogInDialog', newValue);

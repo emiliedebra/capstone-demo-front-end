@@ -32,7 +32,7 @@
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
         <report-modify-dialog></report-modify-dialog>
         <report-delete-dialog></report-delete-dialog>
-        <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink" dark fixed bottom right fab @click.native="changeReportContext">
+        <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink" dark fixed bottom right fab @click.native="add">
           <v-icon>add</v-icon>
         </v-btn>
       </v-container>
@@ -70,9 +70,22 @@ export default {
       // toggle report-create0dialog
       this.$store.dispatch('changeReportContext', { id: null, state: contextState.CREATE });
     },
+    changeAddContext(context) {
+      // toggle report-create0dialog
+      this.$store.dispatch('changeAddContext', context);
+    },
     searchOnEnter() {
       this.$store.dispatch('changeSearchInput', this.searchInput);
       this.$router.push('/search');
+    },
+    add() {
+      if (this.$route.path === '/') {
+        this.changeReportContext();
+      } else if (this.$route.path === '/manage-users') {
+        this.changeAddContext(contextState.ADDUSER);
+      } else if (this.$route.path === '/manage-nodes') {
+        this.changeAddContext(contextState.ADDNODE);
+      }
     },
   },
 };

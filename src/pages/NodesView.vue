@@ -2,12 +2,7 @@
 
 <template>
   <v-card flat fluid class="create pt-3" style="background-color: transparent">
-    <v-expansion-panel class="pa-0 mb-3">
-      <v-expansion-panel-content>
-        <div slot="header">Create New Node</div>
-        <node-create-form></node-create-form>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+    <node-create-dialog></node-create-dialog>
     <v-divider></v-divider>
     <div class="pt-3">
       <h6>Existing Nodes</h6>
@@ -18,6 +13,7 @@
 
 <script>
 import nodeCreateForm from '../components/forms/node-create-form.vue';
+import nodeCreateDialog from '../components/pop-up-dialogs/node-create-dialog.vue';
 import nodeList from '../components/app-components/node-list.vue';
 import { getNodes } from '../services/data-access-layer';
 
@@ -30,6 +26,7 @@ export default {
   },
   components: {
     nodeCreateForm,
+    nodeCreateDialog,
     nodeList,
   },
   mounted() {

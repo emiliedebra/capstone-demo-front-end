@@ -1,33 +1,34 @@
-<!--user-create-dialog-->
+<!-- user-create-dialog -->
 
 <template>
-  <v-dialog persistent v-model="showDialog">
-    <v-card class="text-xs-center">
-      <v-card-text>The user has been added.</v-card-text>
-      <v-btn @click.native="close">Ok</v-btn>
-    </v-card>
-  </v-dialog>
+  <v-card>
+    <v-dialog v-model="showDialog" persistent width="800">
+      <user-create-form-toolbar @close="clear"></user-create-form-toolbar>
+      <user-create-form ref="form"></user-create-form>
+    </v-dialog>
+  </v-card>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { modalState } from '../../state-machine';
+import { contextState } from '../../state-machine';
+import userCreateForm from '../forms/user-create-form.vue';
+import userCreateFormToolbar from '../form-components/user-create-form-toolbar.vue';
 
 export default {
   name: 'user-create-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
+  components: {
+    userCreateForm,
+    userCreateFormToolbar,
   },
   computed: {
     ...mapState({
-      showDialog: state => state.modalDialog === modalState.CREATEUSER,
+      showDialog: state => state.addContext === contextState.ADDUSER,
     }),
   },
   methods: {
-    close() {
-      this.$store.dispatch('changeReportContext', null);
+    clear() {
+      this.$refs.form.clear();
     },
   },
 };

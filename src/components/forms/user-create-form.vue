@@ -2,9 +2,11 @@
 
 <template id="user-create-form">
   <v-card flat class="text-xs-center">
+    <user-create-confirmation-dialog></user-create-confirmation-dialog>
+    <user-confirm-clear-dialog @clear="clear"></user-confirm-clear-dialog>
     <!-- Input Form -->
-    <v-card flat fluid class="ma-3">
-      <v-form ref="createform" @clearReport="clear">
+    <v-card flat fluid class="ml-3 mr-3">
+      <v-form ref="createform">
         <!-- Access Levels -->
         <div class="ma-0 pa-0">
           <v-radio-group hide-details v-model="user.accessLevel" :mandatory="false">
@@ -26,15 +28,15 @@
     <!-- Button Panel -->
     <v-container fixed grid-list-xs text-xs-center>
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
-      <v-btn flat class="ma-0 pa-0" @click="clear">clear</v-btn>
+      <v-btn flat class="ma-0 pa-0" @click="confirmClear">clear</v-btn>
     </v-container>
-    <user-create-dialog></user-create-dialog>
   </v-card>
 </template>
 
 <script>
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
-import userCreateDialog from '../pop-up-dialogs/user-create-dialog.vue';
+import userCreateConfirmationDialog from '../pop-up-dialogs/user-create-confirmation-dialog.vue';
+import userConfirmClearDialog from '../pop-up-dialogs/user-confirm-clear-dialog.vue';
 import { contextState } from '../../state-machine';
 import { postUser, getNodes } from '../../services/data-access-layer';
 
@@ -62,16 +64,19 @@ export default {
   },
   components: {
     reportModifyFormToolbar,
-    userCreateDialog,
+    userCreateConfirmationDialog,
+    userConfirmClearDialog,
   },
   methods: {
     clear() {
       // clear form data
       this.$refs.createform.reset();
+      this.$store.dispatch('changeConfirmationDialog', null);
     },
     submit() {
       // post new user data and on success, clear
-      if (this.user.email !== '' || this.user.first_name !== '' || this.user.last_name !== '') { // validation
+      const valid = (this.user.email && this.user.first_name && this.user.last_name);
+      if (valid && this.user.email !== '' && this.user.first_name !== '' && this.user.last_name !== '') { // validation
         const user = {
           name: `${this.user.first_name} ${this.user.last_name}`,
           email: this.user.email,
@@ -82,11 +87,15 @@ export default {
           .then(() => {
             const state = contextState.CREATEUSER;
             this.$store.dispatch('changeReportContext', { id: null, state });
+            this.$store.commit('changeAddContext', null);
             this.clear();
           });
       } else {
         this.$store.commit('changeConfirmationDialog', contextState.ERROR);
       }
+    },
+    confirmClear() {
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMUSERCLEAR);
     },
   },
   mounted() {

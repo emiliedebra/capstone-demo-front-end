@@ -1,34 +1,34 @@
-<!--node-create-dialog-->
+<!-- node-create-dialog -->
 
 <template>
-  <v-dialog persistent v-model="showDialog">
-    <v-card class="text-xs-center">
-      <v-card-text>The node has been added.</v-card-text>
-      <v-btn @click.native="close">Ok</v-btn>
-    </v-card>
-  </v-dialog>
+  <v-card>
+    <v-dialog v-model="showDialog" persistent width="800">
+      <node-create-form-toolbar @close="close"></node-create-form-toolbar>
+      <node-create-form ref="form"></node-create-form>
+    </v-dialog>
+  </v-card>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-// import { deleteResearchOutput } from '../../services/data';
-import { modalState } from '../../state-machine';
+import { contextState } from '../../state-machine';
+import nodeCreateForm from '../forms/node-create-form.vue';
+import nodeCreateFormToolbar from '../form-components/node-create-form-toolbar.vue';
 
 export default {
   name: 'node-create-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
+  components: {
+    nodeCreateForm,
+    nodeCreateFormToolbar,
   },
   computed: {
     ...mapState({
-      showDialog: state => state.modalDialog === modalState.CREATENODE,
+      showDialog: state => state.addContext === contextState.ADDNODE,
     }),
   },
   methods: {
     close() {
-      this.$store.dispatch('changeReportContext', null);
+      this.$refs.form.clear();
     },
   },
 };

@@ -9,11 +9,6 @@
       <v-btn v-if="confirmDialog" @click.native="close">No</v-btn>
       <!-- Error Dialog -->
       <v-btn @click.native="close" v-show="errorDialog">Ok</v-btn>
-      
-      <v-card-text v-if="clearDialog">Are you sure you want to clear these changes?</v-card-text>
-      <v-btn v-if="clearDialog" @click.native="clearReport">Yes</v-btn>
-      <v-btn v-if="clearDialog" @click.native="close">No</v-btn>
-
     </v-card>
   </v-dialog>
 </template>
@@ -33,10 +28,9 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.confirmationDialog === contextState.CONFIRM || state.confirmationDialog === contextState.ERROR || state.confirmationDialog === contextState.CONFIRMCLEAR,
+      showDialog: state => state.confirmationDialog === contextState.CONFIRM || state.confirmationDialog === contextState.ERROR,
       errorDialog: state => state.confirmationDialog === contextState.ERROR,
       confirmDialog: state => state.confirmationDialog === contextState.CONFIRM,
-      clearDialog: state => state.confirmationDialog === contextState.CONFIRMCLEAR,
     }),
   },
   methods: {
@@ -45,9 +39,6 @@ export default {
     },
     modifyReport() {
       this.$emit('modify');
-    },
-    clearReport() {
-      this.$emit('clear');
     },
   },
 };

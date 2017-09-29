@@ -2,13 +2,14 @@
 
 <template>
   <v-card flat fluid class="create pt-3" style="background-color: transparent">
-    <v-expansion-panel class="pa-0 mb-3">
+    <!-- <v-expansion-panel class="pa-0 mb-3">
       <v-expansion-panel-content>
         <div slot="header">Create New Account</div>
         <user-create-form></user-create-form>
       </v-expansion-panel-content>
     </v-expansion-panel>
-    <v-divider></v-divider>
+    <v-divider></v-divider> -->
+    <user-create-dialog></user-create-dialog>
     <div class="pt-3">
       <h6>Existing Users</h6>
       <user-list :outputs="users"></user-list>
@@ -18,6 +19,7 @@
 
 <script>
 import userCreateForm from '../components/forms/user-create-form.vue';
+import userCreateDialog from '../components/pop-up-dialogs/user-create-dialog.vue';
 import userList from '../components/app-components/user-list.vue';
 import { getUsers } from '../services/data-access-layer';
 
@@ -30,6 +32,7 @@ export default {
   },
   components: {
     userCreateForm,
+    userCreateDialog,
     userList,
   },
   mounted() {
