@@ -16,6 +16,7 @@ const users = [
     email: 'emilie@anotherway.co.za',
     password: '1234',
     accessLevel: 2,
+    node: null,
   },
   {
     id: lastUserId++,
@@ -23,6 +24,7 @@ const users = [
     email: 'clint@anotherway.co.za',
     password: '12345',
     accessLevel: 1,
+    node: null,
   },
   {
     id: lastUserId++,
@@ -30,6 +32,7 @@ const users = [
     email: 'cait@anotherway.co.za',
     password: '123',
     accessLevel: 0,
+    node: null,
   },
 ];
 
@@ -125,34 +128,49 @@ export function getAuthorName(id) {
 
 export function getDetailedResearchOutputs() {
   // return and array of research outpus objects with details
-  // NB: detailed logic is implemented in front-end using states
-  return Promise.resolve(researchOutputs);
+  return Promise
+    .resolve(cloneObject(researchOutputs))
+    .then(outputs => Promise.all(
+      outputs
+        .map(output =>
+          Promise.all([
+            getAuthorName(output.author),
+            getPublicationType(output.type),
+            getNodeName(output.node),
+          ])
+            .then(([author, type, node]) => {
+              output.author = author;
+              output.type = type;
+              output.node = node;
+              return output;
+            })
+        ))
+    );
 }
 
 export function getBasicResearchOutputs() {
   return getDetailedResearchOutputs()
-    .then((outputs) => {
-      const basic = JSON.parse(JSON.stringify(outputs));
-      for (const item of basic) {
-        delete item.proof_link;
-        delete item.proof_verified;
-      }
-      return Promise.resolve(basic);
-    });
+    .then(outputs => outputs
+      .map((output) => {
+        delete output.proof_link;
+        delete output.proof_verified;
+        return output;
+      })
+    );
 }
 
-export function nameReports() {
-  const data = JSON.parse(JSON.stringify(researchOutputs));
-  for (const item of data) {
-    getNodeName(item.node)
-      .then((node) => { item.node = node; });
-    getPublicationType(item.type)
-      .then((type) => { item.type = type; });
-    getAuthorName(item.author)
-      .then((name) => { item.author = name; });
-  }
-  return Promise.resolve(data);
-}
+// export function nameReports() {
+//   const data = JSON.parse(JSON.stringify(researchOutputs));
+//   for (const item of data) {
+//     getNodeName(item.node)
+//       .then((node) => { item.node = node; });
+//     getPublicationType(item.type)
+//       .then((type) => { item.type = type; });
+//     getAuthorName(item.author)
+//       .then((name) => { item.author = name; });
+//   }
+//   return Promise.resolve(data);
+// }
 
 export function postResearchOutput(data) {
   const _data = cloneObject(data);
@@ -184,7 +202,7 @@ export function updateResearchOutput(data) {
   return Promise.resolve();
 }
 
-export function getResearchOutputsSearchX(search) {
+export function getResearchOutputsSearch(search) {
   // returns a list of research outputs based on search
   // NB: Doesn't work yet
   return getDetailedResearchOutputs()
@@ -202,10 +220,6 @@ export function getResearchOutputsSearchX(search) {
       }
       return [];
     });
-}
-
-export function getResearchOutputsSearch(search) {
-  return Promise.resolve(getResearchOutputsSearchX(search));
 }
 
 export function newReport() {
@@ -286,12 +300,15 @@ export function getNodes() {
 
 export function getNodeName(id) {
   // returns an array of user objects
-  return getNodes()
-    .then((result) => {
-      for (const node of result) {
-        if (node.id === id) {
-          return node.name;
+  if (id !== 0 && id !== null) {
+    return getNodes()
+      .then((result) => {
+        for (const node of result) {
+          if (node.id === id) {
+            return node.name;
+          }
         }
-      }
-    });
+      });
+  }
+  return 'None';
 }

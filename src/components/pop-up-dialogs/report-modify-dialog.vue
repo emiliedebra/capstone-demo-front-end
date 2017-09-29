@@ -2,8 +2,6 @@
 
 <template>
   <v-card>
-    
-
     <v-dialog v-model="showDialog" persistent width="800">
       <report-modify-form-toolbar></report-modify-form-toolbar>
       <report-modify-form ref="modifyform" :report="report" @submit="submit" @modify="modify" @clear="clear"></report-modify-form>

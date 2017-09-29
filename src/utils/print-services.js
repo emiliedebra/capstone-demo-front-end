@@ -1,8 +1,7 @@
 /* eslint no-undef: 0 */
 /* Print Services for Generating Reports */
 import 'print.js/dist/print.min';
-import { nameReports } from '../services/data';
-import store from '../store';
+import { getBasicResearchOutputs, getDetailedResearchOutputs } from '../services/data';
 
 export function printJSON(json, ...props) {
   // transform into require json
@@ -14,8 +13,9 @@ export function printJSON(json, ...props) {
 }
 
 function printBasic() {
-  nameReports()
+  getBasicResearchOutputs()
     .then((result) => {
+      console.log(result);
       printJS({
         printable: result,
         properties: ['title', 'author', 'publication_year', 'type'],
@@ -25,7 +25,7 @@ function printBasic() {
 }
 
 function printDetailed() {
-  nameReports()
+  getDetailedResearchOutputs()
     .then((result) => {
       printJS({
         printable: result,
@@ -35,10 +35,9 @@ function printDetailed() {
     });
 }
 
-export function printOutputs() {
+export function printOutputs(access) {
   // transform into require json
-
-  if (store.accessLevel > 1) {
+  if (access > 1) {
     printDetailed();
   } else {
     printBasic();

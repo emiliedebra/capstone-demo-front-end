@@ -44,6 +44,7 @@ export default {
         // const this = this;
         getDetailedResearchOutputs()
           .then((posts) => {
+            console.log(posts);
             this.posts = posts;
           });
       } else {
@@ -73,10 +74,11 @@ export default {
   methods: {
     print() {
       // fire print-services method
-      printOutputs(this.posts);
+      printOutputs(this.accessLevel);
     },
     getResearchOutputs() {
-      if (this.$store.getters.accessLevel > 1) {
+      // NOTE: not working
+      if (this.accessLevel > 1) {
         getDetailedResearchOutputs()
           .then((posts) => {
             this.posts = posts;
