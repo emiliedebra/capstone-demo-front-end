@@ -14,6 +14,10 @@
       <v-flex xs3 grid-xs-right>
         <report-details v-if="this.$store.getters.showDetails" :details="output"></report-details>
       </v-flex>
+      <!-- <v-flex xs3 grid-xs-right>
+          <pdf height="500px" :url="url">
+          </pdf>
+      </v-flex> -->
     </v-layout>
   </v-card>
   <report-body :body="output"></report-body>
@@ -21,6 +25,7 @@
 </template>
 
 <script>
+// import pdf from 'vue-pdf';
 import { mapState } from 'vuex';
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
@@ -32,6 +37,7 @@ export default {
   data() {
     return {
       output: newReport(),
+      // url: 'https://bitcoin.org/bitcoin.pdf',
     };
   },
   computed: {
@@ -64,6 +70,7 @@ export default {
     reportHeader,
     reportBody,
     reportDetails,
+    // pdf,
   },
 };
 </script>

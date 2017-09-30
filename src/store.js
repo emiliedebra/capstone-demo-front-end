@@ -16,10 +16,13 @@ export default new Vuex.Store({
     accessLevel: 0,
     // current viewable report id - TODO: change to ReportContext
     reportContext: null, // { id: 123, state: 'update' }
+    userContext: null, // { id: 123, state: 'update' }
     // add node or add user
     addContext: null,
     // currently showing modal dialog
     modalDialog: null,
+    // currently showing user dialog
+    userDialog: null,
     // toggles user-create-dialog
     confirmationDialog: null,
     // toggles login-dialog
@@ -39,6 +42,8 @@ export default new Vuex.Store({
     loggedIn: state => state.loggedIn,
     accesslevel: state => state.accessLevel,
     reportContext: state => state.reportContext,
+    userContext: state => state.userContext,
+    userDialog: state => state.userContext,
     addContext: state => state.addContext,
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
@@ -62,6 +67,12 @@ export default new Vuex.Store({
     },
     changeReportContext: (state, newValue) => {
       state.reportContext = newValue;
+    },
+    changeUserContext: (state, newValue) => {
+      state.userContext = newValue;
+    },
+    changeUserDialog: (state, newValue) => {
+      state.userDialog = newValue;
     },
     changeAddContext: (state, newValue) => {
       state.addContext = newValue;
@@ -116,6 +127,12 @@ export default new Vuex.Store({
     },
     changeReportContext: (context, newValue) => {
       context.commit('changeReportContext', newValue);
+    },
+    changeUserContext: (context, newValue) => {
+      context.commit('changeUserContext', newValue);
+    },
+    changeUserDialog: (context, newValue) => {
+      context.commit('changeUserDialog', newValue);
     },
     changeAddContext: (context, newValue) => {
       context.commit('changeAddContext', newValue);

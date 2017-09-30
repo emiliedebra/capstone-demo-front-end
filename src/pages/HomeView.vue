@@ -2,6 +2,8 @@
 
 <template ref="home">
   <v-container fluid>
+    <report-modify-dialog></report-modify-dialog>
+    <report-delete-dialog></report-delete-dialog>
     <v-layout row>
       <v-flex xs10>
         <filter-order-bar></filter-order-bar>
@@ -21,7 +23,8 @@
 import { mapState } from 'vuex';
 import { printOutputs } from '../utils/print-services';
 import { getDetailedResearchOutputs, getBasicResearchOutputs } from '../services/data-access-layer';
-
+import reportModifyDialog from '../components/pop-up-dialogs/report-modify-dialog.vue';
+import reportDeleteDialog from '../components/pop-up-dialogs/report-delete-dialog.vue';
 import reportList from '../components/app-components/report-list.vue';
 import filterOrderBar from '../components/app-components/filter-order-bar.vue';
 
@@ -68,6 +71,8 @@ export default {
   },
 
   components: {
+    reportModifyDialog,
+    reportDeleteDialog,
     reportList,
     filterOrderBar,
   },

@@ -139,6 +139,7 @@ export const researchOutputs = [
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: 'www.proof.com',
     proof_verified: true,
+    pdf: '/home/emilie/ITDev/projects/CBIB-Front-end/src/assets/pdfs/Ruttkamp-Bloem-ea.pdf',
   },
   {
     id: lastId++,
@@ -150,5 +151,6 @@ export const researchOutputs = [
     additional_info: 'Just some hard-coded data that needs to probably be removed soon',
     proof_link: null,
     proof_verified: false,
+    pdf: '/home/emilie/ITDev/projects/CBIB-Front-end/src/assets/pdfs/Ruttkamp-Bloem-ea.pdf',
   },
 ];

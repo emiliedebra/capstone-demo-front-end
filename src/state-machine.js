@@ -50,19 +50,19 @@ store.watch(
   }
 );
 
-// // watch for store changes to modify addDialog state
-// store.watch(
-//   state => state.addContext,
-//   (addContext) => {
-//     if (addContext) {
-//       if (addContext.state === contextState.ADDNODE) {
-//         store.commit('changeModalDialog', modalState.ADDNODE);
-//       } else if (addContext.state === contextState.ADDUSER) {
-//         store.commit('changeModalDialog', modalState.ADDUSER);
-//       }
-//     } else {
-//       // no context so...
-//       store.commit('changeModalDialog', modalState.NONE);
-//     }
-//   }
-// );
+// watch for store changes to modify userDialog state
+store.watch(
+  state => state.userContext,
+  (userContext) => {
+    if (userContext) {
+      if (userContext.state === contextState.DELETE) {
+        store.commit('changeUserDialog', modalState.DELETE);
+      } else if (userContext.state === contextState.UPDATE) {
+        store.commit('changeUserDialog', modalState.MODIFY);
+      }
+    } else {
+      // no context so...
+      store.commit('changeUserDialog', modalState.NONE);
+    }
+  }
+);

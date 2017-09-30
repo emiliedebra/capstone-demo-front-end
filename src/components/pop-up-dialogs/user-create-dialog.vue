@@ -4,7 +4,7 @@
   <v-card>
     <v-dialog v-model="showDialog" persistent width="800">
       <user-create-form-toolbar @close="clear"></user-create-form-toolbar>
-      <user-create-form ref="form"></user-create-form>
+      <user-create-form :user="user" ref="form"></user-create-form>
     </v-dialog>
   </v-card>
 </template>
@@ -17,6 +17,11 @@ import userCreateFormToolbar from '../form-components/user-create-form-toolbar.v
 
 export default {
   name: 'user-create-dialog',
+  data() {
+    return {
+      user: {},
+    };
+  },
   components: {
     userCreateForm,
     userCreateFormToolbar,
