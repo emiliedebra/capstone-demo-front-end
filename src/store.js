@@ -20,10 +20,10 @@ export default new Vuex.Store({
     // add node or add user
     addContext: null,
     // currently showing modal dialog
-    modalDialog: null,
+    reportDialog: null,
     // currently showing user dialog
     userDialog: null,
-    // toggles user-create-dialog
+    // toggles user-modify-dialog
     confirmationDialog: null,
     // toggles login-dialog
     logInDialog: true,
@@ -89,8 +89,8 @@ export default new Vuex.Store({
     changeButtonDetails: (state, boolean) => {
       state.buttonDetails = boolean;
     },
-    changeModalDialog: (state, name) => {
-      state.modalDialog = name;
+    changeReportDialog: (state, name) => {
+      state.reportDialog = name;
     },
     changeConfirmationDialog: (state, name) => {
       state.confirmationDialog = name;

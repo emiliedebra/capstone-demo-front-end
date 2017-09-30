@@ -3,7 +3,7 @@
 <template>
   <v-card flat fluid class="create pt-3" style="background-color: transparent">
     <user-delete-dialog></user-delete-dialog>
-    <user-create-dialog></user-create-dialog>
+    <user-modify-dialog></user-modify-dialog>
     <div class="pt-3">
       <h6>Existing Users</h6>
       <user-list :outputs="users"></user-list>
@@ -12,8 +12,9 @@
 </template>
 
 <script>
-import userCreateForm from '../components/forms/user-create-form.vue';
-import userCreateDialog from '../components/pop-up-dialogs/user-create-dialog.vue';
+import { mapState } from 'vuex';
+import userModifyForm from '../components/forms/user-modify-form.vue';
+import userModifyDialog from '../components/pop-up-dialogs/user-modify-dialog.vue';
 import userDeleteDialog from '../components/pop-up-dialogs/user-delete-dialog.vue';
 import userList from '../components/app-components/user-list.vue';
 import { getUsers } from '../services/data-access-layer';
@@ -25,11 +26,26 @@ export default {
       users: [],
     };
   },
+   computed: {
+    ...mapState({
+      userContext: state => state.userContext,
+    }),
+  },
   components: {
-    userCreateForm,
-    userCreateDialog,
+    userModifyForm,
+    userModifyDialog,
     userDeleteDialog,
     userList,
+  },
+  watch: {
+     reportContext(state) {
+      if (state === null) {
+        getUsers()
+          .then((users) => {
+            this.users = users;
+          });
+      }
+    },
   },
   mounted() {
     // NB: using local data

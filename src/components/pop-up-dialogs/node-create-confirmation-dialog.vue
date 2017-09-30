@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.modalDialog === modalState.CREATENODE,
+      showDialog: state => state.reportDialog === modalState.CREATENODE,
     }),
   },
   methods: {

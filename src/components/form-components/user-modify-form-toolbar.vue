@@ -1,6 +1,6 @@
-<!-- user-create-form-toolbar -->
+<!-- user-modify-form-toolbar -->
 
-<template id="user-create-form-toolbar">
+<template id="user-modify-form-toolbar">
   <v-system-bar card fixed window>
     <div class="subheading">{{ title }}</div>
     <v-spacer></v-spacer>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'user-create-form-toolbar',
+  name: 'user-modify-form-toolbar',
   data() {
     return {
       title: 'Add New User',
@@ -21,9 +21,8 @@ export default {
   },
   methods: {
     close() {
-      // fire user-create-dialog to close
-      this.$emit('close');
-      this.$store.dispatch('changeAddContext', null);
+      // fire user-modify-dialog to close
+      this.$store.dispatch('changeUserContext', null);
     },
   },
 };

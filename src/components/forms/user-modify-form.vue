@@ -1,8 +1,8 @@
-<!-- user-create-form -->
+<!-- user-modify-form -->
 
-<template id="user-create-form">
+<template id="user-modify-form">
   <v-card flat class="text-xs-center">
-    <user-create-confirmation-dialog></user-create-confirmation-dialog>
+    <user-create-confirmation-dialog @modify="modify" @clear="clear"></user-create-confirmation-dialog>
     <user-confirm-clear-dialog @clear="clear"></user-confirm-clear-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="ml-3 mr-3">
@@ -28,12 +28,13 @@
     <!-- Button Panel -->
     <v-container fixed grid-list-xs text-xs-center>
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
-      <v-btn flat class="ma-0 pa-0" @click="confirmClear">clear</v-btn>
+      <v-btn flat class="ma-0 pa-0" @click="confirmClear" v-if="clearButton">clear</v-btn>
     </v-container>
   </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
 import userCreateConfirmationDialog from '../pop-up-dialogs/user-create-confirmation-dialog.vue';
 import userConfirmClearDialog from '../pop-up-dialogs/user-confirm-clear-dialog.vue';
@@ -42,16 +43,11 @@ import { postUser, getNodes } from '../../services/data-access-layer';
 
 export default {
 
-  name: 'user-create-form',
+  name: 'user-modify-form',
+  props: ['user'],
   data() {
     return {
       valid: false,
-      user: {
-        first_name: '',
-        last_name: '',
-        email: '',
-        accessLevel: 0,
-      },
       node: null,
       // NB: hard-coded
       nodes: [],
@@ -60,7 +56,23 @@ export default {
         v => !!v || 'E-mail is required',
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid',
       ],
+      clearButton: false,
     };
+  },
+  computed: {
+    ...mapState({
+      userContext: state => state.userContext,
+    }),
+  },
+  watch: {
+    userContext(state) {
+      // Hide or show clear button
+      if (state && state.state === contextState.CREATE) {
+        this.clearButton = true;
+      } else if (state && state.state === contextState.UPDATE) {
+        this.clearButton = false;
+      }
+    },
   },
   components: {
     reportModifyFormToolbar,
@@ -68,34 +80,19 @@ export default {
     userConfirmClearDialog,
   },
   methods: {
+    confirmClear() {
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMUSERCLEAR);
+    },
     clear() {
       // clear form data
       this.$refs.createform.reset();
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     submit() {
-      // post new user data and on success, clear
-      const valid = (this.user.email && this.user.first_name && this.user.last_name);
-      if (valid && this.user.email !== '' && this.user.first_name !== '' && this.user.last_name !== '') { // validation
-        const user = {
-          name: `${this.user.first_name} ${this.user.last_name}`,
-          email: this.user.email,
-          accessLevel: parseInt(this.user.accessLevel, [10]), // convert to int
-          node: this.user.node,
-        };
-        postUser(user)
-          .then(() => {
-            const state = contextState.CREATEUSER;
-            this.$store.dispatch('changeReportContext', { id: null, state });
-            this.$store.commit('changeAddContext', null);
-            this.clear();
-          });
-      } else {
-        this.$store.commit('changeConfirmationDialog', contextState.ERROR);
-      }
+      this.$emit('submit');
     },
-    confirmClear() {
-      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMUSERCLEAR);
+    modify() {
+      this.$emit('modify');
     },
   },
   mounted() {

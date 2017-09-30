@@ -21,6 +21,7 @@ export function postUser(data) {
   const _data = cloneObject(data);
   lastUserId++;
   _data.id = lastUserId;
+  _data.name = `${_data.first_name} ${_data.last_name}`;
   users.push(_data);
   return Promise.resolve();
 }
@@ -45,6 +46,17 @@ export function getUser(id) {
         }
       }
     });
+}
+
+export function updateUser(data) {
+  const _data = cloneObject(data);
+  const index = users.findIndex(x => x.id === _data.id);
+  // const index = researchOutputs.indexOf(data);
+  if (index > -1) {
+    users[index] = _data;
+  }
+  // researchOutputs.push(_data);
+  return Promise.resolve();
 }
 
 export function newUser() {

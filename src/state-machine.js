@@ -14,6 +14,7 @@ export const contextState = {
   CONFIRMCLEAR: 'CONFIRMCLEAR',
   CONFIRMNODECLEAR: 'CONFIRMNODECLEAR',
   CONFIRMUSERCLEAR: 'CONFIRMUSERCLEAR',
+  CONFIRMUSER: 'CONFIRMUSER',
   ERROR: 'ERROR',
 };
 
@@ -27,23 +28,23 @@ export const modalState = {
   ADDNODE: 'ADDNODE',
 };
 
-// watch for store changes to modify modalDialog state
+// watch for store changes to modify reportDialog state
 store.watch(
   state => state.reportContext,
   (reportContext) => {
     if (reportContext) {
       if (reportContext.state === contextState.UPDATE || reportContext.state === contextState.CREATE) {
-        store.commit('changeModalDialog', modalState.MODIFY);
+        store.commit('changeReportDialog', modalState.MODIFY);
       } else if (reportContext.state === contextState.DELETE) {
-        store.commit('changeModalDialog', modalState.DELETE);
+        store.commit('changeReportDialog', modalState.DELETE);
       } else if (reportContext.state === contextState.CREATEUSER) {
-        store.commit('changeModalDialog', modalState.CREATEUSER);
+        store.commit('changeReportDialog', modalState.CREATEUSER);
       } else if (reportContext.state === contextState.CREATENODE) {
-        store.commit('changeModalDialog', modalState.CREATENODE);
-      }
+        store.commit('changeReportDialog', modalState.CREATENODE);
+      } 
     } else {
       // no context so...
-      store.commit('changeModalDialog', modalState.NONE);
+      store.commit('changeReportDialog', modalState.NONE);
       store.commit('changeAddContext', null);
       store.commit('changeConfirmationDialog', modalState.NONE);
     }
@@ -58,6 +59,8 @@ store.watch(
       if (userContext.state === contextState.DELETE) {
         store.commit('changeUserDialog', modalState.DELETE);
       } else if (userContext.state === contextState.UPDATE) {
+        store.commit('changeUserDialog', modalState.MODIFY);
+      } else if (userContext.state === contextState.CREATE) {
         store.commit('changeUserDialog', modalState.MODIFY);
       }
     } else {

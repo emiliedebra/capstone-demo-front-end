@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.modalDialog === modalState.MODIFY,
+      showDialog: state => state.reportDialog === modalState.MODIFY,
       reportContext: state => state.reportContext,
     }),
   },

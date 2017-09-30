@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     close() {
-      // fire user-create-dialog to close
+      // fire user-modify-dialog to close
       this.$store.dispatch('changeAddContext', null);
       this.$emit('close');
     },

@@ -30,8 +30,6 @@
         <unsuccessful-login-dialog></unsuccessful-login-dialog>
         <login-dialog v-show="!this.$store.getters.unsuccessfulLoginDialog"></login-dialog>
         <router-view v-show="!this.$store.getters.logInDialog"></router-view>
-        <report-modify-dialog></report-modify-dialog>
-        <report-delete-dialog></report-delete-dialog>
         <v-btn v-show="!this.$store.getters.logInDialog && this.$store.getters.showDetails" class="pink ma-4" v-tooltip:top="{ html: `${toolTip}` }" dark fixed bottom right fab @click.native="add">
           <v-icon>add</v-icon>
         </v-btn>
@@ -42,8 +40,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import reportModifyDialog from './components/pop-up-dialogs/report-modify-dialog.vue';
-import reportDeleteDialog from './components/pop-up-dialogs/report-delete-dialog.vue';
 import appSideMenuList from './components/app-components/app-side-menu-list.vue';
 import appNavDrawerList from './components/app-components/app-nav-drawer-list.vue';
 import loginDialog from './components/pop-up-dialogs/login-dialog.vue';
@@ -59,8 +55,7 @@ export default {
     searchInput: '',
   }),
   components: {
-    reportModifyDialog,
-    reportDeleteDialog,
+
     appSideMenuList,
     appNavDrawerList,
     loginDialog,
@@ -76,9 +71,13 @@ export default {
       // toggle report-create0dialog
       this.$store.dispatch('changeReportContext', { id: null, state: contextState.CREATE });
     },
-    changeAddContext(context) {
+    changeUserContext(state) {
       // toggle report-create0dialog
-      this.$store.dispatch('changeAddContext', context);
+      this.$store.dispatch('changeUserContext', {id: null, state });
+    },
+    changeNodeContext(context) {
+      // toggle report-create0dialog
+      this.$store.dispatch('changeUserContext', context);
     },
     searchOnEnter() {
       this.$store.dispatch('changeSearchInput', this.searchInput);
@@ -88,9 +87,9 @@ export default {
       if (this.$route.path === '/') {
         this.changeReportContext();
       } else if (this.$route.path === '/manage-users') {
-        this.changeAddContext(contextState.ADDUSER);
+        this.changeUserContext(contextState.CREATE);
       } else if (this.$route.path === '/manage-nodes') {
-        this.changeAddContext(contextState.ADDNODE);
+        this.changeNodeContext(contextState.ADDNODE);
       }
     },
   },

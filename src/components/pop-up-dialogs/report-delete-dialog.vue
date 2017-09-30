@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.modalDialog === modalState.DELETE,
+      showDialog: state => state.reportDialog === modalState.DELETE,
     }),
   },
   methods: {
