@@ -29,7 +29,7 @@ function printDetailed() {
     .then((result) => {
       printJS({
         printable: result,
-        properties: ['title', 'author', 'publication_year', 'node', 'type'],
+        properties: ['title', 'author', 'publication_year', 'type', 'proof_verified', 'proof_link'],
         type: 'json',
       });
     });

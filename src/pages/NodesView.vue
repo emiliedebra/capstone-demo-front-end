@@ -44,15 +44,15 @@ export default {
     },
   },
   mounted() {
-     getNodes()
+    getNodes()
       .then((nodes) => {
-        this.nodes = nodes.map(node => {
+        this.nodes = nodes.map((node) => {
           getUser(node.nodeAdmin)
             .then((user) => {
               node.adminName = `${user.first_name} ${user.last_name}`;
-            })
+            });
           return node;
-        })
+        });
       });
     this.$store.dispatch('changeToolTip', 'New Node');
   },
@@ -60,15 +60,16 @@ export default {
     getNodesDetailed() {
       getNodes()
         .then((nodes) => {
-          this.nodes = nodes.map(node => {
+          this.nodes = nodes.map((node) => {
             getUser(node.nodeAdmin)
-            .then((user) => {
-              node.adminName = `${user.first_name} ${user.last_name}`;
-            })
+              .then((user) => {
+                node.adminName = `${user.first_name} ${user.last_name}`;
+              });
             return node;
-        })
-      });
-    }
-  }
+          });
+        });
+      this.$store.dispatch('changeToolTip', 'New Node');
+    },
+  },
 };
 </script>

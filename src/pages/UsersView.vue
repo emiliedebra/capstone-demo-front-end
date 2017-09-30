@@ -26,7 +26,7 @@ export default {
       users: [],
     };
   },
-   computed: {
+  computed: {
     ...mapState({
       userContext: state => state.userContext,
     }),
@@ -42,14 +42,14 @@ export default {
       if (state === null) {
         getUsers()
           .then((users) => {
-            this.users = users.map(user => {
+            this.users = users.map((user) => {
               getNodeName(user.node)
                 .then((node) => {
                   user.nodeName = node;
-                  user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel));
-              })
+                  user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel, [10]));
+                });
               return user;
-            })
+            });
           });
       }
     },
@@ -58,14 +58,14 @@ export default {
     // get reports to display in report-list
     getUsers()
       .then((users) => {
-        this.users = users.map(user => {
+        this.users = users.map((user) => {
           getNodeName(user.node)
-          .then((node) => {
-            user.nodeName = node;
-            user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel));
-          })
+            .then((node) => {
+              user.nodeName = node;
+              user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel, [10]));
+            });
           return user;
-        })
+        });
       });
     this.$store.dispatch('changeToolTip', 'New User');
   },
@@ -81,6 +81,6 @@ export default {
         return 'Global Administrator';
       }
     },
-  }
+  },
 };
 </script>
