@@ -17,12 +17,9 @@ export default new Vuex.Store({
     // current viewable report id - TODO: change to ReportContext
     reportContext: null, // { id: 123, state: 'update' }
     userContext: null, // { id: 123, state: 'update' }
-    // add node or add user
-    addContext: null,
+    nodeContext: null, // { id: 123, state: 'update' }
     // currently showing modal dialog
-    reportDialog: null,
-    // currently showing user dialog
-    userDialog: null,
+    modalDialog: null,
     // toggles user-modify-dialog
     confirmationDialog: null,
     // toggles login-dialog
@@ -43,8 +40,9 @@ export default new Vuex.Store({
     accesslevel: state => state.accessLevel,
     reportContext: state => state.reportContext,
     userContext: state => state.userContext,
+    nodeContext: state => state.nodeContext,
+    modalDialog: state => state.modalDialog,
     userDialog: state => state.userContext,
-    addContext: state => state.addContext,
     logInDialog: state => state.logInDialog,
     loggedInUserID: state => state.loggedInUserID,
     showDetails: state => state.showDetails,
@@ -71,11 +69,14 @@ export default new Vuex.Store({
     changeUserContext: (state, newValue) => {
       state.userContext = newValue;
     },
+    changeNodeContext: (state, newValue) => {
+      state.nodeContext = newValue;
+    },
+    changeModalDialog: (state, newValue) => {
+      state.modalDialog = newValue;
+    },
     changeUserDialog: (state, newValue) => {
       state.userDialog = newValue;
-    },
-    changeAddContext: (state, newValue) => {
-      state.addContext = newValue;
     },
     changeLogInDialog: (state, boolean) => {
       state.logInDialog = boolean;
@@ -131,11 +132,14 @@ export default new Vuex.Store({
     changeUserContext: (context, newValue) => {
       context.commit('changeUserContext', newValue);
     },
+    changeNodeContext: (context, newValue) => {
+      context.commit('changeNodeContext', newValue);
+    },
+    changeModalDialog: (context, newValue) => {
+      context.commit('changeModalDialog', newValue);
+    },
     changeUserDialog: (context, newValue) => {
       context.commit('changeUserDialog', newValue);
-    },
-    changeAddContext: (context, newValue) => {
-      context.commit('changeAddContext', newValue);
     },
     changeLogInDialog: (context, newValue) => {
       context.commit('changeLogInDialog', newValue);

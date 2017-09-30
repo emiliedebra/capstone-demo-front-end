@@ -75,9 +75,9 @@ export default {
       // toggle report-create0dialog
       this.$store.dispatch('changeUserContext', {id: null, state });
     },
-    changeNodeContext(context) {
+    changeNodeContext(state) {
       // toggle report-create0dialog
-      this.$store.dispatch('changeUserContext', context);
+      this.$store.dispatch('changeNodeContext', { id: null, state });
     },
     searchOnEnter() {
       this.$store.dispatch('changeSearchInput', this.searchInput);
@@ -89,7 +89,7 @@ export default {
       } else if (this.$route.path === '/manage-users') {
         this.changeUserContext(contextState.CREATE);
       } else if (this.$route.path === '/manage-nodes') {
-        this.changeNodeContext(contextState.ADDNODE);
+        this.changeNodeContext(contextState.CREATE);
       }
     },
   },

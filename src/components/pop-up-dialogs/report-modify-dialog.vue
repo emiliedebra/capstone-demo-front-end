@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.reportDialog === modalState.MODIFY,
+      showDialog: state => state.modalDialog === modalState.MODIFYREPORT,
       reportContext: state => state.reportContext,
     }),
   },
@@ -55,9 +55,9 @@ export default {
     submit() {
       // check data before confirming submit
       if (this.report.title !== '' && this.report.year !== null && this.report.type !== null) {
-        this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRM);
+        this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMREPORT);
       } else {
-        this.$store.dispatch('changeConfirmationDialog', contextState.ERROR);
+        this.$store.dispatch('changeConfirmationDialog', contextState.ERRORREPORT);
       }
     },
     modify() {

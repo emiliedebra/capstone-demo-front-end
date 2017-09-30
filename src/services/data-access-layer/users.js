@@ -11,7 +11,7 @@ export function getAuthorName(id) {
     .then((result) => {
       for (const user of result) {
         if (user.id === id) {
-          return user.name;
+          return `${user.first_name} ${user.last_name}`;
         }
       }
     });
@@ -21,7 +21,6 @@ export function postUser(data) {
   const _data = cloneObject(data);
   lastUserId++;
   _data.id = lastUserId;
-  _data.name = `${_data.first_name} ${_data.last_name}`;
   users.push(_data);
   return Promise.resolve();
 }
@@ -62,7 +61,8 @@ export function updateUser(data) {
 export function newUser() {
   return {
     id: lastUserId++,
-    name: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     accessLevel: 0,
@@ -74,7 +74,8 @@ let lastUserId = 0;
 export const users = [
   {
     id: lastUserId++,
-    name: 'Sean Wood',
+    first_name: 'Sean',
+    last_name: 'Wood',
     email: '1',
     password: '1',
     accessLevel: 2,
@@ -82,7 +83,8 @@ export const users = [
   },
   {
     id: lastUserId++,
-    name: 'Emilie Wood',
+    first_name: 'Emilie',
+    last_name: 'Wood',
     email: 'emilie@anotherway.co.za',
     password: '1234',
     accessLevel: 2,
@@ -90,7 +92,8 @@ export const users = [
   },
   {
     id: lastUserId++,
-    name: 'Clinton Wood',
+    first_name: 'Clinton',
+    last_name: 'Wood',
     email: 'clint@anotherway.co.za',
     password: '12345',
     accessLevel: 1,
@@ -98,7 +101,8 @@ export const users = [
   },
   {
     id: lastUserId++,
-    name: 'Caitlin Wood',
+    first_name: 'Caitlin',
+    last_name: 'Wood',
     email: 'cait@anotherway.co.za',
     password: '123',
     accessLevel: 0,

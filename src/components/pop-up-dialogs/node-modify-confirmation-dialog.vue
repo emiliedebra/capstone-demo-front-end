@@ -1,11 +1,11 @@
-<!--report-modify-confirmation-dialog-->
+<!--node-modify-confirmation-dialog-->
 
 <template>
   <v-dialog persistent v-model="showDialog">
     <v-card class="text-xs-center">
       <v-card-text v-if="confirmDialog">Are you sure you want to submit these changes?</v-card-text>
       <v-card-text v-if="errorDialog">There are missing fields.</v-card-text>
-      <v-btn v-if="confirmDialog" @click.native="modifyReport">Yes</v-btn>
+      <v-btn v-if="confirmDialog" @click.native="modifyNode">Yes</v-btn>
       <v-btn v-if="confirmDialog" @click.native="close">No</v-btn>
       <!-- Error Dialog -->
       <v-btn @click.native="close" v-show="errorDialog">Ok</v-btn>
@@ -15,12 +15,10 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { deleteResearchOutput } from '../../services/data';
-import { contextState } from '../../state-machine';
+import { modalState, contextState } from '../../state-machine';
 
 export default {
-
-  name: 'report-modify-confirmation-dialog',
+  name: 'node-modify-confirmation-dialog',
   data() {
     return {
       // nothing for now
@@ -28,18 +26,19 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.confirmationDialog === contextState.CONFIRMREPORT || state.confirmationDialog === contextState.ERRORREPORT,
-      errorDialog: state => state.confirmationDialog === contextState.ERRORREPORT,
-      confirmDialog: state => state.confirmationDialog === contextState.CONFIRMREPORT,
+      showDialog: state => state.confirmationDialog === contextState.CONFIRMNODE || state.confirmationDialog === contextState.ERRORNODE,
+      errorDialog: state => state.confirmationDialog === contextState.ERRORNODE,
+      confirmDialog: state => state.confirmationDialog === contextState.CONFIRMNODE,
+
     }),
   },
   methods: {
     close() {
       this.$store.dispatch('changeConfirmationDialog', null);
     },
-    modifyReport() {
+    modifyNode() {
       this.$emit('modify');
-    },
+    }
   },
 };
 </script>

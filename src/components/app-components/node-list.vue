@@ -5,12 +5,14 @@
     <v-expansion-panel-content v-for="item in outputs" :key="item.id">
       <div slot="header">{{ item.name }}</div>
       <node-body :body="item"></node-body>
+      <node-button-panel :nodeID="item.id"></node-button-panel>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
 
 <script>
 import nodeBody from '../card-components/node-body.vue';
+import nodeButtonPanel from '../card-components/node-button-panel.vue';
 
 export default {
   name: 'node-list',
@@ -22,6 +24,7 @@ export default {
   },
   components: {
     nodeBody,
+    nodeButtonPanel,
   },
 };
 </script>

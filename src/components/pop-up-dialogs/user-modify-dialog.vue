@@ -12,7 +12,7 @@
 <script>
 import { mapState } from 'vuex';
 import { contextState, modalState } from '../../state-machine';
-import { newUser, getUser, updateUser } from '../../services/data-access-layer';
+import { newUser, getUser, updateUser, postUser } from '../../services/data-access-layer';
 import userModifyForm from '../forms/user-modify-form.vue';
 import userModifyFormToolbar from '../form-components/user-modify-form-toolbar.vue';
 
@@ -20,7 +20,7 @@ export default {
   name: 'user-modify-dialog',
   data() {
     return {
-      user: {},
+      user: newUser(),
     };
   },
   components: {
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.userDialog === modalState.MODIFY,
+      showDialog: state => state.modalDialog === modalState.MODIFYUSER,
       userContext: state => state.userContext,
     }),
   },
@@ -40,13 +40,7 @@ export default {
         getUser(state.id)
           .then((user) => {
             this.user = user;
-            this.user.first_name = user.name.split(' ')[0];
-            this.user.last_name = user.name.split(' ')[1];
-            this.user.accessLevel = this.user.accessLevel.toString();
           });
-      } else {
-        // set to empty user
-        this.user = newUser();
       }
     },
   },
@@ -56,38 +50,30 @@ export default {
       if (valid && this.user.email !== '' && this.user.first_name !== '' && this.user.last_name !== '') {
         this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMUSER);
       } else {
-        this.$store.dispatch('changeConfirmationDialog', contextState.ERROR);
+        this.$store.dispatch('changeConfirmationDialog', contextState.ERRORUSER);
       }
     },
     modify() {
-      const user = {
-        name: `${this.user.first_name} ${this.user.last_name}`,
-        email: this.user.email,
-        accessLevel: parseInt(this.user.accessLevel, [10]), // convert to int
-        node: this.user.node,
-      };
       if (this.userContext.state === contextState.CREATE) {
-        postUser(user)
+        // console.log('post', this.user);
+        postUser(this.user)
           .then(() => {
-            const state = contextState.CREATEUSER;
-            // this.$store.dispatch('changeReportContext', { id: null, state });
-            this.$store.commit('changeUserContext', { id: null, state });
-            this.clear();
-        });
-      }
-      else {
-        updateUser(user)
+            this.close();
+          });
+      } else {
+        // console.log('update', this.user);
+        updateUser(this.user)
           .then(() => {
-            const state = contextState.CREATEUSER;
-            // this.$store.dispatch('changeReportContext', { id: null, state });
-            this.$store.commit('changeUserContext', { id: null, state });
-            this.clear();
+            this.close();
           });
       }
     },
     clear() {
-      this.$refs.form.clear();
       this.$store.dispatch('changeConfirmationDialog', null);
+    },
+    close() {
+      this.$refs.form.clear();
+      this.$store.dispatch('changeUserContext', null);
     },
   },
 };

@@ -15,7 +15,7 @@ export function getNodes() {
 
 export function getNodeName(id) {
   // returns an array of user objects
-  if (id !== 0 && id !== null) {
+  if (id !== null || id === 0) {
     return getNodes()
       .then((result) => {
         for (const node of result) {
@@ -23,9 +23,48 @@ export function getNodeName(id) {
             return node.name;
           }
         }
-        return 'None';
       });
   }
+  return Promise.resolve('None');
+}
+
+export function getNode(id) {
+  return Promise.resolve(nodes)
+    .then((nodes) => {
+      for (const node of nodes) {
+        if (node.id === id) {
+          return node;
+        }
+      }
+    });
+}
+
+export function deleteNode(data) {
+  const _data = cloneObject(data);
+  const index = nodes.findIndex(x => x.id === _data);
+  if (index > -1) {
+    nodes.splice(index, 1);
+  }
+  return Promise.resolve();
+}
+
+export function updateNode(data) {
+  const _data = cloneObject(data);
+  const index = nodes.findIndex(x => x.id === _data.id);
+  if (index > -1) {
+    nodes[index] = _data;
+  }
+  return Promise.resolve();
+}
+
+export function newNode() {
+  return {
+    id: lastNodeId++,
+    name: '',
+    description: '',
+    location: '',
+    nodeAdmin: null,
+  };
 }
 
 let lastNodeId = 0;

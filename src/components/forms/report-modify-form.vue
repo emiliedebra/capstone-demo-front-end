@@ -80,7 +80,7 @@ export default {
   methods: {
     // confirm clear before emitting clear
     confirmClear() {
-      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMCLEAR);
+      this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMREPORTCLEAR);
     },
     submit() {
       // fire submit in report-modify-dialog

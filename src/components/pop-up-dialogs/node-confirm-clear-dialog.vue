@@ -2,7 +2,7 @@
   <v-dialog persistent v-model="showDialog">
     <v-card class="text-xs-center">
       <v-card-text>Are you sure you want to clear these changes?</v-card-text>
-      <v-btn @click.native="clearReport">Yes</v-btn>
+      <v-btn @click.native="clearNode">Yes</v-btn>
       <v-btn @click.native="close">No</v-btn>
     </v-card>
   </v-dialog>
@@ -30,7 +30,7 @@ export default {
     close() {
       this.$store.dispatch('changeConfirmationDialog', null);
     },
-    clearReport() {
+    clearNode() {
       this.$emit('clear');
     },
   },

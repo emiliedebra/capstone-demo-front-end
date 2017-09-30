@@ -49,7 +49,6 @@ export default {
   data() {
     return {
       valid: false,
-      title: '',
       // will be an id (int)
       author: null,
       // will be an array of id's (ints)
@@ -69,7 +68,12 @@ export default {
     getPublicationTypes()
       .then((types) => { this.types = types; });
     getUsers()
-      .then((users) => { this.authors = users; });
+      .then((users) => {
+        this.authors = users.map(u => {
+          u.name = `${u.first_name} ${u.last_name}`;
+          return u;
+        })
+      });
   },
   methods: {
     clear() {

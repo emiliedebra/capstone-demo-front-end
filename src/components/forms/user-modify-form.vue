@@ -2,7 +2,7 @@
 
 <template id="user-modify-form">
   <v-card flat class="text-xs-center">
-    <user-create-confirmation-dialog @modify="modify" @clear="clear"></user-create-confirmation-dialog>
+    <user-modify-confirmation-dialog @modify="modify" @clear="clear"></user-modify-confirmation-dialog>
     <user-confirm-clear-dialog @clear="clear"></user-confirm-clear-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="ml-3 mr-3">
@@ -36,7 +36,7 @@
 <script>
 import { mapState } from 'vuex';
 import reportModifyFormToolbar from '../form-components/report-modify-form-toolbar.vue';
-import userCreateConfirmationDialog from '../pop-up-dialogs/user-create-confirmation-dialog.vue';
+import userModifyConfirmationDialog from '../pop-up-dialogs/user-modify-confirmation-dialog.vue';
 import userConfirmClearDialog from '../pop-up-dialogs/user-confirm-clear-dialog.vue';
 import { contextState } from '../../state-machine';
 import { postUser, getNodes } from '../../services/data-access-layer';
@@ -48,8 +48,6 @@ export default {
   data() {
     return {
       valid: false,
-      node: null,
-      // NB: hard-coded
       nodes: [],
       // RULES
       emailRules: [
@@ -76,7 +74,7 @@ export default {
   },
   components: {
     reportModifyFormToolbar,
-    userCreateConfirmationDialog,
+    userModifyConfirmationDialog,
     userConfirmClearDialog,
   },
   methods: {

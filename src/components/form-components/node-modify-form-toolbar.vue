@@ -1,6 +1,6 @@
 <!-- node-create-form-toolbar -->
 
-<template id="node-create-form-toolbar">
+<template id="node-modify-form-toolbar">
   <v-system-bar card fixed window>
     <div class="subheading">{{ title }}</div>
     <v-spacer></v-spacer>
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'node-create-form-toolbar',
+  name: 'node-modify-form-toolbar',
   data() {
     return {
       title: 'Add New Node',
@@ -22,8 +22,7 @@ export default {
   methods: {
     close() {
       // fire user-modify-dialog to close
-      this.$store.dispatch('changeAddContext', null);
-      this.$emit('close');
+      this.$store.dispatch('changeNodeContext', null);
     },
   },
 };

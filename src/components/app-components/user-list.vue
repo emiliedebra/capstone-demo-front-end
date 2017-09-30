@@ -3,7 +3,7 @@
 <template id="user-list">
   <v-expansion-panel expand>
     <v-expansion-panel-content v-for="item in outputs" :key="item.id">
-      <div slot="header">{{ item.name }}</div>
+      <div slot="header">{{ item.first_name }} {{item.last_name }}</div>
       <user-body :body="item"></user-body>
       <user-button-panel :userID="item.id"></user-button-panel>
     </v-expansion-panel-content>

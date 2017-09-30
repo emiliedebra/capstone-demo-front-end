@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState({
-      showDialog: state => state.confirmationDialog === contextState.CONFIRMCLEAR,
+      showDialog: state => state.confirmationDialog === contextState.CONFIRMREPORTCLEAR,
     }),
   },
   methods: {
