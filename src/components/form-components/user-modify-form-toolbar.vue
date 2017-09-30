@@ -12,12 +12,30 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { contextState } from '../../state-machine';
+
 export default {
   name: 'user-modify-form-toolbar',
   data() {
     return {
-      title: 'Add New User',
+      title: '',
     };
+  },
+  computed: {
+    ...mapState({
+      userContext: state => state.userContext,
+    }),
+  },
+  watch: {
+    userContext(state) {
+      // Defines header for modify dialog
+      if (state && state.state === contextState.CREATE) {
+        this.title = 'Add New User';
+      } else if (state && state.state === contextState.UPDATE) {
+        this.title = 'Modify User';
+      }
+    },
   },
   methods: {
     close() {

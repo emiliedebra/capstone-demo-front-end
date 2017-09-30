@@ -12,12 +12,30 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { contextState } from '../../state-machine';
+
 export default {
   name: 'node-modify-form-toolbar',
   data() {
     return {
       title: 'Add New Node',
     };
+  },
+  computed: {
+    ...mapState({
+      nodeContext: state => state.nodeContext,
+    }),
+  },
+  watch: {
+    nodeContext(state) {
+      // Defines header for modify dialog
+      if (state && state.state === contextState.CREATE) {
+        this.title = 'Add New Node';
+      } else if (state && state.state === contextState.UPDATE) {
+        this.title = 'Modify Node';
+      }
+    },
   },
   methods: {
     close() {

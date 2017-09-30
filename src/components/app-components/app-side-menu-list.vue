@@ -2,14 +2,14 @@
 
 <template>
 <v-container class="ma-0 pa-0">
-  <v-list dense>
+  <v-list>
     <!-- Settings NOTE: not yet implemented -->
-    <v-list-tile :key="settings.text" :to="settings.link">
+    <!-- <v-list-tile :key="settings.text" :to="settings.link">
       <v-list-tile-action>
         <v-icon>{{ settings.icon }}</v-icon>
       </v-list-tile-action>
       <v-list-tile-title>{{ settings.text }}</v-list-tile-title>
-    </v-list-tile>
+    </v-list-tile> -->
     <!-- Log Out -->
     <v-list-tile @click.native="logOut" :to="logout.link" v-show="this.$store.getters.loggedIn">
       <v-list-tile-action>

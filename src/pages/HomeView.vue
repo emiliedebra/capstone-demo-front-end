@@ -6,7 +6,7 @@
     <report-delete-dialog></report-delete-dialog>
     <v-layout row>
       <v-flex xs10>
-        <filter-order-bar></filter-order-bar>
+        <!-- <filter-order-bar></filter-order-bar> -->
       </v-flex>
       <v-flex xs3>
         <v-card style="background-color: transparent" flat fluid class="text-xs-right">
