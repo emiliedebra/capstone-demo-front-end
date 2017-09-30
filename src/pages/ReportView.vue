@@ -14,18 +14,18 @@
       <v-flex xs3 grid-xs-right>
         <report-details v-if="this.$store.getters.showDetails" :details="output"></report-details>
       </v-flex>
-      <!-- <v-flex xs3 grid-xs-right>
-          <pdf height="500px" :url="url">
-          </pdf>
-      </v-flex> -->
     </v-layout>
   </v-card>
   <report-body :body="output"></report-body>
+  <v-layout row>
+    <a class="pl-3" ref="document" target="_blank">Document</a><br/>
+    <a class="pl-3" href="https://bitcoin.org/bitcoin.pdf">BibTeX</a>
+    <a class="pl-3" href="https://bitcoin.org/bitcoin.pdf" download="bitcoin">Download</a>
+  </v-layout>
   </v-container>
 </template>
 
 <script>
-// import pdf from 'vue-pdf';
 import { mapState } from 'vuex';
 import reportHeader from '../components/card-components/report-header.vue';
 import reportBody from '../components/card-components/report-body.vue';
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       output: newReport(),
-      // url: 'https://bitcoin.org/bitcoin.pdf',
+      url: 'https://bitcoin.org/bitcoin.pdf',
     };
   },
   computed: {
@@ -54,6 +54,7 @@ export default {
       getReport(this.reportContext.id)
         .then((output) => {
           _this.output = output;
+          _this.$refs.document.href = output.pdf;
         });
     } else {
       this.output = newReport();
@@ -70,7 +71,6 @@ export default {
     reportHeader,
     reportBody,
     reportDetails,
-    // pdf,
   },
 };
 </script>

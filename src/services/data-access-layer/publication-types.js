@@ -29,4 +29,8 @@ export const publicationTypes = [
     id: 2,
     name: 'Book Chapter',
   },
+  {
+    id: 3,
+    name: 'Paper',
+  },
 ];
