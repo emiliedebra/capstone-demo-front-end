@@ -17,6 +17,10 @@
     </v-layout>
   </v-card>
   <report-body :body="output"></report-body>
+  <v-divider></v-divider>
+  <v-card flat>
+    <v-card-text>{{ output.text }}</v-card-text>
+  </v-card>
   <v-layout row>
     <a class="pl-3" ref="document" target="_blank">Document</a><br/>
     <a class="pl-3" href="https://bitcoin.org/bitcoin.pdf">BibTeX</a>
@@ -59,6 +63,7 @@ export default {
     } else {
       this.output = newReport();
     }
+    this.$store.dispatch('changeSearchInput', '');
   },
   methods: {
     back() {

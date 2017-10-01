@@ -1,8 +1,9 @@
 <!-- basic-info-expander -->
 
 <template id="basic-info-expander">
-  <v-card flat class="text-xs-center">
+  <v-card flat class="text-xs-right">
     <v-card flat fluid class="ml-3 mr-3 mt-0">
+      <div class="ma-0 pa-0 subheading text-xs-left">Basic Information</div>
       <v-form ref="basicinfo">
         <!-- Title -->
         <v-text-field label="Title" v-model="report.title" required>

@@ -6,21 +6,18 @@
     <report-confirm-clear-dialog @clear="clear"></report-confirm-clear-dialog>
     <!-- Input Form -->
     <v-card flat fluid class="mt-0 ml-3 mr-3 pa-0 pt-4">
+        <!-- Basic Info -->
+        <basic-info-expander ref="basicinfo" :report="report"></basic-info-expander>
         <v-card-text class="ma-0 pa-0">
           <v-expansion-panel invert class="ma-0 pa-0">
-            <!-- Basic Info -->
-            <v-expansion-panel-content>
-              <div slot="header">Basic Information</div>
-              <basic-info-expander ref="basicinfo" :report="report"></basic-info-expander>
-            </v-expansion-panel-content>
             <!-- Detailed Info -->
             <v-expansion-panel-content v-show="this.$store.getters.showDetails">
-              <div slot="header">Detailed Information</div>
+              <div slot="header" class="subheading">Detailed Information</div>
               <detailed-info-expander ref="detailedinfo" :report="report"></detailed-info-expander>
             </v-expansion-panel-content>
             <!-- Content Info -->
             <v-expansion-panel-content>
-              <div slot="header">Research Output Content</div>
+              <div slot="header" class="subheading">Research Output Content</div>
               <research-output-content-expander ref="researchinfo" :report="report"></research-output-content-expander>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -31,7 +28,6 @@
       <v-btn flat class="ma-0 pa-0" @click="submit">submit</v-btn>
       <v-btn flat class="ma-0 pa-0" @click="confirmClear" v-if="clearButton">clear</v-btn>
     </v-container>
-
   </v-card>
 </template>
 

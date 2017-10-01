@@ -140,6 +140,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -152,6 +153,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -164,6 +166,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -176,6 +179,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -188,6 +192,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -200,6 +205,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -212,6 +218,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -224,6 +231,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -236,6 +244,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -248,6 +257,7 @@ export const researchOutputs = [
     proof_link: null,
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -260,6 +270,7 @@ export const researchOutputs = [
     proof_link: null,
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -272,6 +283,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -284,6 +296,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -296,6 +309,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -308,6 +322,7 @@ export const researchOutputs = [
     proof_link: 'www.proof.com',
     proof_verified: true,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -320,6 +335,7 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
   {
     id: lastId++,
@@ -332,5 +348,6 @@ export const researchOutputs = [
     proof_link: 'None',
     proof_verified: false,
     pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    text: '',
   },
 ];

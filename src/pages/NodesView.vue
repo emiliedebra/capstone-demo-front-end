@@ -17,7 +17,7 @@ import { mapState } from 'vuex';
 import nodeModifyDialog from '../components/pop-up-dialogs/node-modify-dialog.vue';
 import nodeDeleteDialog from '../components/pop-up-dialogs/node-delete-dialog.vue';
 import nodeList from '../components/app-components/node-list.vue';
-import { getNodes, getUser } from '../services/data-access-layer';
+import { getNodesWithUsers } from '../services/data-access-layer';
 
 export default {
   name: 'node-view',
@@ -44,31 +44,20 @@ export default {
     },
   },
   mounted() {
-    getNodes()
+    getNodesWithUsers()
       .then((nodes) => {
-        this.nodes = nodes.map((node) => {
-          getUser(node.nodeAdmin)
-            .then((user) => {
-              node.adminName = `${user.first_name} ${user.last_name}`;
-            });
-          return node;
-        });
+        this.nodes = nodes;
       });
     this.$store.dispatch('changeToolTip', 'New Node');
   },
   methods: {
     getNodesDetailed() {
-      getNodes()
+      getNodesWithUsers()
         .then((nodes) => {
-          this.nodes = nodes.map((node) => {
-            getUser(node.nodeAdmin)
-              .then((user) => {
-                node.adminName = `${user.first_name} ${user.last_name}`;
-              });
-            return node;
-          });
+          this.nodes = nodes;
         });
       this.$store.dispatch('changeToolTip', 'New Node');
+      this.$store.dispatch('changeSearchInput', '');
     },
   },
 };

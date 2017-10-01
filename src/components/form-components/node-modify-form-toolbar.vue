@@ -2,7 +2,7 @@
 
 <template id="node-modify-form-toolbar">
   <v-system-bar card fixed window>
-    <div class="subheading">{{ title }}</div>
+    <div class="heading">{{ title }}</div>
     <v-spacer></v-spacer>
     <!-- NOTE: places close button to the right -->
     <v-btn icon @click.native="close">

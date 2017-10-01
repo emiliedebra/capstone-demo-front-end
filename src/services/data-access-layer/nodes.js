@@ -1,4 +1,5 @@
 import { cloneObject } from '../../utils/data-utils';
+import { getAuthorName } from './users';
 
 export function postNode(data) {
   const _data = cloneObject(data);
@@ -11,6 +12,20 @@ export function postNode(data) {
 export function getNodes() {
   // returns an array of user objects
   return Promise.resolve(nodes);
+}
+
+export function getNodesWithUsers() {
+  return Promise      // axios
+    .resolve(nodes)   //  .get('/api/users')
+    .then(results =>
+      Promise.all(
+        results.map(result =>
+          getAuthorName(result.nodeAdmin)
+            .then((user) => {
+              result.adminName = user;
+              return result;
+            }))
+      ));
 }
 
 export function getNodeName(id) {

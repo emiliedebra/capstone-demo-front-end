@@ -18,3 +18,17 @@ export function getVerificationDetails(report) {
   }
   return 'Verified';
 }
+
+export function getAccessLevel(accessLevel) {
+  const level = (typeof accessLevel !== 'number') ? parseInt(String(accessLevel), 10) : accessLevel;
+  if (level === 0) {
+    return 'Author';
+  } else if (level === 1) {
+    return 'CAIR Member';
+  } else if (level === 2) {
+    return 'Node Administrator';
+  } else if (level === 3) {
+    return 'Global Administrator';
+  }
+}
+

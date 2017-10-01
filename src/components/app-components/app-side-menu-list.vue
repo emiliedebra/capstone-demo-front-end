@@ -13,14 +13,14 @@
     <!-- Log Out -->
     <v-list-tile @click.native="logOut" :to="logout.link" v-show="this.$store.getters.loggedIn">
       <v-list-tile-action>
-        <v-icon>{{ logout.icon }}</v-icon>
+        <v-icon class="gray--icon">{{ logout.icon }}</v-icon>
       </v-list-tile-action>
       <v-list-tile-title>{{ logout.text }}</v-list-tile-title>
     </v-list-tile>
     <!-- Log In -->
     <v-list-tile @click.native="logIn" :to="login.link" v-show="!this.$store.getters.loggedIn">
       <v-list-tile-action>
-        <v-icon>{{ login.icon }}</v-icon>
+        <v-icon class="gray--icon">{{ login.icon }}</v-icon>
       </v-list-tile-action>
       <v-list-tile-title>{{ login.text }}</v-list-tile-title>
     </v-list-tile>

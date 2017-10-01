@@ -17,7 +17,7 @@ import userModifyForm from '../components/forms/user-modify-form.vue';
 import userModifyDialog from '../components/pop-up-dialogs/user-modify-dialog.vue';
 import userDeleteDialog from '../components/pop-up-dialogs/user-delete-dialog.vue';
 import userList from '../components/app-components/user-list.vue';
-import { getUsers, getNodeName } from '../services/data-access-layer';
+import { getUsersWithNodes } from '../services/data-access-layer';
 
 export default {
   name: 'user-view',
@@ -40,47 +40,21 @@ export default {
   watch: {
     userContext(state) {
       if (state === null) {
-        getUsers()
+        getUsersWithNodes()
           .then((users) => {
-            this.users = users.map((user) => {
-              getNodeName(user.node)
-                .then((node) => {
-                  user.nodeName = node;
-                  user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel, [10]));
-                });
-              return user;
-            });
+            this.users = users;
           });
       }
     },
   },
   mounted() {
     // get reports to display in report-list
-    getUsers()
+    getUsersWithNodes()
       .then((users) => {
-        this.users = users.map((user) => {
-          getNodeName(user.node)
-            .then((node) => {
-              user.nodeName = node;
-              user.accessLevelName = this.getAccessLevel(parseInt(user.accessLevel, [10]));
-            });
-          return user;
-        });
+        this.users = users;
       });
+    this.$store.dispatch('changeSearchInput', '');
     this.$store.dispatch('changeToolTip', 'New User');
-  },
-  methods: {
-    getAccessLevel(accessLevel) {
-      if (accessLevel === 0) {
-        return 'Author';
-      } else if (accessLevel === 1) {
-        return 'CAIR Member';
-      } else if (accessLevel === 2) {
-        return 'Node Administrator';
-      } else if (accessLevel === 3) {
-        return 'Global Administrator';
-      }
-    },
   },
 };
 </script>

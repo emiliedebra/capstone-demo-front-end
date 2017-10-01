@@ -19,7 +19,7 @@ export default new VueRouter({
     {
       title: 'CAIR Home',
       path: '/',
-      name: 'Home',
+      name: 'Research Outputs',
       component: Home,
     },
     {

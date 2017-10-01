@@ -1,8 +1,24 @@
 import { cloneObject } from '../../utils/data-utils';
+import { getNodeName } from './nodes';
 
 export function getUsers() {
   // returns an array of user objects
   return Promise.resolve(users);
+}
+
+export function getUsersWithNodes() {
+  // returns an array of user objects
+  return Promise      // axios
+    .resolve(users)   //  .get('/api/users')
+    .then(results =>
+      Promise.all(
+        results.map(result =>
+          getNodeName(result.node)
+            .then((node) => {
+              result.nodeName = node;
+              return result;
+            }))
+      ));
 }
 
 export function getAuthorName(id) {

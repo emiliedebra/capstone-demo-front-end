@@ -2,8 +2,10 @@
 
 <template>
   <v-container fluid>     
-  <!-- <v-text-field solo label="Search" append-icon="search" v-model="searchInput"></v-text-field> -->
-    <h6>Search Results:</h6>
+    <v-btn icon @click.native="back">
+      <v-icon>keyboard_backspace</v-icon>
+    </v-btn>
+    <h6 class="pl-3">Search Results:</h6>
     <v-spacer></v-spacer>
     <report-list v-if="this.posts.length > 0" :outputs="posts"></report-list>
     <div v-if="this.posts.length === 0">No results.</div>
@@ -47,9 +49,9 @@ export default {
     },
   },
   methods: {
-    getData() {
-      // NB: not working and implemented using local data
-      // call data search method, check if results, update posts
+    back() {
+      // return to home-view
+      this.$router.push('/');
     },
   },
   components: {
