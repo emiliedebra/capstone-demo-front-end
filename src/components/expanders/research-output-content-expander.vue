@@ -11,9 +11,10 @@
         </v-text-field>
         <v-divider></v-divider>
         <div class="text-xs-left">
-          <v-btn flat>
+          <v-btn flat icon v-tooltip:top="{ html: 'Attach Document' }">
             <file-upload ref="upload" v-model="files" post-action="/upload-pdf" put-action="/upload-pdf" @input-file="inputFile" @input-filter="inputFilter">
-              Attach file
+              <!-- Attach file -->
+            <v-icon>attach_file</v-icon>
             </file-upload>
           </v-btn>
         </div>
@@ -32,20 +33,13 @@ export default {
   props: ['report'],
   data() {
     return {
-      files: [],
+      files: [{
+        blob: '',
+      }],
     };
   },
-  watch: {
-    files(newFiles) {
-      console.log(newFiles);
-    },
-    file_link(newFileLink) {
-      this.report.pdf_link = newFileLink;
-    },
-  },
   computed: {
-    file_link() {
-      // this.props.report.pdf_link = this.files[0].blob;
+    blob() {
       return this.files[0].blob;
     },
   },
@@ -100,6 +94,13 @@ export default {
       if (this.$store.getters.clearReport === true) {
         this.clear();
       }
+    },
+    blob() {
+      // handler() {
+      //   this.report.pdf_link = this.blob;
+      // },
+      // deep: true,
+      this.report.pdf_link = this.blob;
     },
   },
   components: {

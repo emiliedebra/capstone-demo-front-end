@@ -108,13 +108,6 @@ export default {
 };
 </script>
 <style>
-  /* .toolbar__content {
-    background-color: rgb(84,110,122);
-  } */
-  .report__body {
-    background-color: rgb(207,216,220) !important;
-  }
-  
   .list__tile__title {
     font-weight: 400;
     color: black !important;

@@ -145,7 +145,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -158,7 +158,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -171,7 +171,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -184,7 +184,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -197,7 +197,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -210,7 +210,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -223,7 +223,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -236,7 +236,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -249,7 +249,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -262,7 +262,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: null,
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -275,7 +275,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: null,
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -288,7 +288,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -301,7 +301,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -314,7 +314,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -327,7 +327,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -340,7 +340,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
   {
@@ -353,7 +353,7 @@ export const researchOutputs = [
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
-    pdf: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
+    pdf_link: 'http://www.cair.za.net/sites/default/files/outputs/Ruttkamp-Bloem-ea.pdf',
     text: '',
   },
 ];
