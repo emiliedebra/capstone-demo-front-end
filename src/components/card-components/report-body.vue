@@ -1,9 +1,9 @@
 <!-- report-body -->
 
 <template id="report-body">
-  <v-card flat>
+  <v-card-text flat>
     <v-card-text>{{ body.additional_info }}</v-card-text>
-  </v-card>
+  </v-card-text>
 </template>
 
 <script>

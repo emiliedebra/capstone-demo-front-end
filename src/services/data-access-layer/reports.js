@@ -1,5 +1,5 @@
 import { cloneObject } from '../../utils/data-utils';
-import { getAuthorName } from './users';
+import { getAuthorName, getCoAuthorsNames } from './users';
 import { getNodeName } from './nodes';
 import { getVerificationDetails } from './helpers';
 import { getPublicationType } from './publication-types';
@@ -13,13 +13,15 @@ export function getDetailedResearchOutputs() {
         .map(output =>
           Promise.all([
             getAuthorName(output.author),
+            getCoAuthorsNames(output.coauthors),
             getPublicationType(output.type),
             getNodeName(output.node),
             getVerificationDetails(output),
           ])
-            .then(([author, type, node, verificationDetails]) => {
+            .then(([author, coauthors, type, node, verificationDetails]) => {
               output.author_id = output.author;
               output.author = author;
+              output.coauthors = coauthors;
               output.type = type;
               output.node = node;
               output.proof_verified = verificationDetails;
@@ -139,7 +141,7 @@ export const researchOutputs = [
     type: 0,
     publication_year: '2017',
     author: 1,
-    coauthors: [],
+    coauthors: [0, 2],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
@@ -152,7 +154,7 @@ export const researchOutputs = [
     type: 3,
     publication_year: '1996',
     author: 2,
-    coauthors: [],
+    coauthors: [0],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
@@ -191,7 +193,7 @@ export const researchOutputs = [
     type: 1,
     publication_year: '2004',
     author: 1,
-    coauthors: [],
+    coauthors: [2],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
@@ -217,7 +219,7 @@ export const researchOutputs = [
     type: 1,
     publication_year: '2015',
     author: 3,
-    coauthors: [],
+    coauthors: [3],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
@@ -230,7 +232,7 @@ export const researchOutputs = [
     type: 1,
     publication_year: '2009',
     author: 0,
-    coauthors: [],
+    coauthors: [2],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'None',
     proof_verified: false,
@@ -295,7 +297,7 @@ export const researchOutputs = [
     type: 1,
     publication_year: '2016',
     author: 2,
-    coauthors: [],
+    coauthors: [0],
     additional_info: 'Matching of concepts with variables (concept patterns) is a relatively new operation that has been introduced in the context of concept description languages (description logics), originally to help filter out unimportant aspects of large concepts appearing in industrial-strength knowledge bases. This paper proposes a new approach to performing matching, based on a concept-centered normal form, rather than the more standard structural subsumption normal form for concepts. As a result, matching can be performed (in polynomial time) using arbitrary concept patterns of a description language allowing for conjunction, value restriction, and atomic negation, thus removing restrictions on the form of the patterns from previous work. The paper also addresses the question of matching problems with additional side conditions, which were motivated by practical experience.',
     proof_link: 'www.proof.com',
     proof_verified: true,
