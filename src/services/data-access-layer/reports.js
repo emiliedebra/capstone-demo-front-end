@@ -103,6 +103,7 @@ export function newReport() {
     additional_info: '',
     proof_verified: false,
     proof_link: '',
+    pdf_link: '',
   };
 }
 
