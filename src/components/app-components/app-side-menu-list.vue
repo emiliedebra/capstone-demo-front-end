@@ -3,13 +3,6 @@
 <template>
 <v-container class="ma-0 pa-0">
   <v-list>
-    <!-- Settings NOTE: not yet implemented -->
-    <!-- <v-list-tile :key="settings.text" :to="settings.link">
-      <v-list-tile-action>
-        <v-icon>{{ settings.icon }}</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-title>{{ settings.text }}</v-list-tile-title>
-    </v-list-tile> -->
     <!-- Log Out -->
     <v-list-tile @click.native="logOut" :to="logout.link" v-show="this.$store.getters.loggedIn">
       <v-list-tile-action>
@@ -40,13 +33,17 @@ export default {
   },
   methods: {
     logOut() {
-      // change logged in state to false, show dialog (ripples home page 'hidden' view)
+      /*
+      ** change logged in state to false, show dialog (ripples home page 'hidden' view)
+      */
       this.$store.dispatch('changeLoggedIn', false);
       this.$emit('logout'); // to force drawer to close
       this.$store.dispatch('changeLogInDialog', true);
     },
     logIn() {
-      // show dialog (ripples home page 'hidden' view)
+      /*
+      ** show login dialog (ripples home page 'hidden' view)
+      */
       this.$emit('logout'); // to force drawer to close
       this.$store.dispatch('changeLogInDialog', true);
     },

@@ -15,30 +15,26 @@
 
 <script>
 import { mapState } from 'vuex';
-import { modalState, contextState } from '../../state-machine';
+import { contextState } from '../../state-machine';
 
 export default {
   name: 'node-modify-confirmation-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
-  },
   computed: {
     ...mapState({
       showDialog: state => state.confirmationDialog === contextState.CONFIRMNODE || state.confirmationDialog === contextState.ERRORNODE,
       errorDialog: state => state.confirmationDialog === contextState.ERRORNODE,
       confirmDialog: state => state.confirmationDialog === contextState.CONFIRMNODE,
-
     }),
   },
   methods: {
     close() {
+      // close confirmation dialog
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     modifyNode() {
+      // fire parent modify function
       this.$emit('modify');
-    }
+    },
   },
 };
 </script>

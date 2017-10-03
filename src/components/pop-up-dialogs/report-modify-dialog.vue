@@ -46,7 +46,7 @@ export default {
             this.report = report;
           });
       } else {
-        // set to empty report
+        // set to empty report when creating or otherwise
         this.report = newReport();
       }
     },
@@ -63,20 +63,22 @@ export default {
     modify() {
       const report = this.report;
       // replace nulls with default values
-      // NOTE: Done on Backend?
       if (report.additional_info === '') {
         report.additional_info = 'No abstract available.';
       }
+      // defaults author to current user if not filled in
       if (report.author === null) {
         report.author = this.$store.getters.loggedInUserID;
       }
       if (this.reportContext.state === contextState.UPDATE) {
+        // update report
         updateResearchOutput(report)
           .then(() => {
             this.close();
           })
           .catch(error => console.log(error));
       } else {
+        // add new report
         postResearchOutput(report)
           .then(() => {
             this.close();
@@ -85,9 +87,11 @@ export default {
       }
     },
     clear() {
+      // close confirmation dialog
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     close() {
+      // close modify-dialog
       this.$store.dispatch('changeReportContext', null);
     },
   },

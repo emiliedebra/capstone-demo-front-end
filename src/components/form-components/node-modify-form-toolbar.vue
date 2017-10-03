@@ -3,8 +3,7 @@
 <template id="node-modify-form-toolbar">
   <v-system-bar card fixed window>
     <div class="heading">{{ title }}</div>
-    <v-spacer></v-spacer>
-    <!-- NOTE: places close button to the right -->
+    <v-spacer></v-spacer> <!-- NOTE: places close button to the right -->
     <v-btn icon @click.native="close">
       <v-icon class="icon-modify">close</v-icon>
     </v-btn>
@@ -29,7 +28,9 @@ export default {
   },
   watch: {
     nodeContext(state) {
-      // Defines header for modify dialog
+      /*
+      ** Defines header for modify dialog
+      */
       if (state && state.state === contextState.CREATE) {
         this.title = 'Add New Node';
       } else if (state && state.state === contextState.UPDATE) {
@@ -39,7 +40,9 @@ export default {
   },
   methods: {
     close() {
-      // fire user-modify-dialog to close
+      /*
+      ** fire user-modify-dialog to close
+      */
       this.$store.dispatch('changeNodeContext', null);
     },
   },

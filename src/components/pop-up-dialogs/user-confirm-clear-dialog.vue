@@ -1,3 +1,5 @@
+<!-- user-confirm-clear-dialog-->
+
 <template>
   <v-dialog persistent v-model="showDialog">
     <v-card class="text-xs-center">
@@ -10,17 +12,11 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { deleteResearchOutput } from '../../services/data';
 import { contextState } from '../../state-machine';
 
 export default {
 
   name: 'user-confirm-clear-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
-  },
   computed: {
     ...mapState({
       showDialog: state => state.confirmationDialog === contextState.CONFIRMUSERCLEAR,
@@ -28,9 +24,11 @@ export default {
   },
   methods: {
     close() {
+      // close confirmation dialog
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     clearUser() {
+      // fire parent clear method
       this.$emit('clear');
     },
   },

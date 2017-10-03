@@ -30,7 +30,9 @@ export default {
   },
   watch: {
     reportContext(state) {
-      // Defines header for modify dialog
+      /*
+      ** Defines header for modify dialog
+      */
       if (state && state.state === contextState.CREATE) {
         this.title = 'New Research Output';
       } else if (state && state.state === contextState.UPDATE) {
@@ -40,7 +42,9 @@ export default {
   },
   methods: {
     close() {
-      // fire report-modify-dialog to close
+      /*
+      ** fire report-modify-dialog to close
+      */
       this.$store.dispatch('changeReportContext', null);
     },
   },

@@ -36,12 +36,13 @@ export default {
   watch: {
     nodeContext(state) {
       if (state && state.state === contextState.UPDATE) {
-        // fetch report when updating
+        // fetch node when updating
         getNode(state.id)
           .then((node) => {
             this.node = node;
           });
       } else if (state && state.state === contextState.CREATE) {
+        // create new node when creating
         this.node = newNode();
       }
     },
@@ -56,13 +57,13 @@ export default {
       }
     },
     modify() {
+      // modify node data and on success clear form
       if (this.nodeContext.state === contextState.CREATE) {
         postNode(this.node)
           .then(() => {
             this.close();
           });
       } else {
-        console.log('update', this.node);
         updateNode(this.node)
           .then(() => {
             this.close();
@@ -70,9 +71,11 @@ export default {
       }
     },
     clear() {
+      // close confirmation dialog
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     close() {
+      // clear and close node-modify-dialog
       this.$refs.form.clear();
       this.$store.dispatch('changeNodeContext', null);
     },

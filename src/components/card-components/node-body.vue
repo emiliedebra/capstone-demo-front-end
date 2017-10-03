@@ -10,31 +10,16 @@
 </template>
 
 <script>
-import { getAuthorName } from '../../services/data-access-layer';
-
 export default {
   name: 'node-body',
   props: ['body'],
-  data() {
-    return {
-      // nothing
-    };
-  },
   mounted() {
-    if (this.body.description === '') {
+    /*
+    ** changes description to 'No Description' where necessary
+    */
+    if (this.body.description === '' || this.body.description === null) {
       this.body.description = 'No Description';
     }
-  },
-  methods: {
-    // getAdminName() {
-    //   // TODO: do more efficiently
-    //   if (this.body.nodeAdmin !== null) {
-    //     getAuthorName(this.body.nodeAdmin)
-    //       .then((name) => { this.adminName = name; });
-    //   } else {
-    //     this.adminName = 'No Administrator';
-    //   }
-    // },
   },
 };
 </script>

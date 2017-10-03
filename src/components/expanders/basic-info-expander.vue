@@ -44,7 +44,6 @@
 import { getPublicationTypes, getUsers } from '../../services/data-access-layer';
 
 export default {
-
   name: 'basic-info-expander',
   props: ['report'],
   data() {
@@ -66,25 +65,32 @@ export default {
     };
   },
   created() {
+    /*
+    ** load publication types and users for drop down lists
+    */
     getPublicationTypes()
       .then((types) => { this.types = types; });
     getUsers()
       .then((users) => {
-        this.authors = users.map(u => {
+        this.authors = users.map((u) => {
           u.name = `${u.first_name} ${u.last_name}`;
           return u;
-        })
+        });
       });
   },
   methods: {
     clear() {
-      // clear form data
+      /*
+      ** clear form data
+      */
       this.$refs.basicinfo.reset();
     },
   },
   watch: {
     clearReport() {
-      // watch global state to fire local clear
+      /*
+      ** watch global state to fire local clear
+      */
       if (this.$store.getters.clearReport === true) {
         this.clear();
       }

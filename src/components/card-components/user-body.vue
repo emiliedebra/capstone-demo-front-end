@@ -1,4 +1,4 @@
-<!-- report-body -->
+<!-- user-body -->
 
 <template id="user-body">
   <v-card flat class="pl-4 pb-3">

@@ -2,8 +2,10 @@
 
 <template id="node-modify-form">
   <v-card flat class="text-xs-center">
+    <!-- Dialogs -->
     <node-modify-confirmation-dialog @modify="modify" @clear="clear"></node-modify-confirmation-dialog>
     <node-confirm-clear-dialog @clear="clear"></node-confirm-clear-dialog>
+    <!-- Form Input -->
     <v-card flat fluid class="ml-3 mr-3">
       <v-form ref="nodecreateform" @clearReport="clear">
         <v-text-field label="Name" v-model="node.name" required>
@@ -25,13 +27,12 @@
 
 <script>
 import { mapState } from 'vuex';
-import { getUsers, postNode } from '../../services/data-access-layer';
+import { getUsers } from '../../services/data-access-layer';
 import { contextState } from '../../state-machine';
 import nodeModifyConfirmationDialog from '../pop-up-dialogs/node-modify-confirmation-dialog.vue';
 import nodeConfirmClearDialog from '../pop-up-dialogs/node-confirm-clear-dialog.vue';
 
 export default {
-
   name: 'node-modify-form',
   props: ['node'],
   data() {
@@ -45,14 +46,16 @@ export default {
     nodeConfirmClearDialog,
   },
   created() {
-    // fetch a list of users for nodeAdmin option
+    /*
+    ** fetch a list of users for nodeAdmin option
+    */
     getUsers()
       .then((users) => {
-        this.users = users.map(u => {
-        u.name = `${u.first_name} ${u.last_name}`;
-        return u;
-      }) 
-    });
+        this.users = users.map((u) => {
+          u.name = `${u.first_name} ${u.last_name}`;
+          return u;
+        });
+      });
   },
   computed: {
     ...mapState({
@@ -61,7 +64,9 @@ export default {
   },
   watch: {
     nodeContext(state) {
-      // Hide or show clear button
+      /*
+      ** Hide or show clear button based on context state
+      */
       if (state && state.state === contextState.CREATE) {
         this.clearButton = true;
       } else if (state && state.state === contextState.UPDATE) {
@@ -71,18 +76,25 @@ export default {
   },
   methods: {
     confirmClear() {
+      /*
+      ** show confirmation clear dialog
+      */
       this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMNODECLEAR);
     },
     clear() {
-      // clear form data
+      /*
+      ** clear form data
+      ** reset confirmation dialog
+      */
       this.$refs.nodecreateform.reset();
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     submit() {
-      console.log('Node Modify Form: ', this.node.nodeAdmin);
+      // fire parent submit
       this.$emit('submit');
     },
     modify() {
+      // fire parent submit
       this.$emit('modify');
     },
   },

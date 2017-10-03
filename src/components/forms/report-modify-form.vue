@@ -65,7 +65,7 @@ export default {
   },
   watch: {
     reportContext(state) {
-      // Hide or show clear button
+      // Hide or show clear button based on context state
       if (state && state.state === contextState.CREATE) {
         this.clearButton = true;
       } else if (state && state.state === contextState.UPDATE) {

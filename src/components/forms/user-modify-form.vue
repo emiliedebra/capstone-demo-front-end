@@ -39,7 +39,7 @@ import reportModifyFormToolbar from '../form-components/report-modify-form-toolb
 import userModifyConfirmationDialog from '../pop-up-dialogs/user-modify-confirmation-dialog.vue';
 import userConfirmClearDialog from '../pop-up-dialogs/user-confirm-clear-dialog.vue';
 import { contextState } from '../../state-machine';
-import { postUser, getNodes } from '../../services/data-access-layer';
+import { getNodes } from '../../services/data-access-layer';
 
 export default {
 
@@ -64,7 +64,7 @@ export default {
   },
   watch: {
     userContext(state) {
-      // Hide or show clear button
+      // Hide or show clear button based on context state
       if (state && state.state === contextState.CREATE) {
         this.clearButton = true;
       } else if (state && state.state === contextState.UPDATE) {
@@ -79,6 +79,7 @@ export default {
   },
   methods: {
     confirmClear() {
+      // open clear confirmation dialog
       this.$store.dispatch('changeConfirmationDialog', contextState.CONFIRMUSERCLEAR);
     },
     clear() {
@@ -87,17 +88,22 @@ export default {
       this.$store.dispatch('changeConfirmationDialog', null);
     },
     submit() {
-      const level = (typeof this.user.accessLevel !== 'number') ? parseInt(String(this.user.accessLevel), 10) : this.user.accessLevel;
+      // convert access level to string and fire parent submit
+      const accessLevel = this.user.accessLevel;
+      const level = (typeof accessLevel !== 'number') ? parseInt(String(accessLevel), 10) : accessLevel;
       this.user.accessLevel = level;
       this.$emit('submit');
     },
     modify() {
-      const level = (typeof this.user.accessLevel !== 'number') ? parseInt(String(this.user.accessLevel), 10) : this.user.accessLevel;
+      // convert access level to string and fire parent modify
+      const accessLevel = this.user.accessLevel;
+      const level = (typeof accessLevel !== 'number') ? parseInt(String(accessLevel), 10) : accessLevel;
       this.user.accessLevel = level;
       this.$emit('modify');
     },
   },
   mounted() {
+    // get nodes for nodeAdmin selection
     getNodes()
       .then((nodes) => { this.nodes = nodes; });
   },

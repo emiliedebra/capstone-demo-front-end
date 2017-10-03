@@ -7,10 +7,8 @@
       </v-card>
       <v-spacer></v-spacer>
       <v-card flat class="text-xs-right">
-        <v-btn small flat @click.native="modifyUser">
-          Modify</v-btn>
-        <v-btn small flat primary @click.native="deleteUser">
-          Delete User</v-btn>
+        <v-btn small flat @click.native="modifyUser">Modify</v-btn>
+        <v-btn small flat primary @click.native="deleteUser">Delete User</v-btn>
       </v-card>
     </v-layout>
   </v-card>
@@ -24,11 +22,15 @@ export default {
   props: ['userID'],
   methods: {
     deleteUser() {
-      // change report context to deal with delete
+      /*
+      ** change report context to deal with delete
+      */
       this.$store.dispatch('changeUserContext', { id: this.userID, state: contextState.DELETE });
     },
     modifyUser() {
-      // change report context to deal with delete
+      /*
+      ** change report context to deal with modify
+      */
       this.$store.dispatch('changeUserContext', { id: this.userID, state: contextState.UPDATE });
     },
   },

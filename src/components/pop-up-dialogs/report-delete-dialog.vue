@@ -18,11 +18,6 @@ import { modalState } from '../../state-machine';
 export default {
 
   name: 'report-delete-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
-  },
   computed: {
     ...mapState({
       showDialog: state => state.modalDialog === modalState.DELETEREPORT,
@@ -30,9 +25,11 @@ export default {
   },
   methods: {
     close() {
+      // close report-modify-dialog
       this.$store.dispatch('changeReportContext', null);
     },
     deleteReport() {
+      // call delete on report and close modify-dialog on success
       deleteResearchOutput(this.$store.getters.reportContext.id)
         .then(() => {
           // NOTE: can dispatch directly from here because report ID isn't needed

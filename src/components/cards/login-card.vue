@@ -3,9 +3,11 @@
 <template id="login-card">
   <v-container class="text-xs-center">
     <v-layout column>
+      <!-- Heading -->
       <v-flex class="text-xs-left">
         <h6>Login</h6>
       </v-flex>
+      <!-- Form -->
       <v-form ref="loginform">
         <v-flex>
           <v-text-field label="Email" v-model="email"></v-text-field>
@@ -15,6 +17,7 @@
         </v-flex>
       </v-form>
     </v-layout>
+    <!-- Buttons -->
     <v-btn @click.native="loginAccess">Login</v-btn>
     <v-btn @click.native="guestAccess">Continue as Guest</v-btn>
   </v-container>
@@ -33,9 +36,11 @@ export default {
   },
   methods: {
     loginAccess() {
-      // check login details, on successful, change access level and other states
-      // change route and clear login form
-      // on unsuccessful, show dialog
+      /*
+      ** check login details, on successful, change access level and other states
+      ** change route and clear login form
+      ** on unsuccessful, show unsuccessful login dialog
+      */
       login(this)
         .then((user) => {
           if (!user) {
@@ -51,7 +56,9 @@ export default {
         });
     },
     guestAccess() {
-      // set access level to observer, continue to home, reset login form
+      /*
+      ** set access level to observer, continue to home, reset login form
+      */
       this.$store.dispatch('changeAccessLevel', 0);
       this.$store.dispatch('changeLogInDialog', false);
       this.$router.push('/');

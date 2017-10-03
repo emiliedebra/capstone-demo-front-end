@@ -20,13 +20,15 @@ export default {
   props: ['report'],
   methods: {
     clear() {
-      // clear form data
+      /*
+      ** clear form data
+      */
       this.$refs.detailedinfo.reset();
     },
   },
   watch: {
     clearReport() {
-      // watch global state to call local method
+      // watch global state to call local clear method
       if (this.$store.getters.clearReport === true) {
         this.clear();
       }

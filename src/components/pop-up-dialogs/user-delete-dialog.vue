@@ -18,11 +18,6 @@ import { modalState } from '../../state-machine';
 export default {
 
   name: 'user-delete-dialog',
-  data() {
-    return {
-      // nothing for now
-    };
-  },
   computed: {
     ...mapState({
       showDialog: state => state.modalDialog === modalState.DELETEUSER,
@@ -30,9 +25,11 @@ export default {
   },
   methods: {
     close() {
+      // close user-modify-dialog
       this.$store.dispatch('changeUserContext', null);
     },
     deleteUser() {
+      // delete user with current id and close user-modify-dialog
       deleteUser(this.$store.getters.userContext.id)
         .then(() => {
           // NOTE: can dispatch directly from here because report ID isn't needed

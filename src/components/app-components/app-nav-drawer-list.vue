@@ -11,6 +11,7 @@
         <v-list-tile-title>{{ home.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
+    <!-- Only Available to Node Admins/GlobalAdmins -->
     <!-- Manage Nodes -->
     <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="nodes.link">
       <v-list-tile-action>
@@ -20,6 +21,7 @@
         <v-list-tile-title>{{ nodes.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
+    <!-- Only Available to Node Admins/GlobalAdmins -->
     <!-- Manage Users -->
     <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="users.link">
       <v-list-tile-action>
@@ -38,7 +40,6 @@
         <v-list-tile-title>{{ search.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-    <!-- Only Available to Node Admins/GlobalAdmins -->
   </v-list>
 </template>
 

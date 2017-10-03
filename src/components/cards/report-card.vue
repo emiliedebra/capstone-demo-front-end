@@ -1,7 +1,6 @@
 <!-- report-card -->
-
+<!-- Not Used -->
 <template id="report-card">
-  
   <v-card flat>
     <v-container fluid class="ma-0 pa-0">
       <v-layout row grid-xs-left>
