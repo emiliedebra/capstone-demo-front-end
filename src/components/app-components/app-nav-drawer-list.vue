@@ -11,9 +11,8 @@
         <v-list-tile-title>{{ home.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-    <!-- Only Available to Node Admins/GlobalAdmins -->
     <!-- Manage Nodes -->
-    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="nodes.link">
+    <v-list-tile v-if="this.accessLevel === 2 || this.accessLevel === 3" ripple :to="nodes.link">
       <v-list-tile-action>
         <v-icon class="gray--icon">{{ nodes.icon }}</v-icon>
       </v-list-tile-action>
@@ -21,9 +20,8 @@
         <v-list-tile-title>{{ nodes.text }}</v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
-    <!-- Only Available to Node Admins/GlobalAdmins -->
     <!-- Manage Users -->
-    <v-list-tile v-show="this.$store.getters.showDetails" ripple :to="users.link">
+    <v-list-tile v-if="this.accessLevel === 3" ripple :to="users.link">
       <v-list-tile-action>
         <v-icon class="gray--icon">{{ users.icon }}</v-icon>
       </v-list-tile-action>
@@ -44,6 +42,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'app-nav-drawer-list',
   data() {
@@ -54,5 +54,12 @@ export default {
       users: { icon: 'person_add', text: 'Manage Users', link: '/manage-users' },
     };
   },
+  computed: {
+    ...mapState({
+      accessLevel: state => state.accessLevel,
+    }),
+  },
+
 };
 </script>
+
